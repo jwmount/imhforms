@@ -1,0 +1,89 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student_id: MyString
+  date_on: 2014-11-13 15:38:04
+  name: MyString
+  birthdate: 2014-11-13 15:38:04
+  grade: MyString
+  teacher: MyString
+  allergies: MyString
+  diet: MyString
+  sleep: MyString
+  elimination: MyString
+  concerns: MyString
+  stability: MyString
+  parent_histories: MyString
+  household_members: MyString
+  community_supports: MyString
+  interaction_patterns: MyString
+  well_attuned: MyString
+  avoidant: MyString
+  vigilant: MyString
+  over_stimulating: MyString
+  sensory_registration: MyString
+  sensory_orientation: MyString
+  sensory_interpretation: MyString
+  response_organization: MyString
+  response_execution: MyString
+  adaptability: MyString
+  sensory_threshold: MyString
+  sensory_seeking_behaviors: MyString
+  shares_attention: MyString
+  regulation: MyString
+  engagement: MyString
+  interactions: MyString
+  individuation: MyString
+  mood: MyString
+  solves_problems: MyString
+  imagination: MyString
+  creativity: MyString
+  reasoning: MyString
+  links_emotions: MyString
+  perspective: MyString
+  multiCausal_thinking: MyString
+  selfReflective_thinking: MyString
+
+two:
+  student_id: MyString
+  date_on: 2014-11-13 15:38:04
+  name: MyString
+  birthdate: 2014-11-13 15:38:04
+  grade: MyString
+  teacher: MyString
+  allergies: MyString
+  diet: MyString
+  sleep: MyString
+  elimination: MyString
+  concerns: MyString
+  stability: MyString
+  parent_histories: MyString
+  household_members: MyString
+  community_supports: MyString
+  interaction_patterns: MyString
+  well_attuned: MyString
+  avoidant: MyString
+  vigilant: MyString
+  over_stimulating: MyString
+  sensory_registration: MyString
+  sensory_orientation: MyString
+  sensory_interpretation: MyString
+  response_organization: MyString
+  response_execution: MyString
+  adaptability: MyString
+  sensory_threshold: MyString
+  sensory_seeking_behaviors: MyString
+  shares_attention: MyString
+  regulation: MyString
+  engagement: MyString
+  interactions: MyString
+  individuation: MyString
+  mood: MyString
+  solves_problems: MyString
+  imagination: MyString
+  creativity: MyString
+  reasoning: MyString
+  links_emotions: MyString
+  perspective: MyString
+  multiCausal_thinking: MyString
+  selfReflective_thinking: MyString

@@ -1,0 +1,107 @@
+<h1>Listing observations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Date on</th>
+      <th>Name</th>
+      <th>Birthdate</th>
+      <th>Grade</th>
+      <th>Teacher</th>
+      <th>Allergies</th>
+      <th>Diet</th>
+      <th>Sleep</th>
+      <th>Elimination</th>
+      <th>Concerns</th>
+      <th>Stability</th>
+      <th>Parent histories</th>
+      <th>Household members</th>
+      <th>Community supports</th>
+      <th>Interaction patterns</th>
+      <th>Well attuned</th>
+      <th>Avoidant</th>
+      <th>Vigilant</th>
+      <th>Over stimulating</th>
+      <th>Sensory registration</th>
+      <th>Sensory orientation</th>
+      <th>Sensory interpretation</th>
+      <th>Response organization</th>
+      <th>Response execution</th>
+      <th>Adaptability</th>
+      <th>Sensory threshold</th>
+      <th>Sensory seeking behaviors</th>
+      <th>Shares attention</th>
+      <th>Regulation</th>
+      <th>Engagement</th>
+      <th>Interactions</th>
+      <th>Individuation</th>
+      <th>Mood</th>
+      <th>Solves problems</th>
+      <th>Imagination</th>
+      <th>Creativity</th>
+      <th>Reasoning</th>
+      <th>Links emotions</th>
+      <th>Perspective</th>
+      <th>Multicausal thinking</th>
+      <th>Selfreflective thinking</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @observations.each do |observation| %>
+      <tr>
+        <td><%= observation.student_id %></td>
+        <td><%= observation.date_on %></td>
+        <td><%= observation.name %></td>
+        <td><%= observation.birthdate %></td>
+        <td><%= observation.grade %></td>
+        <td><%= observation.teacher %></td>
+        <td><%= observation.allergies %></td>
+        <td><%= observation.diet %></td>
+        <td><%= observation.sleep %></td>
+        <td><%= observation.elimination %></td>
+        <td><%= observation.concerns %></td>
+        <td><%= observation.stability %></td>
+        <td><%= observation.parent_histories %></td>
+        <td><%= observation.household_members %></td>
+        <td><%= observation.community_supports %></td>
+        <td><%= observation.interaction_patterns %></td>
+        <td><%= observation.well_attuned %></td>
+        <td><%= observation.avoidant %></td>
+        <td><%= observation.vigilant %></td>
+        <td><%= observation.over_stimulating %></td>
+        <td><%= observation.sensory_registration %></td>
+        <td><%= observation.sensory_orientation %></td>
+        <td><%= observation.sensory_interpretation %></td>
+        <td><%= observation.response_organization %></td>
+        <td><%= observation.response_execution %></td>
+        <td><%= observation.adaptability %></td>
+        <td><%= observation.sensory_threshold %></td>
+        <td><%= observation.sensory_seeking_behaviors %></td>
+        <td><%= observation.shares_attention %></td>
+        <td><%= observation.regulation %></td>
+        <td><%= observation.engagement %></td>
+        <td><%= observation.interactions %></td>
+        <td><%= observation.individuation %></td>
+        <td><%= observation.mood %></td>
+        <td><%= observation.solves_problems %></td>
+        <td><%= observation.imagination %></td>
+        <td><%= observation.creativity %></td>
+        <td><%= observation.reasoning %></td>
+        <td><%= observation.links_emotions %></td>
+        <td><%= observation.perspective %></td>
+        <td><%= observation.multiCausal_thinking %></td>
+        <td><%= observation.selfReflective_thinking %></td>
+        <td><%= link_to 'Show', observation %></td>
+        <td><%= link_to 'Edit', edit_observation_path(observation) %></td>
+        <td><%= link_to 'Destroy', observation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Observation', new_observation_path %>
