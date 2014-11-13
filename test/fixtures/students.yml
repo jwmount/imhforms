@@ -1,0 +1,85 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  birthdate: 2014-11-12 17:08:05
+  grade: MyString
+  teacher: MyString
+  allergies: MyString
+  diet: MyString
+  sleep: MyString
+  elimination: MyString
+  concerns: MyString
+  stability: MyString
+  parent_histories: MyString
+  household_members: MyString
+  community_supports: MyString
+  interaction_patterns: MyString
+  well_attuned: false
+  avoidant: false
+  vigilant: false
+  over_stimulating: false
+  sensory_registration: MyString
+  sensory_orientation: MyString
+  sensory_interpretation: MyString
+  response_organization: MyString
+  response_execution: MyString
+  adaptability: MyString
+  sensory_threshold: MyString
+  sensory_seeking_behaviors: MyString
+  shares_attention: false
+  regulation: MyString
+  engagement: MyString
+  interactions: MyString
+  individuation: MyString
+  mood: MyString
+  solves_problems: false
+  imagination: MyString
+  creativity: MyString
+  reasoning: MyString
+  links_emotions: MyString
+  perspective: MyString
+  multiCausal_thinking: false
+  selfReflective_thinking: MyString
+
+two:
+  name: MyString
+  birthdate: 2014-11-12 17:08:05
+  grade: MyString
+  teacher: MyString
+  allergies: MyString
+  diet: MyString
+  sleep: MyString
+  elimination: MyString
+  concerns: MyString
+  stability: MyString
+  parent_histories: MyString
+  household_members: MyString
+  community_supports: MyString
+  interaction_patterns: MyString
+  well_attuned: false
+  avoidant: false
+  vigilant: false
+  over_stimulating: false
+  sensory_registration: MyString
+  sensory_orientation: MyString
+  sensory_interpretation: MyString
+  response_organization: MyString
+  response_execution: MyString
+  adaptability: MyString
+  sensory_threshold: MyString
+  sensory_seeking_behaviors: MyString
+  shares_attention: false
+  regulation: MyString
+  engagement: MyString
+  interactions: MyString
+  individuation: MyString
+  mood: MyString
+  solves_problems: false
+  imagination: MyString
+  creativity: MyString
+  reasoning: MyString
+  links_emotions: MyString
+  perspective: MyString
+  multiCausal_thinking: false
+  selfReflective_thinking: MyString

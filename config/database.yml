@@ -1,0 +1,16 @@
+common: &common
+  adapter: postgresql
+  username: john #postgres
+  password: john #postgres
+
+development:
+  <<: *common
+  database: imhforms_development
+
+test:
+  <<: *common
+  database: imhforms_test
+
+production:
+  <<: *common
+  database: imhforms_production

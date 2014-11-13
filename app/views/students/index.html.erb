@@ -1,0 +1,103 @@
+<h1>Listing students</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Birthdate</th>
+      <th>Grade</th>
+      <th>Teacher</th>
+      <th>Allergies</th>
+      <th>Diet</th>
+      <th>Sleep</th>
+      <th>Elimination</th>
+      <th>Concerns</th>
+      <th>Stability</th>
+      <th>Parent histories</th>
+      <th>Household members</th>
+      <th>Community supports</th>
+      <th>Interaction patterns</th>
+      <th>Well attuned</th>
+      <th>Avoidant</th>
+      <th>Vigilant</th>
+      <th>Over stimulating</th>
+      <th>Sensory registration</th>
+      <th>Sensory orientation</th>
+      <th>Sensory interpretation</th>
+      <th>Response organization</th>
+      <th>Response execution</th>
+      <th>Adaptability</th>
+      <th>Sensory threshold</th>
+      <th>Sensory seeking behaviors</th>
+      <th>Shares attention</th>
+      <th>Regulation</th>
+      <th>Engagement</th>
+      <th>Interactions</th>
+      <th>Individuation</th>
+      <th>Mood</th>
+      <th>Solves problems</th>
+      <th>Imagination</th>
+      <th>Creativity</th>
+      <th>Reasoning</th>
+      <th>Links emotions</th>
+      <th>Perspective</th>
+      <th>Multicausal thinking</th>
+      <th>Selfreflective thinking</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.birthdate %></td>
+        <td><%= student.grade %></td>
+        <td><%= student.teacher %></td>
+        <td><%= student.allergies %></td>
+        <td><%= student.diet %></td>
+        <td><%= student.sleep %></td>
+        <td><%= student.elimination %></td>
+        <td><%= student.concerns %></td>
+        <td><%= student.stability %></td>
+        <td><%= student.parent_histories %></td>
+        <td><%= student.household_members %></td>
+        <td><%= student.community_supports %></td>
+        <td><%= student.interaction_patterns %></td>
+        <td><%= student.well_attuned %></td>
+        <td><%= student.avoidant %></td>
+        <td><%= student.vigilant %></td>
+        <td><%= student.over_stimulating %></td>
+        <td><%= student.sensory_registration %></td>
+        <td><%= student.sensory_orientation %></td>
+        <td><%= student.sensory_interpretation %></td>
+        <td><%= student.response_organization %></td>
+        <td><%= student.response_execution %></td>
+        <td><%= student.adaptability %></td>
+        <td><%= student.sensory_threshold %></td>
+        <td><%= student.sensory_seeking_behaviors %></td>
+        <td><%= student.shares_attention %></td>
+        <td><%= student.regulation %></td>
+        <td><%= student.engagement %></td>
+        <td><%= student.interactions %></td>
+        <td><%= student.individuation %></td>
+        <td><%= student.mood %></td>
+        <td><%= student.solves_problems %></td>
+        <td><%= student.imagination %></td>
+        <td><%= student.creativity %></td>
+        <td><%= student.reasoning %></td>
+        <td><%= student.links_emotions %></td>
+        <td><%= student.perspective %></td>
+        <td><%= student.multiCausal_thinking %></td>
+        <td><%= student.selfReflective_thinking %></td>
+        <td><%= link_to 'Show', student %></td>
+        <td><%= link_to 'Edit', edit_student_path(student) %></td>
+        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Student', new_student_path %>

@@ -1,0 +1,177 @@
+<%= form_for(@student) do |f| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% @student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :birthdate %><br>
+    <%= f.datetime_select :birthdate %>
+  </div>
+  <div class="field">
+    <%= f.label :grade %><br>
+    <%= f.text_field :grade %>
+  </div>
+  <div class="field">
+    <%= f.label :teacher %><br>
+    <%= f.text_field :teacher %>
+  </div>
+  <div class="field">
+    <%= f.label :allergies %><br>
+    <%= f.text_field :allergies %>
+  </div>
+  <div class="field">
+    <%= f.label :diet %><br>
+    <%= f.text_field :diet %>
+  </div>
+  <div class="field">
+    <%= f.label :sleep %><br>
+    <%= f.text_field :sleep %>
+  </div>
+  <div class="field">
+    <%= f.label :elimination %><br>
+    <%= f.text_field :elimination %>
+  </div>
+  <div class="field">
+    <%= f.label :concerns %><br>
+    <%= f.text_field :concerns %>
+  </div>
+  <div class="field">
+    <%= f.label :stability %><br>
+    <%= f.text_field :stability %>
+  </div>
+  <div class="field">
+    <%= f.label :parent_histories %><br>
+    <%= f.text_field :parent_histories %>
+  </div>
+  <div class="field">
+    <%= f.label :household_members %><br>
+    <%= f.text_field :household_members %>
+  </div>
+  <div class="field">
+    <%= f.label :community_supports %><br>
+    <%= f.text_field :community_supports %>
+  </div>
+  <div class="field">
+    <%= f.label :interaction_patterns %><br>
+    <%= f.text_field :interaction_patterns %>
+  </div>
+  <div class="field">
+    <%= f.label :well_attuned %><br>
+    <%= f.check_box :well_attuned %>
+  </div>
+  <div class="field">
+    <%= f.label :avoidant %><br>
+    <%= f.check_box :avoidant %>
+  </div>
+  <div class="field">
+    <%= f.label :vigilant %><br>
+    <%= f.check_box :vigilant %>
+  </div>
+  <div class="field">
+    <%= f.label :over_stimulating %><br>
+    <%= f.check_box :over_stimulating %>
+  </div>
+  <div class="field">
+    <%= f.label :sensory_registration %><br>
+    <%= f.text_field :sensory_registration %>
+  </div>
+  <div class="field">
+    <%= f.label :sensory_orientation %><br>
+    <%= f.text_field :sensory_orientation %>
+  </div>
+  <div class="field">
+    <%= f.label :sensory_interpretation %><br>
+    <%= f.text_field :sensory_interpretation %>
+  </div>
+  <div class="field">
+    <%= f.label :response_organization %><br>
+    <%= f.text_field :response_organization %>
+  </div>
+  <div class="field">
+    <%= f.label :response_execution %><br>
+    <%= f.text_field :response_execution %>
+  </div>
+  <div class="field">
+    <%= f.label :adaptability %><br>
+    <%= f.text_field :adaptability %>
+  </div>
+  <div class="field">
+    <%= f.label :sensory_threshold %><br>
+    <%= f.text_field :sensory_threshold %>
+  </div>
+  <div class="field">
+    <%= f.label :sensory_seeking_behaviors %><br>
+    <%= f.text_field :sensory_seeking_behaviors %>
+  </div>
+  <div class="field">
+    <%= f.label :shares_attention %><br>
+    <%= f.check_box :shares_attention %>
+  </div>
+  <div class="field">
+    <%= f.label :regulation %><br>
+    <%= f.text_field :regulation %>
+  </div>
+  <div class="field">
+    <%= f.label :engagement %><br>
+    <%= f.text_field :engagement %>
+  </div>
+  <div class="field">
+    <%= f.label :interactions %><br>
+    <%= f.text_field :interactions %>
+  </div>
+  <div class="field">
+    <%= f.label :individuation %><br>
+    <%= f.text_field :individuation %>
+  </div>
+  <div class="field">
+    <%= f.label :mood %><br>
+    <%= f.text_field :mood %>
+  </div>
+  <div class="field">
+    <%= f.label :solves_problems %><br>
+    <%= f.check_box :solves_problems %>
+  </div>
+  <div class="field">
+    <%= f.label :imagination %><br>
+    <%= f.text_field :imagination %>
+  </div>
+  <div class="field">
+    <%= f.label :creativity %><br>
+    <%= f.text_field :creativity %>
+  </div>
+  <div class="field">
+    <%= f.label :reasoning %><br>
+    <%= f.text_field :reasoning %>
+  </div>
+  <div class="field">
+    <%= f.label :links_emotions %><br>
+    <%= f.text_field :links_emotions %>
+  </div>
+  <div class="field">
+    <%= f.label :perspective %><br>
+    <%= f.text_field :perspective %>
+  </div>
+  <div class="field">
+    <%= f.label :multiCausal_thinking %><br>
+    <%= f.check_box :multiCausal_thinking %>
+  </div>
+  <div class="field">
+    <%= f.label :selfReflective_thinking %><br>
+    <%= f.text_field :selfReflective_thinking %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
