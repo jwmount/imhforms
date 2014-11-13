@@ -42,7 +42,7 @@ gem 'rails_12factor'  #for Heroku platform features
 gem 'better_errors' 
 
 gem 'devise'
-#gem 'cancan'
+gem 'cancan'
 
 # Rails 4 support, see https://github.com/gregbell/active_admin/pull/2326
 # http://stackoverflow.com/questions/20648814/rails-4-1-0-beta1-upgrade-fails
