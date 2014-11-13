@@ -15,7 +15,7 @@ ActiveAdmin.register Student do
   # end
 
   permit_params do
-    permitted = [:permitted, :name, :birthdate, :grade, :teacher, :allergies, :diet, 
+    permitted = [:permitted, :observation, :name, :birthdate, :grade, :teacher, :allergies, :diet, 
         :sleep, :elimination, :concerns, :stability, :parent_histories, :household_members, 
         :community_supports, :interaction_patterns, :well_attuned, :avoidant, :vigilant, 
         :over_stimulating, :sensory_registration, :sensory_orientation, :sensory_interpretation, 
