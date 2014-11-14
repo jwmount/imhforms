@@ -22,7 +22,8 @@ ActiveAdmin.register Observation do
         :response_organization, :response_execution, :adaptability, :sensory_threshold, 
         :sensory_seeking_behaviors, :shares_attention, :regulation, :engagement, :interactions, 
         :individuation, :mood, :solves_problems, :imagination, :creativity, :reasoning, 
-        :links_emotions, :perspective, :multiCausal_thinking, :selfReflective_thinking]
+        :links_emotions, :perspective, :multiCausal_thinking, :selfReflective_thinking,
+        :recorder]
     end
 
 

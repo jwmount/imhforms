@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20141113234919) do
     t.string   "selfReflective_thinking"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "recorder"
   end
 
   create_table "students", force: true do |t|
