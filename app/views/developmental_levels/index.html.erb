@@ -1,0 +1,79 @@
+<h1>Listing developmental_levels</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Student,</th>
+      <th>Date</th>
+      <th>Recorder,</th>
+      <th>Fba not present,</th>
+      <th>Fba fleeting,</th>
+      <th>Fba constricted,</th>
+      <th>Fba stable,</th>
+      <th>Ibc not present,</th>
+      <th>Ibc fleeting,</th>
+      <th>Ibc constricted,</th>
+      <th>Ibc stable,</th>
+      <th>Sm not present,</th>
+      <th>Sm fleeting,</th>
+      <th>Sm constricted,</th>
+      <th>Sm stable,</th>
+      <th>P not present,</th>
+      <th>P fleeting,</th>
+      <th>P constricted,</th>
+      <th>P stable,</th>
+      <th>D not present,</th>
+      <th>D fleeting,</th>
+      <th>D constricted,</th>
+      <th>D stable,</th>
+      <th>Wo not present,</th>
+      <th>Wo fleeting,</th>
+      <th>Wo constricted,</th>
+      <th>Wo stable,</th>
+      <th>Time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @developmental_levels.each do |developmental_level| %>
+      <tr>
+        <td><%= developmental_level.student, %></td>
+        <td><%= developmental_level.date %></td>
+        <td><%= developmental_level.recorder, %></td>
+        <td><%= developmental_level.fba_not_present, %></td>
+        <td><%= developmental_level.fba_fleeting, %></td>
+        <td><%= developmental_level.fba_constricted, %></td>
+        <td><%= developmental_level.fba_stable, %></td>
+        <td><%= developmental_level.ibc_not_present, %></td>
+        <td><%= developmental_level.ibc_fleeting, %></td>
+        <td><%= developmental_level.ibc_constricted, %></td>
+        <td><%= developmental_level.ibc_stable, %></td>
+        <td><%= developmental_level.sm_not_present, %></td>
+        <td><%= developmental_level.sm_fleeting, %></td>
+        <td><%= developmental_level.sm_constricted, %></td>
+        <td><%= developmental_level.sm_stable, %></td>
+        <td><%= developmental_level.p_not_present, %></td>
+        <td><%= developmental_level.p_fleeting, %></td>
+        <td><%= developmental_level.p_constricted, %></td>
+        <td><%= developmental_level.p_stable, %></td>
+        <td><%= developmental_level.d_not_present, %></td>
+        <td><%= developmental_level.d_fleeting, %></td>
+        <td><%= developmental_level.d_constricted, %></td>
+        <td><%= developmental_level.d_stable, %></td>
+        <td><%= developmental_level.wo_not_present, %></td>
+        <td><%= developmental_level.wo_fleeting, %></td>
+        <td><%= developmental_level.wo_constricted, %></td>
+        <td><%= developmental_level.wo_stable, %></td>
+        <td><%= developmental_level.time %></td>
+        <td><%= link_to 'Show', developmental_level %></td>
+        <td><%= link_to 'Edit', edit_developmental_level_path(developmental_level) %></td>
+        <td><%= link_to 'Destroy', developmental_level, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Developmental level', new_developmental_level_path %>

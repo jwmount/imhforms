@@ -1,0 +1,61 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student,: MyString
+  date: 
+  recorder,: MyString
+  fba_not_present,: MyString
+  fba_fleeting,: MyString
+  fba_constricted,: MyString
+  fba_stable,: MyString
+  ibc_not_present,: MyString
+  ibc_fleeting,: MyString
+  ibc_constricted,: MyString
+  ibc_stable,: MyString
+  sm_not_present,: MyString
+  sm_fleeting,: MyString
+  sm_constricted,: MyString
+  sm_stable,: MyString
+  p_not_present,: MyString
+  p_fleeting,: MyString
+  p_constricted,: MyString
+  p_stable,: MyString
+  d_not_present,: MyString
+  d_fleeting,: MyString
+  d_constricted,: MyString
+  d_stable,: MyString
+  wo_not_present,: MyString
+  wo_fleeting,: MyString
+  wo_constricted,: MyString
+  wo_stable,: MyString
+  time: MyString
+
+two:
+  student,: MyString
+  date: 
+  recorder,: MyString
+  fba_not_present,: MyString
+  fba_fleeting,: MyString
+  fba_constricted,: MyString
+  fba_stable,: MyString
+  ibc_not_present,: MyString
+  ibc_fleeting,: MyString
+  ibc_constricted,: MyString
+  ibc_stable,: MyString
+  sm_not_present,: MyString
+  sm_fleeting,: MyString
+  sm_constricted,: MyString
+  sm_stable,: MyString
+  p_not_present,: MyString
+  p_fleeting,: MyString
+  p_constricted,: MyString
+  p_stable,: MyString
+  d_not_present,: MyString
+  d_fleeting,: MyString
+  d_constricted,: MyString
+  d_stable,: MyString
+  wo_not_present,: MyString
+  wo_fleeting,: MyString
+  wo_constricted,: MyString
+  wo_stable,: MyString
+  time: MyString

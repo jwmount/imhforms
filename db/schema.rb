@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113234919) do
+ActiveRecord::Schema.define(version: 20141115002355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,39 @@ ActiveRecord::Schema.define(version: 20141113234919) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "developmental_levels", force: true do |t|
+    t.string   "student_id"
+    t.datetime "date_on"
+    t.string   "recorder"
+    t.string   "fba_not_present"
+    t.string   "fba_fleeting"
+    t.string   "fba_constricted"
+    t.string   "fba_stable"
+    t.string   "ibc_not_present"
+    t.string   "ibc_fleeting"
+    t.string   "ibc_constricted"
+    t.string   "ibc_stable"
+    t.string   "sm_not_present"
+    t.string   "sm_fleeting"
+    t.string   "sm_constricted"
+    t.string   "sm_stable"
+    t.string   "p_not_present"
+    t.string   "p_fleeting"
+    t.string   "p_constricted"
+    t.string   "p_stable"
+    t.string   "d_not_present"
+    t.string   "d_fleeting"
+    t.string   "d_constricted"
+    t.string   "d_stable"
+    t.string   "wo_not_present"
+    t.string   "wo_fleeting"
+    t.string   "wo_constricted"
+    t.string   "wo_stable"
+    t.string   "time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "observations", force: true do |t|
     t.string   "student_id"

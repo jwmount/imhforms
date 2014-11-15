@@ -1,23 +1,115 @@
-                        Prefix Verb       URI Pattern                               Controller#Action
-        new_admin_user_session GET        /admin/login(.:format)                    active_admin/devise/sessions#new
-            admin_user_session POST       /admin/login(.:format)                    active_admin/devise/sessions#create
-    destroy_admin_user_session DELETE|GET /admin/logout(.:format)                   active_admin/devise/sessions#destroy
-           admin_user_password POST       /admin/password(.:format)                 active_admin/devise/passwords#create
-       new_admin_user_password GET        /admin/password/new(.:format)             active_admin/devise/passwords#new
-      edit_admin_user_password GET        /admin/password/edit(.:format)            active_admin/devise/passwords#edit
-                               PATCH      /admin/password(.:format)                 active_admin/devise/passwords#update
-                               PUT        /admin/password(.:format)                 active_admin/devise/passwords#update
-                    admin_root GET        /admin(.:format)                          admin/dashboard#index
-batch_action_admin_admin_users POST       /admin/admin_users/batch_action(.:format) admin/admin_users#batch_action
-             admin_admin_users GET        /admin/admin_users(.:format)              admin/admin_users#index
-                               POST       /admin/admin_users(.:format)              admin/admin_users#create
-          new_admin_admin_user GET        /admin/admin_users/new(.:format)          admin/admin_users#new
-         edit_admin_admin_user GET        /admin/admin_users/:id/edit(.:format)     admin/admin_users#edit
-              admin_admin_user GET        /admin/admin_users/:id(.:format)          admin/admin_users#show
-                               PATCH      /admin/admin_users/:id(.:format)          admin/admin_users#update
-                               PUT        /admin/admin_users/:id(.:format)          admin/admin_users#update
-                               DELETE     /admin/admin_users/:id(.:format)          admin/admin_users#destroy
-               admin_dashboard GET        /admin/dashboard(.:format)                admin/dashboard#index
-                admin_comments GET        /admin/comments(.:format)                 admin/comments#index
-                               POST       /admin/comments(.:format)                 admin/comments#create
-                 admin_comment GET        /admin/comments/:id(.:format)             admin/comments#show
+                                            Prefix Verb       URI Pattern                                                                                      Controller#Action
+                              developmental_levels GET        /developmental_levels(.:format)                                                                  developmental_levels#index
+                                                   POST       /developmental_levels(.:format)                                                                  developmental_levels#create
+                           new_developmental_level GET        /developmental_levels/new(.:format)                                                              developmental_levels#new
+                          edit_developmental_level GET        /developmental_levels/:id/edit(.:format)                                                         developmental_levels#edit
+                               developmental_level GET        /developmental_levels/:id(.:format)                                                              developmental_levels#show
+                                                   PATCH      /developmental_levels/:id(.:format)                                                              developmental_levels#update
+                                                   PUT        /developmental_levels/:id(.:format)                                                              developmental_levels#update
+                                                   DELETE     /developmental_levels/:id(.:format)                                                              developmental_levels#destroy
+                                      observations GET        /observations(.:format)                                                                          observations#index
+                                                   POST       /observations(.:format)                                                                          observations#create
+                                   new_observation GET        /observations/new(.:format)                                                                      observations#new
+                                  edit_observation GET        /observations/:id/edit(.:format)                                                                 observations#edit
+                                       observation GET        /observations/:id(.:format)                                                                      observations#show
+                                                   PATCH      /observations/:id(.:format)                                                                      observations#update
+                                                   PUT        /observations/:id(.:format)                                                                      observations#update
+                                                   DELETE     /observations/:id(.:format)                                                                      observations#destroy
+                                          students GET        /students(.:format)                                                                              students#index
+                                                   POST       /students(.:format)                                                                              students#create
+                                       new_student GET        /students/new(.:format)                                                                          students#new
+                                      edit_student GET        /students/:id/edit(.:format)                                                                     students#edit
+                                           student GET        /students/:id(.:format)                                                                          students#show
+                                                   PATCH      /students/:id(.:format)                                                                          students#update
+                                                   PUT        /students/:id(.:format)                                                                          students#update
+                                                   DELETE     /students/:id(.:format)                                                                          students#destroy
+                            new_admin_user_session GET        /admin/login(.:format)                                                                           active_admin/devise/sessions#new
+                                admin_user_session POST       /admin/login(.:format)                                                                           active_admin/devise/sessions#create
+                        destroy_admin_user_session DELETE|GET /admin/logout(.:format)                                                                          active_admin/devise/sessions#destroy
+                               admin_user_password POST       /admin/password(.:format)                                                                        active_admin/devise/passwords#create
+                           new_admin_user_password GET        /admin/password/new(.:format)                                                                    active_admin/devise/passwords#new
+                          edit_admin_user_password GET        /admin/password/edit(.:format)                                                                   active_admin/devise/passwords#edit
+                                                   PATCH      /admin/password(.:format)                                                                        active_admin/devise/passwords#update
+                                                   PUT        /admin/password(.:format)                                                                        active_admin/devise/passwords#update
+                                        admin_root GET        /admin(.:format)                                                                                 admin/dashboard#index
+                    batch_action_admin_admin_users POST       /admin/admin_users/batch_action(.:format)                                                        admin/admin_users#batch_action
+                                 admin_admin_users GET        /admin/admin_users(.:format)                                                                     admin/admin_users#index
+                                                   POST       /admin/admin_users(.:format)                                                                     admin/admin_users#create
+                              new_admin_admin_user GET        /admin/admin_users/new(.:format)                                                                 admin/admin_users#new
+                             edit_admin_admin_user GET        /admin/admin_users/:id/edit(.:format)                                                            admin/admin_users#edit
+                                  admin_admin_user GET        /admin/admin_users/:id(.:format)                                                                 admin/admin_users#show
+                                                   PATCH      /admin/admin_users/:id(.:format)                                                                 admin/admin_users#update
+                                                   PUT        /admin/admin_users/:id(.:format)                                                                 admin/admin_users#update
+                                                   DELETE     /admin/admin_users/:id(.:format)                                                                 admin/admin_users#destroy
+                                   admin_dashboard GET        /admin/dashboard(.:format)                                                                       admin/dashboard#index
+           batch_action_admin_developmental_levels POST       /admin/developmental_levels/batch_action(.:format)                                               admin/developmental_levels#batch_action
+                        admin_developmental_levels GET        /admin/developmental_levels(.:format)                                                            admin/developmental_levels#index
+                                                   POST       /admin/developmental_levels(.:format)                                                            admin/developmental_levels#create
+                     new_admin_developmental_level GET        /admin/developmental_levels/new(.:format)                                                        admin/developmental_levels#new
+                    edit_admin_developmental_level GET        /admin/developmental_levels/:id/edit(.:format)                                                   admin/developmental_levels#edit
+                         admin_developmental_level GET        /admin/developmental_levels/:id(.:format)                                                        admin/developmental_levels#show
+                                                   PATCH      /admin/developmental_levels/:id(.:format)                                                        admin/developmental_levels#update
+                                                   PUT        /admin/developmental_levels/:id(.:format)                                                        admin/developmental_levels#update
+                                                   DELETE     /admin/developmental_levels/:id(.:format)                                                        admin/developmental_levels#destroy
+                   batch_action_admin_observations POST       /admin/observations/batch_action(.:format)                                                       admin/observations#batch_action
+                                admin_observations GET        /admin/observations(.:format)                                                                    admin/observations#index
+                                                   POST       /admin/observations(.:format)                                                                    admin/observations#create
+                             new_admin_observation GET        /admin/observations/new(.:format)                                                                admin/observations#new
+                            edit_admin_observation GET        /admin/observations/:id/edit(.:format)                                                           admin/observations#edit
+                                 admin_observation GET        /admin/observations/:id(.:format)                                                                admin/observations#show
+                                                   PATCH      /admin/observations/:id(.:format)                                                                admin/observations#update
+                                                   PUT        /admin/observations/:id(.:format)                                                                admin/observations#update
+                                                   DELETE     /admin/observations/:id(.:format)                                                                admin/observations#destroy
+                       batch_action_admin_students POST       /admin/students/batch_action(.:format)                                                           admin/students#batch_action
+                                    admin_students GET        /admin/students(.:format)                                                                        admin/students#index
+                                                   POST       /admin/students(.:format)                                                                        admin/students#create
+                                 new_admin_student GET        /admin/students/new(.:format)                                                                    admin/students#new
+                                edit_admin_student GET        /admin/students/:id/edit(.:format)                                                               admin/students#edit
+                                     admin_student GET        /admin/students/:id(.:format)                                                                    admin/students#show
+                                                   PATCH      /admin/students/:id(.:format)                                                                    admin/students#update
+                                                   PUT        /admin/students/:id(.:format)                                                                    admin/students#update
+                                                   DELETE     /admin/students/:id(.:format)                                                                    admin/students#destroy
+                                    admin_comments GET        /admin/comments(.:format)                                                                        admin/comments#index
+                                                   POST       /admin/comments(.:format)                                                                        admin/comments#create
+                                     admin_comment GET        /admin/comments/:id(.:format)                                                                    admin/comments#show
+                            admin_role_admin_users GET        /admin/roles/:role_id/admin_users(.:format)                                                      admin/admin_users#index
+                                                   POST       /admin/roles/:role_id/admin_users(.:format)                                                      admin/admin_users#create
+                         new_admin_role_admin_user GET        /admin/roles/:role_id/admin_users/new(.:format)                                                  admin/admin_users#new
+                        edit_admin_role_admin_user GET        /admin/roles/:role_id/admin_users/:id/edit(.:format)                                             admin/admin_users#edit
+                             admin_role_admin_user GET        /admin/roles/:role_id/admin_users/:id(.:format)                                                  admin/admin_users#show
+                                                   PATCH      /admin/roles/:role_id/admin_users/:id(.:format)                                                  admin/admin_users#update
+                                                   PUT        /admin/roles/:role_id/admin_users/:id(.:format)                                                  admin/admin_users#update
+                                                   DELETE     /admin/roles/:role_id/admin_users/:id(.:format)                                                  admin/admin_users#destroy
+                                       admin_roles GET        /admin/roles(.:format)                                                                           admin/roles#index
+                                                   POST       /admin/roles(.:format)                                                                           admin/roles#create
+                                    new_admin_role GET        /admin/roles/new(.:format)                                                                       admin/roles#new
+                                   edit_admin_role GET        /admin/roles/:id/edit(.:format)                                                                  admin/roles#edit
+                                        admin_role GET        /admin/roles/:id(.:format)                                                                       admin/roles#show
+                                                   PATCH      /admin/roles/:id(.:format)                                                                       admin/roles#update
+                                                   PUT        /admin/roles/:id(.:format)                                                                       admin/roles#update
+                                                   DELETE     /admin/roles/:id(.:format)                                                                       admin/roles#destroy
+    admin_student_observation_developmental_levels GET        /admin/students/:student_id/observations/:observation_id/developmental_levels(.:format)          admin/developmental_levels#index
+                                                   POST       /admin/students/:student_id/observations/:observation_id/developmental_levels(.:format)          admin/developmental_levels#create
+ new_admin_student_observation_developmental_level GET        /admin/students/:student_id/observations/:observation_id/developmental_levels/new(.:format)      admin/developmental_levels#new
+edit_admin_student_observation_developmental_level GET        /admin/students/:student_id/observations/:observation_id/developmental_levels/:id/edit(.:format) admin/developmental_levels#edit
+     admin_student_observation_developmental_level GET        /admin/students/:student_id/observations/:observation_id/developmental_levels/:id(.:format)      admin/developmental_levels#show
+                                                   PATCH      /admin/students/:student_id/observations/:observation_id/developmental_levels/:id(.:format)      admin/developmental_levels#update
+                                                   PUT        /admin/students/:student_id/observations/:observation_id/developmental_levels/:id(.:format)      admin/developmental_levels#update
+                                                   DELETE     /admin/students/:student_id/observations/:observation_id/developmental_levels/:id(.:format)      admin/developmental_levels#destroy
+                        admin_student_observations GET        /admin/students/:student_id/observations(.:format)                                               admin/observations#index
+                                                   POST       /admin/students/:student_id/observations(.:format)                                               admin/observations#create
+                     new_admin_student_observation GET        /admin/students/:student_id/observations/new(.:format)                                           admin/observations#new
+                    edit_admin_student_observation GET        /admin/students/:student_id/observations/:id/edit(.:format)                                      admin/observations#edit
+                         admin_student_observation GET        /admin/students/:student_id/observations/:id(.:format)                                           admin/observations#show
+                                                   PATCH      /admin/students/:student_id/observations/:id(.:format)                                           admin/observations#update
+                                                   PUT        /admin/students/:student_id/observations/:id(.:format)                                           admin/observations#update
+                                                   DELETE     /admin/students/:student_id/observations/:id(.:format)                                           admin/observations#destroy
+                                                   GET        /admin/students(.:format)                                                                        admin/students#index
+                                                   POST       /admin/students(.:format)                                                                        admin/students#create
+                                                   GET        /admin/students/new(.:format)                                                                    admin/students#new
+                                                   GET        /admin/students/:id/edit(.:format)                                                               admin/students#edit
+                                                   GET        /admin/students/:id(.:format)                                                                    admin/students#show
+                                                   PATCH      /admin/students/:id(.:format)                                                                    admin/students#update
+                                                   PUT        /admin/students/:id(.:format)                                                                    admin/students#update
+                                                   DELETE     /admin/students/:id(.:format)                                                                    admin/students#destroy
+                                              root GET        /                                                                                                admin/dashboard#index

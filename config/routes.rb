@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :developmental_levels
+
   resources :observations
 
   resources :students
@@ -6,8 +8,23 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  # default root to go to the admin namespace, dashboard controller, index action:
+  namespace :admin do
+  # set namespace root in active_admin.rb
+  # root :to => "companies#index"
 
+    resources :roles do
+      resources :admin_users
+    end
+
+    resources :students do
+      resources :observations do
+      resources :developmental_levels
+      end
+    end
+
+  end #end namespace
+
+  # default root to go to the admin namespace, dashboard controller, index action: 
   root to: "admin/dashboard#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

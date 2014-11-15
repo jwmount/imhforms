@@ -1,0 +1,129 @@
+<%= form_for(@developmental_level) do |f| %>
+  <% if @developmental_level.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@developmental_level.errors.count, "error") %> prohibited this developmental_level from being saved:</h2>
+
+      <ul>
+      <% @developmental_level.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :student, %><br>
+    <%= f.text_field :student, %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.text_field :date %>
+  </div>
+  <div class="field">
+    <%= f.label :recorder, %><br>
+    <%= f.text_field :recorder, %>
+  </div>
+  <div class="field">
+    <%= f.label :fba_not_present, %><br>
+    <%= f.text_field :fba_not_present, %>
+  </div>
+  <div class="field">
+    <%= f.label :fba_fleeting, %><br>
+    <%= f.text_field :fba_fleeting, %>
+  </div>
+  <div class="field">
+    <%= f.label :fba_constricted, %><br>
+    <%= f.text_field :fba_constricted, %>
+  </div>
+  <div class="field">
+    <%= f.label :fba_stable, %><br>
+    <%= f.text_field :fba_stable, %>
+  </div>
+  <div class="field">
+    <%= f.label :ibc_not_present, %><br>
+    <%= f.text_field :ibc_not_present, %>
+  </div>
+  <div class="field">
+    <%= f.label :ibc_fleeting, %><br>
+    <%= f.text_field :ibc_fleeting, %>
+  </div>
+  <div class="field">
+    <%= f.label :ibc_constricted, %><br>
+    <%= f.text_field :ibc_constricted, %>
+  </div>
+  <div class="field">
+    <%= f.label :ibc_stable, %><br>
+    <%= f.text_field :ibc_stable, %>
+  </div>
+  <div class="field">
+    <%= f.label :sm_not_present, %><br>
+    <%= f.text_field :sm_not_present, %>
+  </div>
+  <div class="field">
+    <%= f.label :sm_fleeting, %><br>
+    <%= f.text_field :sm_fleeting, %>
+  </div>
+  <div class="field">
+    <%= f.label :sm_constricted, %><br>
+    <%= f.text_field :sm_constricted, %>
+  </div>
+  <div class="field">
+    <%= f.label :sm_stable, %><br>
+    <%= f.text_field :sm_stable, %>
+  </div>
+  <div class="field">
+    <%= f.label :p_not_present, %><br>
+    <%= f.text_field :p_not_present, %>
+  </div>
+  <div class="field">
+    <%= f.label :p_fleeting, %><br>
+    <%= f.text_field :p_fleeting, %>
+  </div>
+  <div class="field">
+    <%= f.label :p_constricted, %><br>
+    <%= f.text_field :p_constricted, %>
+  </div>
+  <div class="field">
+    <%= f.label :p_stable, %><br>
+    <%= f.text_field :p_stable, %>
+  </div>
+  <div class="field">
+    <%= f.label :d_not_present, %><br>
+    <%= f.text_field :d_not_present, %>
+  </div>
+  <div class="field">
+    <%= f.label :d_fleeting, %><br>
+    <%= f.text_field :d_fleeting, %>
+  </div>
+  <div class="field">
+    <%= f.label :d_constricted, %><br>
+    <%= f.text_field :d_constricted, %>
+  </div>
+  <div class="field">
+    <%= f.label :d_stable, %><br>
+    <%= f.text_field :d_stable, %>
+  </div>
+  <div class="field">
+    <%= f.label :wo_not_present, %><br>
+    <%= f.text_field :wo_not_present, %>
+  </div>
+  <div class="field">
+    <%= f.label :wo_fleeting, %><br>
+    <%= f.text_field :wo_fleeting, %>
+  </div>
+  <div class="field">
+    <%= f.label :wo_constricted, %><br>
+    <%= f.text_field :wo_constricted, %>
+  </div>
+  <div class="field">
+    <%= f.label :wo_stable, %><br>
+    <%= f.text_field :wo_stable, %>
+  </div>
+  <div class="field">
+    <%= f.label :time %><br>
+    <%= f.text_field :time %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
