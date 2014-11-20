@@ -9,6 +9,10 @@ ActiveAdmin.register DevelopmentalLevel do
 
     selectable_column
     
+    column "Edit" do |developmental_level|
+      link_to 'Edit Details', admin_student_developmental_level_path( developmental_level.student, developmental_level )
+    end
+
     column :student
     column :date_on
     column :recorder
