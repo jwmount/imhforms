@@ -1,5 +1,9 @@
 class DevelopmentalLevelsController < InheritedResources::Base
 
+  def index
+    puts params
+  end
+
   private
 
     def developmental_level_params

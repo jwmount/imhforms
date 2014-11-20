@@ -38,6 +38,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'binding_of_caller'  # lets me see REPL and local/instance variable inspection.
 gem 'rails_12factor'  #for Heroku platform features
 gem 'better_errors' 
 

@@ -17,9 +17,8 @@ Rails.application.routes.draw do
     end
 
     resources :students do
-      resources :observations do
+      resources :observations
       resources :developmental_levels
-      end
     end
 
   end #end namespace

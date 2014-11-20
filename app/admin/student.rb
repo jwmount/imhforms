@@ -1,6 +1,43 @@
 ActiveAdmin.register Student do
 
   actions :all, :except => [:new, :edit, :show]
+
+  index do
+    selectable_column
+
+    column :name
+    column :born_on
+    column "Developmental Levels" do |student|
+      link_to "Observations", admin_student_developmental_levels_path(student) 
+    end
+
+  end  
+  
+
+# 
+# P U S H  B U T T O N S
+#
+  # APPROVE
+  # Approve sets BOTH types of approval for now.  Elaborate later.
+  # Aside from the obvious need to do one or the other and perhaps toggle them
+  # this operation should be silently logged for audit purposes.
+  collection_action :developmental_levels, :method => :post do
+    link_to 'Developmental Levels', admin_developmental_levels_path #approve_admin_quote_solution_path( quote, solution )
+  end
+
+=begin
+  member_action :approve, :method => :get do
+    @solution = Solution.find(params[:id])
+    @solution.client_approved = true
+    @solution.approved = true
+    @solution.save
+    flash[:notice] = "Solution was approved."
+    redirect_to admin_quote_solution_path(@solution.quote, @solution)
+  end
+=end
+
+  # --------------------------------------------------------------------------------------------------------------------
+  
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -14,8 +51,9 @@ ActiveAdmin.register Student do
   #   permitted
   # end
 
+  # Currently we do not permit changes to imported data of any kind.
   permit_params do
-    permitted = [:permitted, :name, :birthdate]
+    #permitted = [:permitted, :name, :born_on]
     end
 
 end
