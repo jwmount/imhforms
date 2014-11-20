@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20141115002355) do
     t.string   "wo_fleeting"
     t.string   "wo_constricted"
     t.string   "wo_stable"
-    t.string   "time"
+    t.string   "duration"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

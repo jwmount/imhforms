@@ -1,6 +1,6 @@
 ActiveAdmin.register Observation do
 
-  actions :all, :except => [:new, :edit, :show]
+  # actions :all, :except => [:new, :edit, :show]
   
 
   # See permitted parameters documentation:

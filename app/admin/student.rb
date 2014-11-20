@@ -1,6 +1,6 @@
 ActiveAdmin.register Student do
 
-  actions :all, :except => [:new, :edit, :show]
+  # actions :all, :except => [:new, :edit, :show]
 
   index do
     selectable_column
@@ -53,7 +53,7 @@ ActiveAdmin.register Student do
 
   # Currently we do not permit changes to imported data of any kind.
   permit_params do
-    #permitted = [:permitted, :name, :born_on]
+    permitted = [:permitted, :name, :born_on]
     end
 
 end

@@ -14,7 +14,7 @@ class DevelopmentalLevelsController < InheritedResources::Base
       	:p_not_present, :p_fleeting, :p_constricted, :p_stable, 
       	:d_not_present, :d_fleeting, :d_constricted, :d_stable, 
       	:wo_not_present, :wo_fleeting, :wo_constricted, :wo_stable, 
-      	:time)
+      	:duration)
     end
 end
 

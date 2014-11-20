@@ -1,10 +1,14 @@
 ActiveAdmin.register DevelopmentalLevel do
   belongs_to :student
-
+  navigation_menu :project
+  
   # if an action is defined but not implemented you get 'Action Not Found'
-  actions :all, :except => [:new, :edit, :show]
+  # actions :all, :except => [:show]
 
   index title: "Development Levels for #{:student}" do
+
+    selectable_column
+    
     column :student
     column :date_on
     column :recorder
@@ -45,9 +49,26 @@ ActiveAdmin.register DevelopmentalLevel do
       s += dl.p_stable      == "" ? '.' : 's'
     end      
     column :duration
-
   end
 
+  form do |f|
+    
+    f.inputs "Administration" do
+
+      f.input :recorder, 
+              :required       => true, 
+              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_RECORDER_LABEL, 
+              :hint           => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_RECORDER_HINT,
+              :placeholder    => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_RECORDER_PLACEHOLDER
+      f.input :duration, 
+              :required       => true, 
+              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_DURATION_LABEL, 
+              :hint           => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_DURATION_HINT,
+              :placeholder    => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_DURATION_PLACEHOLDER
+
+    end
+    f.actions
+  end
   
 
 =begin
