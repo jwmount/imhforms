@@ -8,19 +8,17 @@ ActiveAdmin.register DevelopmentalLevel do
   index title: "Development Levels for #{:student}" do
 
     selectable_column
-    
-    column "Edit" do |developmental_level|
-      link_to 'Edit Details', admin_student_developmental_level_path( developmental_level.student, developmental_level )
-    end
 
-    column :student
-    column :date_on
+    column "Details (click)" do |developmental_level|
+      link_to "#{developmental_level.date_on.strftime("%A, %d %B, %Y")}", admin_student_developmental_level_path( developmental_level.student, developmental_level )
+    end    
     column :recorder
+    column :duration
     column "Facilitated By Adult" do |dl|
-      s  = dl.fba_not_present == "" ? '.' : 'np'
-      s += dl.fba_fleeting    == "" ? '.' : 'f'
-      s += dl.fba_constricted == "" ? '.' : 'np'
-      s += dl.fba_stable      == "" ? '.' : 's'
+      s  = dl.fba_not_present == "" ? '.' : dl.fba_not_present + ' '
+      s += dl.fba_fleeting    == "" ? '.' : dl.fba_fleeting + ' '
+      s += dl.fba_constricted == "" ? '.' : dl.fba_constricted + ' '
+      s += dl.fba_stable      == "" ? '.' : dl.fba_stable 
     end
     column "Initiated By Child" do |dl|
       s  = dl.ibc_not_present == "" ? '.' : 'np'
@@ -52,18 +50,25 @@ ActiveAdmin.register DevelopmentalLevel do
       s += dl.p_constricted == "" ? '.' : 'np'
       s += dl.p_stable      == "" ? '.' : 's'
     end      
-    column :duration
   end
 
   form do |f|
     
-    f.inputs "Administration" do
+    f.inputs "Shared Attention & REgulation with Adult" do
+
+      f.input :date_on, 
+              :as             => :date_picker,      
+              :required       => true, 
+              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_DATE_ON_LABEL, 
+              :hint           => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_DATE_ON_HINT,
+              :placeholder    => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_DATE_ON_PLACEHOLDER
 
       f.input :recorder, 
               :required       => true, 
               :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_RECORDER_LABEL, 
               :hint           => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_RECORDER_HINT,
               :placeholder    => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_RECORDER_PLACEHOLDER
+
       f.input :duration, 
               :required       => true, 
               :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_DURATION_LABEL, 
@@ -71,6 +76,69 @@ ActiveAdmin.register DevelopmentalLevel do
               :placeholder    => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_DURATION_PLACEHOLDER
 
     end
+
+    f.inputs "Facilitated by Adult" do
+
+      f.input :fba_not_present, 
+              :as => :radio,
+              :required       => true, 
+              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_NOT_PRESENT_LABEL 
+      f.input :fba_fleeting,
+              :as => :radio,
+              :required       => true,
+              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_FLEETING_LABEL
+      f.input :fba_constricted,
+              :as => :radio,
+              :required       => true,
+              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_CONSTRICTED_LABEL
+      f.input :fba_stable,
+              :as => :radio,
+              :required       => true,
+              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_STABLE_LABEL
+    end
+
+    f.inputs "Shared Attention & Self Regualation with Peers in a Group" do
+
+      f.input :ibc_not_present, 
+              :as => :radio,
+              :required       => true, 
+              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_NOT_PRESENT_LABEL
+      f.input :ibc_fleeting,
+              :as => :radio,
+              :required       => true,
+              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_FLEETING_LABEL
+      f.input :ibc_constricted,
+              :as => :radio,
+              :required       => true,
+              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_CONSTRICTED_LABEL
+      f.input :ibc_stable,
+              :as => :radio,
+              :required       => true,
+              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_STABLE_LABEL
+
+    end
+
+    f.inputs "Shared Attention & Self Regualation with Peers in a Group" do
+    end
+
+    f.inputs "Engagement (Increasingly Sustained" do
+    end
+
+    f.inputs "Engagement (Within a Wider Range of Emotions)" do
+    end
+
+    f.inputs "Two-Way Purposeful Interactions" do
+    end
+
+    f.inputs "Complex Problem Solving" do
+    end
+
+    f.inputs "Creates Emotional Ideas" do
+    end
+
+    f.inputs "Builds Bridges Between Ideas -- (Abstract Thinking)" do
+    end
+
     f.actions
   end
   

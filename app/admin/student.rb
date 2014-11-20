@@ -6,7 +6,9 @@ ActiveAdmin.register Student do
     selectable_column
 
     column :name
-    column :born_on
+    column "Birth date" do |student|
+      student.born_on.strftime("%A, %d %B, %Y")
+    end
     column "Developmental Levels" do |student|
       link_to "Observations", admin_student_developmental_levels_path(student) 
     end
