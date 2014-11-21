@@ -28,7 +28,7 @@ class CreateDevelopmentalLevels < ActiveRecord::Migration
       t.string :wo_fleeting
       t.string :wo_constricted
       t.string :wo_stable
-      t.string :duration
+      t.integer :duration
 
       t.timestamps
     end
