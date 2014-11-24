@@ -14,7 +14,7 @@ ActiveAdmin.register Student do
     end
 
   end  
-  
+
 
 # 
 # P U S H  B U T T O N S

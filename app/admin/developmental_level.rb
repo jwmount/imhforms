@@ -10,58 +10,60 @@ ActiveAdmin.register DevelopmentalLevel do
     selectable_column
 
     column "Details (click)" do |developmental_level|
-      link_to "#{developmental_level.date_on.strftime("%A, %d %B, %Y")}", admin_student_developmental_level_path( developmental_level.student, developmental_level )
+      link_to "#{developmental_level.observed_on.strftime("%A, %d %B, %Y")}", admin_student_developmental_level_path( developmental_level.student, developmental_level )
     end    
     column :recorder
     column :duration
+    
     column "Facilitated By Adult" do |dl|
-      s  = dl.fba_not_present == "" ? '.' : dl.fba_not_present + ' '
-      s += dl.fba_fleeting    == "" ? '.' : dl.fba_fleeting + ' '
-      s += dl.fba_constricted == "" ? '.' : dl.fba_constricted + ' '
-      s += dl.fba_stable      == "" ? '.' : dl.fba_stable 
+      sum =  dl.fba_not_present ? 0 : 1
+      sum += dl.fba_fleeting ? 0 : 1
+      sum += dl.fba_constricted ? 0 : 1
+      sum += dl.fba_stable ? 0 : 1
     end
+
     column "Initiated By Child" do |dl|
-      s  = dl.ibc_not_present == "" ? '.' : 'np'
-      s += dl.ibc_fleeting    == "" ? '.' : 'f'
-      s += dl.ibc_constricted == "" ? '.' : 'np'
-      s += dl.ibc_stable      == "" ? '.' : 's'
+      sum =  dl.ibc_not_present  ? 0 : 1
+      sum += dl.ibc_fleeting     ? 0 : 1
+      sum += dl.ibc_constricted  ? 0 : 1
+      sum += dl.ibc_stable       ? 0 : 1
     end
     column "Sensory Motor" do |dl|
-      s  = dl.sm_not_present == "" ? '.' : 'np'
-      s += dl.sm_fleeting    == "" ? '.' : 'f'
-      s += dl.sm_constricted == "" ? '.' : 'np'
-      s += dl.sm_stable      == "" ? '.' : 's'
+      s  = dl.sm_not_present  ? 0 : 1
+      s += dl.sm_fleeting     ? 0 : 1
+      s += dl.sm_constricted  ? 0 : 1
+      s += dl.sm_stable       ? 0 : 1
     end
     column "Pleasure" do |dl|
-      s  = dl.p_not_present == "" ? '.' : 'np'
-      s += dl.p_fleeting    == "" ? '.' : 'f'
-      s += dl.p_constricted == "" ? '.' : 'np'
-      s += dl.p_stable      == "" ? '.' : 's'
+      s  = dl.p_not_present  ? 0 : 1
+      s += dl.p_fleeting     ? 0 : 1
+      s += dl.p_constricted  ? 0 : 1
+      s += dl.p_stable       ? 0 : 1
     end      
     column "Displeasure" do |dl|
-      s  = dl.p_not_present == "" ? '.' : 'np'
-      s += dl.p_fleeting    == "" ? '.' : 'f'
-      s += dl.p_constricted == "" ? '.' : 'np'
-      s += dl.p_stable      == "" ? '.' : 's'
+      s  = dl.p_not_present  ? 0 : 1
+      s += dl.p_fleeting     ? 0 : 1
+      s += dl.p_constricted  ? 0 : 1
+      s += dl.p_stable       ? 0 : 1
     end      
     column "With Object" do |dl|
-      s  = dl.p_not_present == "" ? '.' : 'np'
-      s += dl.p_fleeting    == "" ? '.' : 'f'
-      s += dl.p_constricted == "" ? '.' : 'np'
-      s += dl.p_stable      == "" ? '.' : 's'
+      s  = dl.p_not_present  ? 0 : 1
+      s += dl.p_fleeting     ? 0 : 1
+      s += dl.p_constricted  ? 0 : 1
+      s += dl.p_stable       ? 0 : 1
     end      
   end
 
   form do |f|
+    f.semantic_errors *f.object.errors.keys
     
     f.inputs "Shared Attention & REgulation with Adult" do
 
-      f.input :date_on, 
-              :as             => :date_picker,      
+      f.input :observed_on, 
               :required       => true, 
-              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_DATE_ON_LABEL, 
-              :hint           => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_DATE_ON_HINT,
-              :placeholder    => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_DATE_ON_PLACEHOLDER
+              :label          => AdminConstants::ADMIN_OBSERVATION_DATE_ON_LABEL, 
+              :hint           => AdminConstants::ADMIN_OBSERVATION_DATE_ON_HINT,
+              :placeholder    => AdminConstants::ADMIN_OBSERVATION_DATE_ON_PLACEHOLDER
 
       f.input :recorder, 
               :required       => true, 
@@ -82,19 +84,19 @@ ActiveAdmin.register DevelopmentalLevel do
       f.input :fba_not_present, 
               :as => :radio,
               :required       => true, 
-              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_NOT_PRESENT_LABEL 
+              :label          => AdminConstants::ADMIN_NOT_PRESENT_LABEL 
       f.input :fba_fleeting,
               :as => :radio,
               :required       => true,
-              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_FLEETING_LABEL
+              :label          => AdminConstants::ADMIN_FLEETING_LABEL
       f.input :fba_constricted,
               :as => :radio,
               :required       => true,
-              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_CONSTRICTED_LABEL
+              :label          => AdminConstants::ADMIN_CONSTRICTED_LABEL
       f.input :fba_stable,
               :as => :radio,
               :required       => true,
-              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_STABLE_LABEL
+              :label          => AdminConstants::ADMIN_STABLE_LABEL
     end
 
     f.inputs "Shared Attention & Self Regualation with Peers in a Group" do
@@ -102,19 +104,19 @@ ActiveAdmin.register DevelopmentalLevel do
       f.input :ibc_not_present, 
               :as => :radio,
               :required       => true, 
-              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_NOT_PRESENT_LABEL
+              :label          => AdminConstants::ADMIN_NOT_PRESENT_LABEL
       f.input :ibc_fleeting,
               :as => :radio,
               :required       => true,
-              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_FLEETING_LABEL
+              :label          => AdminConstants::ADMIN_FLEETING_LABEL
       f.input :ibc_constricted,
               :as => :radio,
               :required       => true,
-              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_CONSTRICTED_LABEL
+              :label          => AdminConstants::ADMIN_CONSTRICTED_LABEL
       f.input :ibc_stable,
               :as => :radio,
               :required       => true,
-              :label          => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_STABLE_LABEL
+              :label          => AdminConstants::ADMIN_STABLE_LABEL
 
     end
 
@@ -172,7 +174,7 @@ show :title => "Observations for" do |developmental_level|
   # end
 
   permit_params do
-   permitted = [:permitted, :student_id, :date_on, :recorder, :fba_not_present, :fba_fleeting, :fba_constricted,
+   permitted = [:permitted, :student_id, :observed_on, :recorder, :fba_not_present, :fba_fleeting, :fba_constricted,
     :fba_stable, :ibc_not_present, :ibc_fleeting, :ibc_constricted, :ibc_stable, 
     :sm_not_present, :sm_fleeting, :sm_constricted, :sm_stable, 
     :p_not_present, :p_fleeting, :p_constricted, :p_stable, 

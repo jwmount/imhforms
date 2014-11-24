@@ -51,40 +51,40 @@ ActiveRecord::Schema.define(version: 20141115002355) do
 
   create_table "developmental_levels", force: true do |t|
     t.string   "student_id"
-    t.datetime "date_on"
+    t.date     "observed_on",     default: '2003-01-01', null: false
     t.string   "recorder"
-    t.string   "fba_not_present"
-    t.string   "fba_fleeting"
-    t.string   "fba_constricted"
-    t.string   "fba_stable"
-    t.string   "ibc_not_present"
-    t.string   "ibc_fleeting"
-    t.string   "ibc_constricted"
-    t.string   "ibc_stable"
-    t.string   "sm_not_present"
-    t.string   "sm_fleeting"
-    t.string   "sm_constricted"
-    t.string   "sm_stable"
-    t.string   "p_not_present"
-    t.string   "p_fleeting"
-    t.string   "p_constricted"
-    t.string   "p_stable"
-    t.string   "d_not_present"
-    t.string   "d_fleeting"
-    t.string   "d_constricted"
-    t.string   "d_stable"
-    t.string   "wo_not_present"
-    t.string   "wo_fleeting"
-    t.string   "wo_constricted"
-    t.string   "wo_stable"
-    t.string   "duration"
+    t.boolean  "fba_not_present", default: false
+    t.boolean  "fba_fleeting",    default: false
+    t.boolean  "fba_constricted", default: false
+    t.boolean  "fba_stable",      default: false
+    t.boolean  "ibc_not_present", default: false
+    t.boolean  "ibc_fleeting",    default: false
+    t.boolean  "ibc_constricted", default: false
+    t.boolean  "ibc_stable",      default: false
+    t.boolean  "sm_not_present"
+    t.boolean  "sm_fleeting"
+    t.boolean  "sm_constricted"
+    t.boolean  "sm_stable"
+    t.boolean  "p_not_present"
+    t.boolean  "p_fleeting"
+    t.boolean  "p_constricted"
+    t.boolean  "p_stable"
+    t.boolean  "d_not_present"
+    t.boolean  "d_fleeting"
+    t.boolean  "d_constricted"
+    t.boolean  "d_stable"
+    t.boolean  "wo_not_present"
+    t.boolean  "wo_fleeting"
+    t.boolean  "wo_constricted"
+    t.boolean  "wo_stable"
+    t.integer  "duration"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "observations", force: true do |t|
     t.string   "student_id"
-    t.datetime "date_on"
+    t.datetime "observed_on"
     t.string   "grade"
     t.string   "teacher"
     t.string   "allergies"
@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(version: 20141115002355) do
 
   create_table "students", force: true do |t|
     t.string   "name"
-    t.datetime "born_on"
+    t.datetime "born_on",    default: '2003-01-01 00:00:00', null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

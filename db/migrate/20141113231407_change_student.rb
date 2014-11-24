@@ -1,7 +1,8 @@
 class ChangeStudent < ActiveRecord::Migration
   change_table :students do |t|
-  	t.remove :observation
-  	t.rename :birthdate, :born_on
+    
+  	t.remove   :observation
+  	t.rename   :birthdate, :born_on
 
     t.remove   :grade
     t.remove   :teacher

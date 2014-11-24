@@ -2,32 +2,39 @@ class CreateDevelopmentalLevels < ActiveRecord::Migration
   def change
     create_table :developmental_levels do |t|
       t.string :student_id
-      t.datetime :date_on
+      t.date   :observed_on, default: '2003-01-01 00:00:00', null: false
       t.string :recorder
-      t.string :fba_not_present
-      t.string :fba_fleeting
-      t.string :fba_constricted
-      t.string :fba_stable
-      t.string :ibc_not_present
-      t.string :ibc_fleeting
-      t.string :ibc_constricted
-      t.string :ibc_stable
-      t.string :sm_not_present
-      t.string :sm_fleeting
-      t.string :sm_constricted
-      t.string :sm_stable
-      t.string :p_not_present
-      t.string :p_fleeting
-      t.string :p_constricted
-      t.string :p_stable
-      t.string :d_not_present
-      t.string :d_fleeting
-      t.string :d_constricted
-      t.string :d_stable
-      t.string :wo_not_present
-      t.string :wo_fleeting
-      t.string :wo_constricted
-      t.string :wo_stable
+      
+      t.boolean :fba_not_present, default: false
+      t.boolean :fba_fleeting,    default: false
+      t.boolean :fba_constricted, default: false
+      t.boolean :fba_stable,      default: false
+
+      t.boolean :ibc_not_present, default: false
+      t.boolean :ibc_fleeting,    default: false
+      t.boolean :ibc_constricted, default: false
+      t.boolean :ibc_stable,      default: false
+      
+      t.boolean :sm_not_present, default: false
+      t.boolean :sm_fleeting,    default: false
+      t.boolean :sm_constricted, default: false
+      t.boolean :sm_stable,      default: false
+
+      t.boolean :p_not_present, default: false
+      t.boolean :p_fleeting,    default: false
+      t.boolean :p_constricted, default: false
+      t.boolean :p_stable,      default: false
+
+      t.boolean :d_not_present, default: false
+      t.boolean :d_fleeting,    default: false
+      t.boolean :d_constricted, default: false
+      t.boolean :d_stable,      default: false
+
+      t.boolean :wo_not_present, default: false
+      t.boolean :wo_fleeting,    default: false
+      t.boolean :wo_constricted, default: false
+      t.boolean :wo_stable,      default: false
+
       t.integer :duration
 
       t.timestamps
