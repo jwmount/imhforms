@@ -7,7 +7,7 @@ class DevelopmentalLevelsController < InheritedResources::Base
   private
 
     def developmental_level_params
-      params.require(:developmental_level).permit(:student_id, :date, :recorder, 
+      params.require(:developmental_level).permit(:student_id, :observed_on, :recorder, 
       	:fba_not_present, :fba_fleeting, :fba_constricted, :fba_stable,
       	:ibc_not_present, :ibc_fleeting, :ibc_constricted, :ibc_stable,
       	:sm_not_present, :sm_fleeting, :sm_constricted, :sm_stable, 
