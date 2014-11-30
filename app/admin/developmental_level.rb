@@ -1,16 +1,19 @@
 ActiveAdmin.register DevelopmentalLevel do
   belongs_to :student
-  navigation_menu :project
-  
+  navigation_menu "Stage 1"
+
   # if an action is defined but not implemented you get 'Action Not Found'
   # actions :all, :except => [:show]
 
-  index title: "Development Levels for #{:student}" do
+  index title: "Development Levels for students" do
 
     selectable_column
 
+    column :student
+
     column "Details (click)" do |developmental_level|
-      link_to "#{developmental_level.observed_on.strftime("%A, %d %B, %Y")}", admin_student_developmental_level_path( developmental_level.student, developmental_level )
+      #link_to "#{developmental_level.observed_on.strftime("%A, %d %B, %Y")}", admin_student_developmental_level_path( developmental_level.student, developmental_level )
+      link_to "Stage 1 Details", edit_admin_student_developmental_level_path( student, developmental_level)
     end    
     column :recorder
     column :duration
@@ -57,7 +60,7 @@ ActiveAdmin.register DevelopmentalLevel do
   form do |f|
     f.semantic_errors *f.object.errors.keys
     
-    f.inputs "Shared Attention & REgulation with Adult" do
+    f.inputs "Shared Attention & Regulation with Adult" do
 
       f.input :observed_on, 
               :required       => true, 
@@ -99,7 +102,7 @@ ActiveAdmin.register DevelopmentalLevel do
               :label          => AdminConstants::ADMIN_STABLE_LABEL
     end
 
-    f.inputs "Shared Attention & Self Regualation with Peers in a Group" do
+    f.inputs "Initiated by Child" do
 
       f.input :ibc_not_present, 
               :as => :radio,
@@ -120,27 +123,82 @@ ActiveAdmin.register DevelopmentalLevel do
 
     end
 
-    f.inputs "Shared Attention & Self Regualation with Peers in a Group" do
+    f.inputs "Sensory-Motor" do
+      f.input :sm_not_present, 
+              :as => :radio,
+              :required       => true, 
+              :label          => AdminConstants::ADMIN_NOT_PRESENT_LABEL
+      f.input :sm_fleeting,
+              :as => :radio,
+              :required       => true,
+              :label          => AdminConstants::ADMIN_FLEETING_LABEL
+      f.input :sm_constricted,
+              :as => :radio,
+              :required       => true,
+              :label          => AdminConstants::ADMIN_CONSTRICTED_LABEL
+      f.input :sm_stable,
+              :as => :radio,
+              :required       => true,
+              :label          => AdminConstants::ADMIN_STABLE_LABEL
     end
 
-    f.inputs "Engagement (Increasingly Sustained" do
+    f.inputs "Pleasure" do
+      f.input :p_not_present, 
+              :as => :radio,
+              :required       => true, 
+              :label          => AdminConstants::ADMIN_NOT_PRESENT_LABEL
+      f.input :p_fleeting,
+              :as => :radio,
+              :required       => true,
+              :label          => AdminConstants::ADMIN_FLEETING_LABEL
+      f.input :p_constricted,
+              :as => :radio,
+              :required       => true,
+              :label          => AdminConstants::ADMIN_CONSTRICTED_LABEL
+      f.input :p_stable,
+              :as => :radio,
+              :required       => true,
+              :label          => AdminConstants::ADMIN_STABLE_LABEL
     end
 
-    f.inputs "Engagement (Within a Wider Range of Emotions)" do
+    f.inputs "Displeasure" do
+      f.input :d_not_present, 
+              :as => :radio,
+              :required       => true, 
+              :label          => AdminConstants::ADMIN_NOT_PRESENT_LABEL
+      f.input :d_fleeting,
+              :as => :radio,
+              :required       => true,
+              :label          => AdminConstants::ADMIN_FLEETING_LABEL
+      f.input :d_constricted,
+              :as => :radio,
+              :required       => true,
+              :label          => AdminConstants::ADMIN_CONSTRICTED_LABEL
+      f.input :d_stable,
+              :as => :radio,
+              :required       => true,
+              :label          => AdminConstants::ADMIN_STABLE_LABEL
     end
 
-    f.inputs "Two-Way Purposeful Interactions" do
+    f.inputs "With Object" do
+      f.input :wo_not_present, 
+              :as => :radio,
+              :required       => true, 
+              :label          => AdminConstants::ADMIN_NOT_PRESENT_LABEL
+      f.input :wo_fleeting,
+              :as => :radio,
+              :required       => true,
+              :label          => AdminConstants::ADMIN_FLEETING_LABEL
+      f.input :wo_constricted,
+              :as => :radio,
+              :required       => true,
+              :label          => AdminConstants::ADMIN_CONSTRICTED_LABEL
+      f.input :wo_stable,
+              :as => :radio,
+              :required       => true,
+              :label          => AdminConstants::ADMIN_STABLE_LABEL
+  
     end
-
-    f.inputs "Complex Problem Solving" do
-    end
-
-    f.inputs "Creates Emotional Ideas" do
-    end
-
-    f.inputs "Builds Bridges Between Ideas -- (Abstract Thinking)" do
-    end
-
     f.actions
   end
   
@@ -159,6 +217,15 @@ show :title => "Observations for" do |developmental_level|
     active_admin_comments
   end
 =end
+
+  batch_action :compare do |selection|
+      # Do some deleting...
+      # selection.destroy
+    logger.info("*_*_*_*_*_ Do a compare page #{selection}") 
+    @selections = DevelopmentalLevel.find(selection)
+    flash[:warning] = 'Comparisons...'
+    redirect_to admin_developmental_levels_path(@selections)
+  end
 
 # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
