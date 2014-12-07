@@ -1,10 +1,11 @@
 class DevelopmentalLevel < ActiveRecord::Base
 
   belongs_to :student
-
+  
   validate :validate_date
   validate :duration, presence: true
   validate :student_id, presence: true
+  validate :recorder
 
   def validate_date
     if observed_on.nil? or observed_on > Date.today

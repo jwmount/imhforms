@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.1.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
@@ -35,8 +35,8 @@ gem 'spring',        group: :development
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+# Use debugger -- gem debugger is NO LONGER SUPPORTED in Ruby 2.x.  Wow.
+gem 'debugger2', group: [:development, :test]
 
 gem 'binding_of_caller'  # lets me see REPL and local/instance variable inspection.
 gem 'rails_12factor'  #for Heroku platform features

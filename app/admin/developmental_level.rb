@@ -18,11 +18,14 @@ ActiveAdmin.register DevelopmentalLevel do
     column :recorder
     column :duration
     
-    column "Facilitated By Adult" do |dl|
+    column "Facilitated By Adult" do |dl|      
       sum =  dl.fba_not_present ? 0 : 1
-      sum += dl.fba_fleeting ? 0 : 1
+      sum += dl.fba_fleeting    ? 0 : 1
       sum += dl.fba_constricted ? 0 : 1
-      sum += dl.fba_stable ? 0 : 1
+      sum += dl.fba_stable      ? 0 : 1
+      sum += 12
+      render :partial => 'sum', :locals => {:sum => sum}
+      render :partial => 'fba', :collection => dl
     end
 
     column "Initiated By Child" do |dl|

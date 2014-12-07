@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :developmental_levels
+#  resources :developmental_levels
 
-  resources :observations
+#  resources :observations
 
-  resources :students
+#  resources :students
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
