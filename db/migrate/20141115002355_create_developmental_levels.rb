@@ -4,36 +4,19 @@ class CreateDevelopmentalLevels < ActiveRecord::Migration
       t.string :student_id
       t.date   :observed_on, default: '2003-01-01 00:00:00', null: false
       t.string :recorder
-      
-      t.boolean :fba_not_present, default: false
-      t.boolean :fba_fleeting,    default: false
-      t.boolean :fba_constricted, default: false
-      t.boolean :fba_stable,      default: false
 
-      t.boolean :ibc_not_present, default: false
-      t.boolean :ibc_fleeting,    default: false
-      t.boolean :ibc_constricted, default: false
-      t.boolean :ibc_stable,      default: false
-      
-      t.boolean :sm_not_present, default: false
-      t.boolean :sm_fleeting,    default: false
-      t.boolean :sm_constricted, default: false
-      t.boolean :sm_stable,      default: false
-
-      t.boolean :p_not_present, default: false
-      t.boolean :p_fleeting,    default: false
-      t.boolean :p_constricted, default: false
-      t.boolean :p_stable,      default: false
-
-      t.boolean :d_not_present, default: false
-      t.boolean :d_fleeting,    default: false
-      t.boolean :d_constricted, default: false
-      t.boolean :d_stable,      default: false
-
-      t.boolean :wo_not_present, default: false
-      t.boolean :wo_fleeting,    default: false
-      t.boolean :wo_constricted, default: false
-      t.boolean :wo_stable,      default: false
+      # Facilitated By Adult, in developmental_levels/developmental_level_options
+      #   no selcection   = 0
+      #   not present     = 1
+      #   fleeting        = 2
+      #   constricted     = 3
+      #   stable          = 4
+      t.integer :facilitated_by_adult, default: 0      
+      t.integer :initiated_by_child,   default: 0
+      t.integer :sensory_motor,        default: 0
+      t.integer :pleasure,             default: 0
+      t.integer :displeasure,          default: 0
+      t.integer :with_object,          default: 0
 
       t.integer :duration
 

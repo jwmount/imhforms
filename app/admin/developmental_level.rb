@@ -3,7 +3,7 @@ ActiveAdmin.register DevelopmentalLevel do
   navigation_menu "Stage 1"
 
   # if an action is defined but not implemented you get 'Action Not Found'
-  # actions :all, :except => [:show]
+  #actions :except => [:show]
 
   index title: "Development Levels for students" do
 
@@ -18,46 +18,33 @@ ActiveAdmin.register DevelopmentalLevel do
     column :recorder
     column :duration
     
-    column "Facilitated By Adult" do |dl|      
-      sum =  dl.fba_not_present ? 0 : 1
-      sum += dl.fba_fleeting    ? 0 : 1
-      sum += dl.fba_constricted ? 0 : 1
-      sum += dl.fba_stable      ? 0 : 1
-      sum += 12
-      render :partial => 'sum', :locals => {:sum => sum}
-      render :partial => 'fba', :collection => dl
-    end
+    # Use collections with option_tags, the tags get stored in the database
+    column :facilitated_by_adult,
+           :as            => :select,
+           :include_blank => true,
+           :collection    => developmental_level_options
 
-    column "Initiated By Child" do |dl|
-      sum =  dl.ibc_not_present  ? 0 : 1
-      sum += dl.ibc_fleeting     ? 0 : 1
-      sum += dl.ibc_constricted  ? 0 : 1
-      sum += dl.ibc_stable       ? 0 : 1
-    end
-    column "Sensory Motor" do |dl|
-      s  = dl.sm_not_present  ? 0 : 1
-      s += dl.sm_fleeting     ? 0 : 1
-      s += dl.sm_constricted  ? 0 : 1
-      s += dl.sm_stable       ? 0 : 1
-    end
-    column "Pleasure" do |dl|
-      s  = dl.p_not_present  ? 0 : 1
-      s += dl.p_fleeting     ? 0 : 1
-      s += dl.p_constricted  ? 0 : 1
-      s += dl.p_stable       ? 0 : 1
-    end      
-    column "Displeasure" do |dl|
-      s  = dl.p_not_present  ? 0 : 1
-      s += dl.p_fleeting     ? 0 : 1
-      s += dl.p_constricted  ? 0 : 1
-      s += dl.p_stable       ? 0 : 1
-    end      
-    column "With Object" do |dl|
-      s  = dl.p_not_present  ? 0 : 1
-      s += dl.p_fleeting     ? 0 : 1
-      s += dl.p_constricted  ? 0 : 1
-      s += dl.p_stable       ? 0 : 1
-    end      
+    column :initiated_by_child,
+           :as            => :select,
+           :include_blank => true,
+           :collection    => developmental_level_options
+    column :sensory_motor,
+           :as            => :select,
+           :include_blank => true,
+           :collection    => developmental_level_options
+    column :pleasure,
+           :as            => :select,
+           :include_blank => true,
+           :collection    => developmental_level_options
+    column :displeasure,
+           :as            => :select,
+           :include_blank => true,
+           :collection    => developmental_level_options
+    column :with_object,
+           :as            => :select,
+           :include_blank => true,
+           :collection    => developmental_level_options
+
   end
 
   form do |f|
@@ -83,143 +70,68 @@ ActiveAdmin.register DevelopmentalLevel do
               :hint           => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_DURATION_HINT,
               :placeholder    => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_DURATION_PLACEHOLDER
 
-    end
+      f.input :facilitated_by_adult, 
+              :as => :select,
+              :include_blank => true,
+              :collection    => developmental_level_options
+      f.input :initiated_by_child, 
+              :as => :select,
+              :include_blank => true,
+              :collection    => developmental_level_options
+      f.input :sensory_motor, 
+              :as => :select,
+              :include_blank => true,
+              :collection    => developmental_level_options
+      f.input :pleasure, 
+              :as => :select,
+              :include_blank => true,
+              :collection    => developmental_level_options
+      f.input :displeasure, 
+              :as => :select,
+              :include_blank => true,
+              :collection    => developmental_level_options
+      f.input :with_object, 
+              :as => :select,
+              :include_blank => true,
+              :collection    => developmental_level_options
 
-    f.inputs "Facilitated by Adult" do
-
-      f.input :fba_not_present, 
-              :as => :radio,
-              :required       => true, 
-              :label          => AdminConstants::ADMIN_NOT_PRESENT_LABEL 
-      f.input :fba_fleeting,
-              :as => :radio,
-              :required       => true,
-              :label          => AdminConstants::ADMIN_FLEETING_LABEL
-      f.input :fba_constricted,
-              :as => :radio,
-              :required       => true,
-              :label          => AdminConstants::ADMIN_CONSTRICTED_LABEL
-      f.input :fba_stable,
-              :as => :radio,
-              :required       => true,
-              :label          => AdminConstants::ADMIN_STABLE_LABEL
-    end
-
-    f.inputs "Initiated by Child" do
-
-      f.input :ibc_not_present, 
-              :as => :radio,
-              :required       => true, 
-              :label          => AdminConstants::ADMIN_NOT_PRESENT_LABEL
-      f.input :ibc_fleeting,
-              :as => :radio,
-              :required       => true,
-              :label          => AdminConstants::ADMIN_FLEETING_LABEL
-      f.input :ibc_constricted,
-              :as => :radio,
-              :required       => true,
-              :label          => AdminConstants::ADMIN_CONSTRICTED_LABEL
-      f.input :ibc_stable,
-              :as => :radio,
-              :required       => true,
-              :label          => AdminConstants::ADMIN_STABLE_LABEL
-
-    end
-
-    f.inputs "Sensory-Motor" do
-      f.input :sm_not_present, 
-              :as => :radio,
-              :required       => true, 
-              :label          => AdminConstants::ADMIN_NOT_PRESENT_LABEL
-      f.input :sm_fleeting,
-              :as => :radio,
-              :required       => true,
-              :label          => AdminConstants::ADMIN_FLEETING_LABEL
-      f.input :sm_constricted,
-              :as => :radio,
-              :required       => true,
-              :label          => AdminConstants::ADMIN_CONSTRICTED_LABEL
-      f.input :sm_stable,
-              :as => :radio,
-              :required       => true,
-              :label          => AdminConstants::ADMIN_STABLE_LABEL
-    end
-
-    f.inputs "Pleasure" do
-      f.input :p_not_present, 
-              :as => :radio,
-              :required       => true, 
-              :label          => AdminConstants::ADMIN_NOT_PRESENT_LABEL
-      f.input :p_fleeting,
-              :as => :radio,
-              :required       => true,
-              :label          => AdminConstants::ADMIN_FLEETING_LABEL
-      f.input :p_constricted,
-              :as => :radio,
-              :required       => true,
-              :label          => AdminConstants::ADMIN_CONSTRICTED_LABEL
-      f.input :p_stable,
-              :as => :radio,
-              :required       => true,
-              :label          => AdminConstants::ADMIN_STABLE_LABEL
-    end
-
-    f.inputs "Displeasure" do
-      f.input :d_not_present, 
-              :as => :radio,
-              :required       => true, 
-              :label          => AdminConstants::ADMIN_NOT_PRESENT_LABEL
-      f.input :d_fleeting,
-              :as => :radio,
-              :required       => true,
-              :label          => AdminConstants::ADMIN_FLEETING_LABEL
-      f.input :d_constricted,
-              :as => :radio,
-              :required       => true,
-              :label          => AdminConstants::ADMIN_CONSTRICTED_LABEL
-      f.input :d_stable,
-              :as => :radio,
-              :required       => true,
-              :label          => AdminConstants::ADMIN_STABLE_LABEL
-    end
-
-    f.inputs "With Object" do
-      f.input :wo_not_present, 
-              :as => :radio,
-              :required       => true, 
-              :label          => AdminConstants::ADMIN_NOT_PRESENT_LABEL
-      f.input :wo_fleeting,
-              :as => :radio,
-              :required       => true,
-              :label          => AdminConstants::ADMIN_FLEETING_LABEL
-      f.input :wo_constricted,
-              :as => :radio,
-              :required       => true,
-              :label          => AdminConstants::ADMIN_CONSTRICTED_LABEL
-      f.input :wo_stable,
-              :as => :radio,
-              :required       => true,
-              :label          => AdminConstants::ADMIN_STABLE_LABEL
-  
     end
     f.actions
   end
   
+show :title => "Observations for" do |dl|
+  attributes_table_for(dl) do
+    row :observed_on
+    row :recorder
 
-=begin
-show :title => "Observations for" do |developmental_level|
-    attributes_table_for(developmental_level) do
-      row :date_on
-      row :recorder
-      row ("FBA") do |developmental_level|
-        '1'
-      #row ("Equipment") do |schedule|
-      #  schedule.job.solution.equipment_name
-      end
+    row ( "Facilitated by adult") do |dl|
+      developmental_level_options[ dl.facilitated_by_adult ][0]
     end
-    active_admin_comments
+    
+    row ( "Initiated by child" ) do |dl|
+      developmental_level_options[ dl.initiated_by_child ][0]
+    end
+
+    row ( "Sensory motor" ) do |dl|
+      developmental_level_options[ dl.sensory_motor ][0]
+    end
+
+    row ( "Pleasure" ) do |dl|
+      developmental_level_options[ dl.pleasure ][0]
+    end
+
+    row ( "Displeasure" ) do |dl|
+      developmental_level_options[ dl.displeasure ][0]
+    end
+
+    row ("With object") do |dl|
+      developmental_level_options[ dl.with_object ][0]
+    end
+
   end
-=end
+  active_admin_comments
+end
+
 
   batch_action :compare do |selection|
       # Do some deleting...
@@ -244,12 +156,9 @@ show :title => "Observations for" do |developmental_level|
   # end
 
   permit_params do
-   permitted = [:permitted, :student_id, :observed_on, :recorder, :fba_not_present, :fba_fleeting, :fba_constricted,
-    :fba_stable, :ibc_not_present, :ibc_fleeting, :ibc_constricted, :ibc_stable, 
-    :sm_not_present, :sm_fleeting, :sm_constricted, :sm_stable, 
-    :p_not_present, :p_fleeting, :p_constricted, :p_stable, 
-    :d_not_present, :d_fleeting, :d_constricted, :d_stable, 
-    :wo_not_present, :wo_fleeting, :wo_constricted, :wo_stable, 
+   permitted = [:permitted, :student_id, :observed_on, :recorder, 
+    :facilitated_by_adult, :initiated_by_child, 
+    :sensory_motor, :pleasure, :displeasure, :with_object,
     :duration
     ]
 end

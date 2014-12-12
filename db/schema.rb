@@ -51,32 +51,14 @@ ActiveRecord::Schema.define(version: 20141115002355) do
 
   create_table "developmental_levels", force: true do |t|
     t.string   "student_id"
-    t.date     "observed_on",     default: '2003-01-01', null: false
+    t.date     "observed_on",          default: '2003-01-01', null: false
     t.string   "recorder"
-    t.boolean  "fba_not_present", default: false
-    t.boolean  "fba_fleeting",    default: false
-    t.boolean  "fba_constricted", default: false
-    t.boolean  "fba_stable",      default: false
-    t.boolean  "ibc_not_present", default: false
-    t.boolean  "ibc_fleeting",    default: false
-    t.boolean  "ibc_constricted", default: false
-    t.boolean  "ibc_stable",      default: false
-    t.boolean  "sm_not_present"
-    t.boolean  "sm_fleeting"
-    t.boolean  "sm_constricted"
-    t.boolean  "sm_stable"
-    t.boolean  "p_not_present"
-    t.boolean  "p_fleeting"
-    t.boolean  "p_constricted"
-    t.boolean  "p_stable"
-    t.boolean  "d_not_present"
-    t.boolean  "d_fleeting"
-    t.boolean  "d_constricted"
-    t.boolean  "d_stable"
-    t.boolean  "wo_not_present"
-    t.boolean  "wo_fleeting"
-    t.boolean  "wo_constricted"
-    t.boolean  "wo_stable"
+    t.integer  "facilitated_by_adult", default: 0
+    t.integer  "initiated_by_child",   default: 0
+    t.integer  "sensory_motor",        default: 0
+    t.integer  "pleasure",             default: 0
+    t.integer  "displeasure",          default: 0
+    t.integer  "with_object",          default: 0
     t.integer  "duration"
     t.datetime "created_at"
     t.datetime "updated_at"

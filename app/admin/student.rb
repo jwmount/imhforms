@@ -1,11 +1,14 @@
 ActiveAdmin.register Student do
 
-  # actions :all, :except => [:new, :edit, :show]
+  #actions :all, :except => [:new, :edit, :show]
 
   index do
     selectable_column
 
-    column :name
+    column do |student|
+      link_to student.name, admin_student_path(student)
+    end
+
     column "Birth date" do |student|
       student.born_on.strftime("%A, %d %B, %Y")
     end
@@ -14,6 +17,13 @@ ActiveAdmin.register Student do
     end
 
   end  
+
+  show do
+    h2 "Stage 1 Progress Summary"
+    #@dls = student.developmental_levels
+    #render @dls #will pass in each instance
+    render partial: 'progress', object: @student
+end
 
 
 # 

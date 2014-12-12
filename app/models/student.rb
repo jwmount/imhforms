@@ -14,4 +14,25 @@ class Student < ActiveRecord::Base
     end #if
   end #method
 
+  def getFBA
+    student = Student.find(id)
+    dls = student.developmental_levels.select("facilitated_by_adult").order(observed_on: :asc)
+    history = ""
+    dls.each do | dl |
+      history += dl.facilitated_by_adult.to_s + '-'
+    end
+    history
+  end
+
+  def getIBC
+    student = Student.find(id)
+    dls = student.developmental_levels.select("initiated_by_child")
+    history = ""
+    dls.each do | dl |
+      history += dl.initiated_by_child.to_s + '-'
+    end
+    history
+  end
+
+
 end #class
