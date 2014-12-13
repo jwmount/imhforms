@@ -53,6 +53,7 @@ ActiveAdmin.register DevelopmentalLevel do
     f.inputs "Shared Attention & Regulation with Adult" do
 
       f.input :observed_on, 
+              :value          => '12-1-2014',
               :required       => true, 
               :label          => AdminConstants::ADMIN_OBSERVATION_DATE_ON_LABEL, 
               :hint           => AdminConstants::ADMIN_OBSERVATION_DATE_ON_HINT,

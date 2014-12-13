@@ -7,7 +7,7 @@ module AdminConstants
 #
   ADMIN_OBSERVATION_BORN_ON_LABEL             = "Birth date:" 
   ADMIN_OBSERVATION_DATE_ON_LABEL             = "Observation date:" 
-  ADMIN_OBSERVATION_DATE_ON_HINT              = "Date when the behavior was seen."
+  ADMIN_OBSERVATION_DATE_ON_HINT              = "Date of observation."
   ADMIN_OBSERVATION_DATE_ON_PLACEHOLDER       = "mm-dd-yyyy"
 
   ADMIN_NOT_PRESENT_LABEL                     = "Not present"

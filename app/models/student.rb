@@ -34,5 +34,14 @@ class Student < ActiveRecord::Base
     history
   end
 
+  def getSM
+    student = Student.find(id)
+    dls = student.developmental_levels.select("sensory_motor")
+    history = ""
+    dls.each do | dl |
+      history += dl.sensory_motor.to_s + '-'
+    end
+    history
+  end
 
 end #class
