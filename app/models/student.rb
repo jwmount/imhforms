@@ -44,4 +44,34 @@ class Student < ActiveRecord::Base
     history
   end
 
+  def getPleasure
+    student = Student.find(id)
+    dls = student.developmental_levels.select("pleasure")
+    history = ""
+    dls.each do | dl |
+      history += dl.pleasure.to_s + '-'
+    end
+    history
+  end
+
+  def getDispleasure
+    student = Student.find(id)
+    dls = student.developmental_levels.select("displeasure")
+    history = ""
+    dls.each do | dl |
+      history += dl.displeasure.to_s + '-'
+    end
+    history
+  end
+
+  def getWith_object
+    student = Student.find(id)
+    dls = student.developmental_levels.select("with_object")
+    history = ""
+    dls.each do | dl |
+      history += dl.with_object.to_s + '-'
+    end
+    history
+  end
+
 end #class
