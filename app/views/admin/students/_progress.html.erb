@@ -1,8 +1,40 @@
 <!-- %= "#{@student.name}" % -->
 <br>
-<%= render partial: 'fba' %>
-<%= render partial: 'ibc' %>
-<%= render partial: 'sm' %>
-<%= render partial: 'pleasure' %>
-<%= render partial: 'displeasure' %>
-<%= render partial: 'with_object' %>
+
+<table>
+  <tr>
+	<th width=200px>Category</th>
+	<th>Observations</th>
+  </tr>
+  <tr>
+  	<td><h3> <%= "Facilitated by adult"%> </td>
+  	<td><h3> <%= "#{@student.getProgress('facilitated_by_adult').chomp('-')}" %></h3></td>
+  </tr>
+
+  <tr>
+    <td><h3> <%= "Initiated by child" %> </td>
+    <td><h3> <%= "#{@student.getProgress('initiated_by_child').chomp('-')}" %></h3>  </td>
+  
+  <tr>
+    <td><h3> <%= "Sensory motor" %> </td>
+    <td><h3> <%= "#{@student.getProgress('sensory_motor').chomp('-')}" %></h3>  </td>
+  </tr>
+  
+  <tr>
+    <td><h3> <%= "Pleasure" %> </td>
+    <td><h3> <%= "#{@student.getProgress('pleasure').chomp('-')}" %></h3> </td>
+  </tr>
+  
+  <tr>
+    <td><h3> <%= "Displeasure" %> </td>
+    <td><h3> <%= "#{@student.getProgress('displeasure').chomp('-')}" %></h3> </td>
+  </tr>
+  
+  <tr>
+    <td><h3> <%= "With object" %> </td>
+    <td><h3> <%= "#{@student.getProgress('with_object').chomp('-')}" %></h3> </td>
+  </tr>
+
+</table>
+
+

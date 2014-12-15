@@ -14,62 +14,18 @@ class Student < ActiveRecord::Base
     end #if
   end #method
 
-  def getFBA
+  #
+  # getProgress -- takes string x as one of the progress categories, e.g. 'facilitated_by_adult',
+  # retrieves observations on these from DevelopmentalLevels and creates a rudimentary sparkline as
+  # aid to visual display of student's progress to date.  Progress_category(s) are :attributes in DevelopmentalLevels.
+  # FIXME -- Add protection for invalid values of x; PG::UndefinedColumn ERROR: column "#{x}" does not exist
+  #
+  def getProgress progress_category
     student = Student.find(id)
-    dls = student.developmental_levels.select("facilitated_by_adult").order(observed_on: :asc)
+    dls = student.developmental_levels.select(progress_category).order(observed_on: :asc)
     history = ""
     dls.each do | dl |
-      history += dl.facilitated_by_adult.to_s + '-'
-    end
-    history
-  end
-
-  def getIBC
-    student = Student.find(id)
-    dls = student.developmental_levels.select("initiated_by_child")
-    history = ""
-    dls.each do | dl |
-      history += dl.initiated_by_child.to_s + '-'
-    end
-    history
-  end
-
-  def getSM
-    student = Student.find(id)
-    dls = student.developmental_levels.select("sensory_motor")
-    history = ""
-    dls.each do | dl |
-      history += dl.sensory_motor.to_s + '-'
-    end
-    history
-  end
-
-  def getPleasure
-    student = Student.find(id)
-    dls = student.developmental_levels.select("pleasure")
-    history = ""
-    dls.each do | dl |
-      history += dl.pleasure.to_s + '-'
-    end
-    history
-  end
-
-  def getDispleasure
-    student = Student.find(id)
-    dls = student.developmental_levels.select("displeasure")
-    history = ""
-    dls.each do | dl |
-      history += dl.displeasure.to_s + '-'
-    end
-    history
-  end
-
-  def getWith_object
-    student = Student.find(id)
-    dls = student.developmental_levels.select("with_object")
-    history = ""
-    dls.each do | dl |
-      history += dl.with_object.to_s + '-'
+      history += dl.send(progress_category.to_sym).to_s + '-'
     end
     history
   end
