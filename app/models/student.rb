@@ -1,5 +1,6 @@
 class Student < ActiveRecord::Base
 
+  # :observations are really student profiles and are not usually updated once recorded.
   has_many :observations, 
            :dependent => :destroy
   has_many :developmental_levels,
