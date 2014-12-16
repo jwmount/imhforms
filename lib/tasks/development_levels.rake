@@ -1,6 +1,5 @@
 require 'csv'
 require 'uri'
-require 'debugger'
 #
 # LOAD Student Observations (effectively Profiles)
 # $ rake load:observations
