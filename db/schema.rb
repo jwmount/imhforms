@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20141115002355) do
 
   create_table "developmental_levels", force: true do |t|
     t.string   "student_id"
-    t.date     "observed_on",          default: '2003-01-01', null: false
+    t.date     "observed_on",          default: '2014-01-01', null: false
     t.string   "recorder"
     t.integer  "facilitated_by_adult", default: 0
     t.integer  "initiated_by_child",   default: 0
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20141115002355) do
 
   create_table "observations", force: true do |t|
     t.string   "student_id"
-    t.datetime "observed_on"
+    t.date     "observed_on",  default: '2014-01-01', null: false
     t.string   "grade"
     t.string   "teacher"
     t.string   "allergies"
@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 20141115002355) do
 
   create_table "students", force: true do |t|
     t.string   "name"
-    t.datetime "born_on",    default: '2003-01-01 00:00:00', null: false
+    t.date     "born_on",    default: '2003-01-01', null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
