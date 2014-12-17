@@ -14,8 +14,8 @@ require 'uri'
 
 namespace :load do
 
-
-  desc "Load Student Observations or profiles . . . . "
+# TODO -- Add command syntax
+  desc "Load observations . . . . "
   task :observations => :environment do
 
     @started = Time.now()
@@ -42,42 +42,33 @@ namespace :load do
           end
         end
         puts @count
-=begin
-        # get observation if one exists (validated to unique so only one can exist) or
-        # create new one.
-        # ,Date,Student,Birth date,Grade,Teacher, ...
-        observation = Observation.where(:name => p_hash['student']).first_or_create
-        observations.birthdate ||= p_hash['Birth']
-        observation.grade = p_hash['Grade']
-        observation.teacher = p_hash['Teacher']
-        
-        
 
-    HARDLY OPERATIONAL ! ! ! !
-    
+        # Update the Student and if none exists create it.  No duplicates, so use .first_or_create.
+        # ,Date,Student,Birth date,Grade,Teacher,Allergies, ...
+        student = Student.where(:name => p_hash['Student']).first_or_create
+        student.born_on ||= p_hash['Birth']        
+        
         # Save provider but only create polymorphic dependents if name given and 
         # save is successful.
-        if !provider.name.nil? and provider.save! 
-          puts "--#{provider.name} from #{filename} Saved\n\n\n"
-
-          address = Address.where(addressable_id: provider[:id], addressable_type: 'Provider').first_or_create
-          address.street         = p_hash['Street Address']
-          address.locality       = p_hash['City']
-          address.state          = p_hash['State']
-          address.post_code      = p_hash['Zipcode'] 
-          address.country        = 'United States'
-         # address.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
-          address.save
-
-          phone = Rolodex.where(rolodexable_id: provider[:id], kind: 'Office number', rolodexable_type: 'Provider').first_or_create
-          phone.number_or_email = p_hash['Telephone #']
-         # phone.attributes.each {|k,v| puts "#{k}:\t\t#{v}"}
-          phone.save        
+        if !student.name.nil? and student.save! 
+          puts "--#{student.name} from #{filename} Saved\n\n\n"
         else
-          puts "--Provider could not be saved, Dropped\n"
+          puts "--Student #{p_hash['Student']} from #{filename} could not be saved, Dropped\n"
         end #if
 
-=end
+        # Create this instance of Developmental_levels for this student
+        # FIXME -- Protect this action or at least recover from FAIL
+        dl = student.observations.create(
+          observed_on: p_hash['Date'],
+          grade:       p_hash['Grade'],
+          teacher:     p_hash['Teacher'],
+          allergies:   p_hash['Allergies'],
+          diet:        p_hash['Special Diet / food issues'],
+          sleep:       p_hash['Sleep'],
+          elimination: p_hash['Elimination patterns'],
+          stability:   p_hash['Stability'],
+          concerns:    p_hash['Other medical concerns']
+          )
       end #parse row
 
     end #glob

@@ -14,8 +14,9 @@ require 'uri'
 
 namespace :load do
 
+# TODO -- Add command syntax
 
-  desc "Load Student Observations or profiles . . . . "
+  desc "imhforms -- Load developmental_levels . . . . "
   task :development_levels => :environment do
 
     @started = Time.now()
