@@ -2,28 +2,30 @@ ActiveAdmin.register Student do
 
   #actions :all, :except => [:new, :edit, :show]
 
-  index do
+  index title: "Student list" do
+
     selectable_column
 
-    column do |student|
+    column "Student (click)" do |student|
       link_to student.name, admin_student_path(student)
     end
 
     column "Birth date" do |student|
       student.born_on.strftime("%A, %d %B, %Y")
     end
-    column "Developmental Levels" do |student|
+
+    column "Developmental Levels (click)" do |student|
       link_to "Observations", admin_student_developmental_levels_path(student) 
     end
 
-  end  
+  end #index
 
   show do
     h2 "Stage 1 Progress Summary"
     #@dls = student.developmental_levels
     #render @dls #will pass in each instance
     render partial: 'progress', object: @student
-end
+  end #show
 
 
 # 

@@ -1,5 +1,8 @@
 class StudentsController < InheritedResources::Base
 
+  def index
+  end
+
   private
 
     def student_params
