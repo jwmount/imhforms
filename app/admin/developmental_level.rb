@@ -9,7 +9,9 @@ ActiveAdmin.register DevelopmentalLevel do
 
     selectable_column
 
-    column :student
+    column "Student (click)" do |dl|
+      link_to dl.student.name, admin_student_path(dl.student)
+    end
 
     column "Details (click)" do |developmental_level|
       #link_to "#{developmental_level.observed_on.strftime("%A, %d %B, %Y")}", admin_student_developmental_level_path( developmental_level.student, developmental_level )
