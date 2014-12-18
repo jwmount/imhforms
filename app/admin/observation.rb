@@ -5,11 +5,11 @@ ActiveAdmin.register Observation do
   index do
     selectable_column
 
-    column "Student" do |obs|
+    column "Student (click)" do |obs|
       link_to obs.student.name, admin_student_path(obs.student)
     end
 
-    column "Obs date" do |obs|
+    column "Obs date (click)" do |obs|
       link_to obs.observed_on.strftime("%A, %d %B, %Y"), admin_observation_path(obs)
     end
     column :grade
@@ -23,6 +23,61 @@ ActiveAdmin.register Observation do
 
   end  
   
+  form do |f|
+    f.semantic_errors *f.object.errors.keys
+    
+    f.inputs "Student Evaluation" do
+
+      f.input :student, 
+              :required       => true, 
+              :hint           => AdminConstants::ADMIN_OBSERVATION_STUDENT_HINT,
+              :placeholder    => AdminConstants::ADMIN_OBSERVATION_STUDENT_PLACEHOLDER
+
+      f.input :grade,
+              :hint           => AdminConstants::ADMIN_OBSERVATION_GRADE_HINT,
+              :placeholder    => AdminConstants::ADMIN_OBSERVATION_GRADE_PLACEHOLDER
+
+      f.input :teacher,
+              :hint           => AdminConstants::ADMIN_OBSERVATION_TEACHER_HINT,
+              :placeholder    => AdminConstants::ADMIN_OBSERVATION_TEACHER_PLACEHOLDER
+
+      f.input :allergies,
+              :hint           => AdminConstants::ADMIN_OBSERVATION_ALLERGIES_HINT,
+              :placeholder    => AdminConstants::ADMIN_OBSERVATION_ALLERGIES_PLACEHOLDER
+
+      f.input :diet,
+              :hint           => AdminConstants::ADMIN_OBSERVATION_DIET_HINT,
+              :placeholder    => AdminConstants::ADMIN_OBSERVATION_DIET_PLACEHOLDER
+
+      f.input :elimination,
+              :hint           => AdminConstants::ADMIN_OBSERVATION_ELIMINATION_HINT,
+              :placeholder    => AdminConstants::ADMIN_OBSERVATION_ELIMINATION_PLACEHOLDER
+
+      f.input :concerns,
+              :hint           => AdminConstants::ADMIN_OBSERVATION_CONCERNS_HINT,
+              :placeholder    => AdminConstants::ADMIN_OBSERVATION_CONCERNS_PLACEHOLDER
+
+      f.input :stability,
+              :hint           => AdminConstants::ADMIN_OBSERVATION_STABILITY_HINT,
+              :placeholder    => AdminConstants::ADMIN_OBSERVATION_STABILITY_PLACEHOLDER
+
+    end
+    f.actions
+  end
+
+  show :title => "Observations" do |dl|
+    attributes_table_for(dl) do
+      row :student
+      row :grade
+      row :teacher
+      row :allergies
+      row :diet
+      row :elimination
+      row :concerns
+      row :stability
+    end
+    active_admin_comments
+  end
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

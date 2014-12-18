@@ -103,7 +103,7 @@ ActiveAdmin.register DevelopmentalLevel do
     f.actions
   end
   
-show :title => "Observations for" do |dl|
+show :title => "Developmental Levels" do |dl|
   attributes_table_for(dl) do
     row :observed_on
     row :recorder

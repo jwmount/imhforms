@@ -26,6 +26,35 @@ module AdminConstants
   ADMIN_DEVELOPMENT_LEVEL_DURATION_HINT        = "How long the child exhibited this behavior."
   ADMIN_DEVELOPMENT_LEVEL_DURATION_PLACEHOLDER = "minutes"
 
+#
+# Observations
+#
+  ADMIN_OBSERVATION_STUDENT_HINT               = "Student name"
+  ADMIN_OBSERVATION_STUDENT_PLACEHOLDER        = "Ives Montand"
+
+  ADMIN_OBSERVATION_GRADE_HINT                 = "Grade or year of school."
+  ADMIN_OBSERVATION_GRADE_PLACEHOLDER          = "2nd form"
+
+  ADMIN_OBSERVATION_TEACHER_HINT               = "Teacher's name."
+  ADMIN_OBSERVATION_TEACHER_PLACEHOLDER        = "Gladyss Nacht"
+
+  ADMIN_OBSERVATION_ALLERGIES_HINT             = "Types or sources of allergic reactions."
+  ADMIN_OBSERVATION_ALLERGIES_PLACEHOLDER      = "Fieve de foin"
+
+  ADMIN_OBSERVATION_DIET_HINT                  = "Diet restrictions if any."
+  ADMIN_OBSERVATION_DIET_PLACEHOLDER           = "Gluten"
+
+  ADMIN_OBSERVATION_SLEEP_HINT                 = "Types or sources of allergic reactions."
+  ADMIN_OBSERVATION_SLEEP_PLACEHOLDER          = "Fieve de foin"
+
+  ADMIN_OBSERVATION_ELIMINATION_HINT           = "Elimination problems or strategy."
+  ADMIN_OBSERVATION_ELIMINATION_PLACEHOLDER    = "Normal"
+
+  ADMIN_OBSERVATION_CONCERNS_HINT              = "General concerns for this child."
+  ADMIN_OBSERVATION_CONCERNS_PLACEHOLDER       = "..."
+
+  ADMIN_OBSERVATION_STABILITY_HINT             = "General stability of child."
+  ADMIN_OBSERVATION_STABILITY_PLACEHOLDER      = "Normal"
 
 #
 # Students
