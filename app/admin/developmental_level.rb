@@ -53,7 +53,7 @@ ActiveAdmin.register DevelopmentalLevel do
   form do |f|
     f.semantic_errors *f.object.errors.keys
     
-    f.inputs "Shared Attention & Regulation with Adult" do
+    f.inputs "Shared Attention & Self Regulation with Adult" do
 
       f.input :observed_on, 
               :value          => '12-1-2014',
@@ -98,8 +98,44 @@ ActiveAdmin.register DevelopmentalLevel do
               :as => :select,
               :include_blank => true,
               :collection    => developmental_level_options
-
     end
+
+    f.inputs "Shared Attention & Self Regulation with Peer(s) in a Group" do
+
+      f.input :sensory_motor_play, 
+              :as => :select,
+              :include_blank => true,
+              :collection    => developmental_level_options
+      f.input :representational_play, 
+              :as => :select,
+              :include_blank => true,
+              :collection    => developmental_level_options
+      f.input :with_adult_support, 
+              :as => :select,
+              :include_blank => true,
+              :collection    => developmental_level_options
+      f.input :independently, 
+              :as => :select,
+              :include_blank => true,
+              :collection    => developmental_level_options              
+      f.input :cross_context_1, 
+              :as => :select,
+              :include_blank => true,
+              :collection    => developmental_level_options
+      f.input :cross_context_2, 
+              :as => :select,
+              :include_blank => true,
+              :collection    => developmental_level_options
+      f.input :cross_context_3, 
+              :as => :select,
+              :include_blank => true,
+              :collection    => developmental_level_options
+      f.input :cross_context_4, 
+              :as => :select,
+              :include_blank => true,
+              :collection    => developmental_level_options
+    end    
+
     f.actions
   end
   

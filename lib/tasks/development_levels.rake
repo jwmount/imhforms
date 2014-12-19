@@ -1,16 +1,30 @@
 require 'csv'
 require 'uri'
 #
-# LOAD Student Observations (effectively Profiles)
-# $ rake load:observations
-# source data: public/data/sz/schools/observations.csv
+# LOAD Stage 1, Developmental Levels
+# $ rake load:developmental_levels
+# source data: public/data/sz/schools/developmental_levels.csv
 
 # Columns are:
-# ,Date,Student,Birth date,Grade,Teacher,Allergies,Special Diet / food issues,Sleep,Elimination patterns,
-# Other medical concerns,Text10.0,Text10.1,Text10.2,Text10.3,Text11.0,Text11.1,Text11.2,Text11.3,Text11.4,
-# Text12.0,Text12.1,Text12.2,Text12.3,Text12.4,Text12.5,Text12.6,Text13,Text14.0.0,Text14.0.1,Text14.0.2,
-# Text14.0.3,Text14.0.4,Text14.0.5,Text14.0.6,Text14.0.7,Text15.0,Text15.1,Text15.2,Text15.3,Text15.4,
-# Text15.5#
+# ,Student,Date:,Recorder,
+# Fac by A not,Fac by A Fleet,Fac by A Const,Fac by A Stable,
+# Initiated by Child not,Initiated by Child fleet,Initiated by Child const,Initiated by Child stable,
+# Sensory-Motor not,Sensory-Motor Fleet,Sensory-Motor const,Sensory-Motor stable,
+# Pleasure not,Pleasure fleet,Pleasure const,Pleasure Stable,
+# Displeasure not,Displeasure fleet,Displeasure Const,Displeasure Stable,
+# With Object not,With Object Fleet,With Object Const,With Object Stable,
+# time 1:1,Text14,Notes 1.1, ...
+
+# REMOVE THIS STANZA, NOT THIS MODEL!
+# Sensory Motor Play Not,Sensory Motor Play fleet,Sensory Motor Play Const,Sensory Motor Play Stacle,
+# Representational Play not,Representational Play fleet,Representational Play Const,Representational Play stable,
+# With Support Adult not,With Support Adult fleet,With Support Adult const,With Support Adult stable,
+# Independently not,Independently fleet,Independently const,Independently stable,
+# Across Contexts A1,Across Contexts not,Across Contexts fleet,Across Contexts const,Across Contexts stable,
+# Across Contexts A2,Across Contexts 2 not,Across Contexts 2 fleet,Across Contexts 2 const,Across Contexts 2 stable,
+# Across Contexts A3,Across Contexts 3 not,Across Contexts 3 fleet,Across Contexts 3 const,Across Contexts 3 stable,
+# Across Contexts A4,Across Contexts 4 not,Across Contexts 4 fleet,Across Contexts 4 const,Across Contexts 4 stable,
+# Time 1:2,Text15,Notes 1.2, ...
 
 namespace :load do
 
@@ -97,10 +111,9 @@ namespace :load do
         # FIXME -- Protect this action or at least recover from FAIL
         dl = student.developmental_levels.create(
           recorder: p_hash['Recorder'],
-          pleasure: 1,
-          displeasure: 1,
-          with_object: 1
           )
+
+    # Stage 1 (?)
         dl.facilitated_by_adult = 1 if p_hash['Fac by A not'] == 'Yes'
         dl.facilitated_by_adult = 2 if p_hash['Fac by A Fleet'] == 'Yes'
         dl.facilitated_by_adult = 3 if p_hash['Fac by A Const'] == 'Yes'
@@ -131,7 +144,52 @@ namespace :load do
         dl.with_object = 3 if p_hash['With Object Const'] == 'Yes'
         dl.with_object = 4 if p_hash['With Object Stable'] == 'Yes'
 
-        dl.save
+    # Page 2 of Stage 1
+        dl.sensory_motor_play = 1 if p_hash['Sensory Motor Play Not']
+        dl.sensory_motor_play = 2 if p_hash['Sensory Motor Play fleet']
+        dl.sensory_motor_play = 3 if p_hash['Sensory Motor Play Const']
+# FIXME 'Stable' not 'Stacle'        
+        dl.sensory_motor_play = 4 if p_hash['Sensory Motor Play Stacle']
+
+        dl.representational_play = 1 if p_hash['Representational Play not']
+        dl.representational_play = 2 if p_hash['Representational Play fleet']
+        dl.representational_play = 3 if p_hash['Representational Play Const']
+        dl.representational_play = 4 if p_hash['Representational Play Stable']
+
+        dl.with_adult_support = 1 if p_hash['With Support Adult not']
+        dl.with_adult_support = 2 if p_hash['With Support Adult fleet']
+        dl.with_adult_support = 3 if p_hash['With Support Adult const']
+        dl.with_adult_support = 4 if p_hash['With Support Adult stable']
+
+        dl.independently = 1 if p_hash['Independently not']
+        dl.independently = 2 if p_hash['Independently fleet']
+        dl.independently = 3 if p_hash['Independently const']
+        dl.independently = 4 if p_hash['Independently stable']
+
+        dl.cross_context_1 = 0 if p_hash['Across Contexts A1']
+        dl.cross_context_1 = 1 if p_hash['Across Contexts not']
+        dl.cross_context_1 = 2 if p_hash['Across Contexts fleet']
+        dl.cross_context_1 = 3 if p_hash['Across Contexts const']
+        dl.cross_context_1 = 4 if p_hash['Across Contexts stable']
+
+        dl.cross_context_2 = 0 if p_hash['Across Contexts 2']
+        dl.cross_context_2 = 1 if p_hash['Across Contexts 2 not']
+        dl.cross_context_2 = 2 if p_hash['Across Contexts 2 fleet']
+        dl.cross_context_2 = 3 if p_hash['Across Contexts 2 const']
+        dl.cross_context_2 = 4 if p_hash['Across Contexts 2 stable']
+
+        dl.cross_context_3 = 0 if p_hash['Across Contexts 3']
+        dl.cross_context_3 = 1 if p_hash['Across Contexts 3 not']
+        dl.cross_context_3 = 2 if p_hash['Across Contexts 3 fleet']
+        dl.cross_context_3 = 3 if p_hash['Across Contexts 3 const']
+        dl.cross_context_3 = 4 if p_hash['Across Contexts 3 stable']
+
+        dl.cross_context_4 = 0 if p_hash['Across Contexts 4']
+        dl.cross_context_4 = 1 if p_hash['Across Contexts 4 not']
+        dl.cross_context_4 = 2 if p_hash['Across Contexts 4 fleet']
+        dl.cross_context_4 = 3 if p_hash['Across Contexts 4 const']
+        dl.cross_context_4 = 4 if p_hash['Across Contexts 4 stable']
+
       end #parse row
 
     end #glob

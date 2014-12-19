@@ -2,8 +2,9 @@ class CreateDevelopmentalLevels < ActiveRecord::Migration
   def change
     create_table :developmental_levels do |t|
       t.string :student_id
-      t.date   :observed_on, default: '2003-01-01 00:00:00', null: false
+      t.date   :observed_on, default: '2003-01-01', null: false
       t.string :recorder
+      t.integer :duration
 
       # Facilitated By Adult, in developmental_levels/developmental_level_options
       #   no selcection   = 0
@@ -18,7 +19,15 @@ class CreateDevelopmentalLevels < ActiveRecord::Migration
       t.integer :displeasure,          default: 0
       t.integer :with_object,          default: 0
 
-      t.integer :duration
+      t.integer :sensory_motor_play,   default: 0
+      t.integer :representational_play,default: 0
+      t.integer :with_adult_support,   default: 0
+      t.integer :independently,        default: 0
+
+      t.integer :cross_context_1,      default: 0
+      t.integer :cross_context_2,      default: 0
+      t.integer :cross_context_3,      default: 0
+      t.integer :cross_context_4,      default: 0
 
       t.timestamps
     end

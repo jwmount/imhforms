@@ -51,22 +51,30 @@ ActiveRecord::Schema.define(version: 20141115002355) do
 
   create_table "developmental_levels", force: true do |t|
     t.string   "student_id"
-    t.date     "observed_on",          default: '2014-01-01', null: false
+    t.date     "observed_on",           default: '2003-01-01', null: false
     t.string   "recorder"
-    t.integer  "facilitated_by_adult", default: 0
-    t.integer  "initiated_by_child",   default: 0
-    t.integer  "sensory_motor",        default: 0
-    t.integer  "pleasure",             default: 0
-    t.integer  "displeasure",          default: 0
-    t.integer  "with_object",          default: 0
     t.integer  "duration"
+    t.integer  "facilitated_by_adult",  default: 0
+    t.integer  "initiated_by_child",    default: 0
+    t.integer  "sensory_motor",         default: 0
+    t.integer  "pleasure",              default: 0
+    t.integer  "displeasure",           default: 0
+    t.integer  "with_object",           default: 0
+    t.integer  "sensory_motor_play",    default: 0
+    t.integer  "representational_play", default: 0
+    t.integer  "with_adult_support",    default: 0
+    t.integer  "independently",         default: 0
+    t.integer  "cross_context_1",       default: 0
+    t.integer  "cross_context_2",       default: 0
+    t.integer  "cross_context_3",       default: 0
+    t.integer  "cross_context_4",       default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "observations", force: true do |t|
     t.string   "student_id"
-    t.date     "observed_on",  default: '2014-01-01', null: false
+    t.datetime "observed_on"
     t.string   "grade"
     t.string   "teacher"
     t.string   "allergies"
@@ -112,7 +120,7 @@ ActiveRecord::Schema.define(version: 20141115002355) do
 
   create_table "students", force: true do |t|
     t.string   "name"
-    t.date     "born_on",    default: '2003-01-01', null: false
+    t.datetime "born_on",    default: '2003-01-01 00:00:00', null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
