@@ -1,5 +1,6 @@
 require 'csv'
 require 'uri'
+require 'debugger'
 #
 # LOAD Stage 1, Developmental Levels and Students
 # $ rake load:developmental_levels
@@ -96,8 +97,55 @@ namespace :load do
         puts "Sensory Motor Play Const:  #{p_hash['Sensory Motor Play Const']}"
         puts "Sensory Motor Play Stacle: #{p_hash['Sensory Motor Play Stacle']}"
 
+        puts "Representational Play not:    #{p_hash['Representational Play not']}"
+        puts "Representational Play fleet:       #{p_hash['Sensory Motor Play fleet']}"
+        puts "Representational Play Const:    #{p_hash['Sensory Motor Play Const']}"
+        puts "Representational Play stable:    #{p_hash['Sensory Motor Play stable']}"
+
+        puts "With Support Adult not:     #{p_hash['With Support Adult not']}"
+        puts "With Support Adult fleet:   #{p_hash['With Support Adult fleet']}"
+        puts "With Support Adult const:   #{p_hash['With Support Adult const']}"
+        puts "With Support Adult stable:  #{p_hash['With Support Adult stable']}"
+
+        puts "Independently not:     #{p_hash['Independently not']}"
+        puts "Independently fleet:   #{p_hash['Independently fleet']}"
+        puts "Independently const:   #{p_hash['Independently const']}"
+        puts "Independently stable:  #{p_hash['Independently stable']}"
+
+        puts "Across Contexts not:     #{p_hash['Across Contexts not']}"
+        puts "Across Contexts fleet:   #{p_hash['Across Contexts fleet']}"
+        puts "Across Contexts const:   #{p_hash['Across Contexts const']}"
+        puts "Across Contexts stable:  #{p_hash['Across Contexts stable']}"
+
+        puts "Across Contexts 2 not:     #{p_hash['Across Contexts 2 not']}"
+        puts "Across Contexts 2 fleet:   #{p_hash['Across Contexts 2 fleet']}"
+        puts "Across Contexts 2 const:   #{p_hash['Across Contexts 2 const']}"
+        puts "Across Contexts 2 stable:  #{p_hash['Across Contexts 2 stable']}"
+
+        puts "Across Contexts 3 not:     #{p_hash['Across Contexts 3 not']}"
+        puts "Across Contexts 3 fleet:   #{p_hash['Across Contexts 3 fleet']}"
+        puts "Across Contexts 3 const:   #{p_hash['Across Contexts 3 const']}"
+        puts "Across Contexts 3 stable:  #{p_hash['Across Contexts 3 stable']}"
+
+        puts "Across Contexts 4 not:     #{p_hash['Across Contexts 4 not']}"
+        puts "Across Contexts 4 fleet:   #{p_hash['Across Contexts 4 fleet']}"
+        puts "Across Contexts 4 const:   #{p_hash['Across Contexts 4 const']}"
+        puts "Across Contexts 4 stable:  #{p_hash['Across Contexts 4 stable']}"
+
         puts "--end #{@count}\n\n"
 
+        keys = [ 'Across Contexts 4 not', 'Across Contexts 4 fleet', 'Across Contexts 4 const', 'Across Contexts 4 stable',
+            'this key is missing'
+        ]
+
+        # If any key is missing, message which one and terminate
+        flag, key = isPresent(p_hash, keys)
+        
+        unless flag 
+            puts "ERROR -- Key #{key} not found.  Terminated."
+            Process.exit(0)
+        end
+        
         # Update the Student and if none exists create it.  No duplicates, so use .first_or_create.
         # ,Date,Student,Birth date,Grade,Teacher, ...
         student = Student.where(:name => p_hash['Student']).first_or_create

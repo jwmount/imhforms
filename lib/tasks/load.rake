@@ -1,3 +1,4 @@
+
 #
 # Root load rake command
 # Add argument values eventually to select which school is to be loaded, default is all
@@ -19,6 +20,14 @@ namespace :load do
 #
 # helper methods
 #
+
+  def isPresent(hsh, keys)
+    keys.each do |key| 
+      if !hsh.has_key?(key)
+        return false, key
+      end
+    end
+  end
 
   def sanitize_utf8(string)
     return nil if string.nil?
