@@ -30,6 +30,23 @@ namespace :load do
 
 # TODO -- Add command syntax
 
+        keys = [ 'Fac by A not', 'Fac by A not', 'Fac by A not', 'Fac by A not',
+                 'Initiated by Child not', 'Initiated by Child fleet', 'Initiated by Child const', 'Initiated by Child stable',
+                 'Sensory-Motor not', 'Sensory-Motor Fleet', 'Sensory-Motor const', 'Sensory-Motor stable',
+                 'Pleasure not', 'Pleasure fleet', 'Pleasure const', 'Pleasure Stable',
+                 'Displeasure not', 'Displeasure fleet', 'Displeasure Const', 'Displeasure Stable',
+                 'With Object not', 'With Object Fleet', 'With Object Const', 'With Object Stable',
+                 'Sensory Motor Play Not', 'Sensory Motor Play fleet', 'Sensory Motor Play Const', 'Sensory Motor Play Stacle',
+                 'Representational Play not', 'Representational Play fleet', 'Representational Play Const', 'Representational Play stable',
+                 'With Support Adult not', 'With Support Adult fleet', 'With Support Adult const', 'With Support Adult stable', 
+                 'Independently not', 'Independently fleet', 'Independently const', 'Independently stable',
+
+                 'Across Contexts not', 'Across Contexts fleet', 'Across Contexts const', 'Across Contexts stable', 
+                 'Across Contexts 2 not', 'Across Contexts 2 fleet', 'Across Contexts 2 const','Across Contexts 2 stable',
+                 'Across Contexts 3 not', 'Across Contexts 3 fleet', 'Across Contexts 3 const', 'Across Contexts 3 stable',
+                 'Across Contexts 4 not', 'Across Contexts 4 fleet', 'Across Contexts 4 const', 'Across Contexts 4 stable',
+        ]
+
   desc "imhforms -- Load developmental_levels . . . . "
   task :development_levels => :environment do
 
@@ -62,87 +79,16 @@ namespace :load do
         puts "Date:     #{p_hash['Date']}"
         puts "Recorder: #{p_hash['Recorder']}"
 
-        puts "Fac by A not:    #{p_hash['Fac by A not']}"
-        puts "Fac by A Fleet:  #{p_hash['Fac by A Fleet']}"
-        puts "Fac by A Const:  #{p_hash['Fac by A Const']}"
-        puts "Fac by A Stable: #{p_hash['Fac by A Stable']}"
-
-        puts "Initiated by Child not:    #{p_hash['Initiated by Child not']}"
-        puts "Initiated by Child fleet:  #{p_hash['Initiated by Child fleet']}"
-        puts "Initiated by Child const:  #{p_hash['Initiated by Child const']}"
-        puts "Initiated by Child stable: #{p_hash['Initiated by Child stable']}"
-
-        puts "Sensory-Motor not:    #{p_hash['Sensory-Motor not']}"
-        puts "Sensory-Motor Fleet:  #{p_hash['Sensory-Motor Fleet']}"
-        puts "Sensory-Motor const:  #{p_hash['Sensory-Motor const']}"
-        puts "Sensory-Motor stable: #{p_hash['Sensory-Motor stable']}"
-
-        puts "Pleasure not:    #{p_hash['Pleasure not']}"
-        puts "Pleasure fleet:  #{p_hash['Pleasure fleet']}"
-        puts "Pleasure const:  #{p_hash['Pleasure const']}"
-        puts "Pleasure Stable: #{p_hash['Pleasure Stable']}"
-
-        puts "Displeasure not:    #{p_hash['Displeasure not']}"
-        puts "Displeasure fleet:  #{p_hash['Displeasure fleet']}"
-        puts "Displeasure Const:  #{p_hash['Displeasure Const']}"
-        puts "Displeasure Stable: #{p_hash['Displeasure Stable']}"
-
-        puts "With Object not:    #{p_hash['With Object not']}"        
-        puts "With Object Fleet:  #{p_hash['With Object Fleet']}"        
-        puts "With Object Const:  #{p_hash['With Object Const']}"        
-        puts "With Object Stable: #{p_hash['With Object Stable']}"        
-
-        puts "Sensory Motor Play Not:    #{p_hash['Sensory Motor Play Not']}"
-        puts "Sensory Motor Play fleet:  #{p_hash['Sensory Motor Play fleet']}"
-        puts "Sensory Motor Play Const:  #{p_hash['Sensory Motor Play Const']}"
-        puts "Sensory Motor Play Stacle: #{p_hash['Sensory Motor Play Stacle']}"
-
-        puts "Representational Play not:    #{p_hash['Representational Play not']}"
-        puts "Representational Play fleet:       #{p_hash['Sensory Motor Play fleet']}"
-        puts "Representational Play Const:    #{p_hash['Sensory Motor Play Const']}"
-        puts "Representational Play stable:    #{p_hash['Sensory Motor Play stable']}"
-
-        puts "With Support Adult not:     #{p_hash['With Support Adult not']}"
-        puts "With Support Adult fleet:   #{p_hash['With Support Adult fleet']}"
-        puts "With Support Adult const:   #{p_hash['With Support Adult const']}"
-        puts "With Support Adult stable:  #{p_hash['With Support Adult stable']}"
-
-        puts "Independently not:     #{p_hash['Independently not']}"
-        puts "Independently fleet:   #{p_hash['Independently fleet']}"
-        puts "Independently const:   #{p_hash['Independently const']}"
-        puts "Independently stable:  #{p_hash['Independently stable']}"
-
-        puts "Across Contexts not:     #{p_hash['Across Contexts not']}"
-        puts "Across Contexts fleet:   #{p_hash['Across Contexts fleet']}"
-        puts "Across Contexts const:   #{p_hash['Across Contexts const']}"
-        puts "Across Contexts stable:  #{p_hash['Across Contexts stable']}"
-
-        puts "Across Contexts 2 not:     #{p_hash['Across Contexts 2 not']}"
-        puts "Across Contexts 2 fleet:   #{p_hash['Across Contexts 2 fleet']}"
-        puts "Across Contexts 2 const:   #{p_hash['Across Contexts 2 const']}"
-        puts "Across Contexts 2 stable:  #{p_hash['Across Contexts 2 stable']}"
-
-        puts "Across Contexts 3 not:     #{p_hash['Across Contexts 3 not']}"
-        puts "Across Contexts 3 fleet:   #{p_hash['Across Contexts 3 fleet']}"
-        puts "Across Contexts 3 const:   #{p_hash['Across Contexts 3 const']}"
-        puts "Across Contexts 3 stable:  #{p_hash['Across Contexts 3 stable']}"
-
-        puts "Across Contexts 4 not:     #{p_hash['Across Contexts 4 not']}"
-        puts "Across Contexts 4 fleet:   #{p_hash['Across Contexts 4 fleet']}"
-        puts "Across Contexts 4 const:   #{p_hash['Across Contexts 4 const']}"
-        puts "Across Contexts 4 stable:  #{p_hash['Across Contexts 4 stable']}"
-
         puts "--end #{@count}\n\n"
 
-        keys = [ 'Across Contexts 4 not', 'Across Contexts 4 fleet', 'Across Contexts 4 const', 'Across Contexts 4 stable',
-            'this key is missing'
-        ]
 
+        #
         # If any key is missing, message which one and terminate
+        #
         flag, key = isPresent(p_hash, keys)
         
         unless flag 
-            puts "ERROR -- Key #{key} not found.  Terminated."
+            puts "ERROR -- Key: '#{key}' not found.  Terminated."
             Process.exit(0)
         end
         
