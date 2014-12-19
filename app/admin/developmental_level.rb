@@ -48,6 +48,42 @@ ActiveAdmin.register DevelopmentalLevel do
            :include_blank => true,
            :collection    => developmental_level_options
 
+#   Page 2
+
+    column :sensory_motor_play,
+           :as            => :select,
+           :include_blank => true,
+           :collection    => developmental_level_options
+    column :representational_play,
+           :as            => :select,
+           :include_blank => true,
+           :collection    => developmental_level_options
+    column :with_adult_support,
+           :as            => :select,
+           :include_blank => true,
+           :collection    => developmental_level_options
+    column :independently,
+           :as            => :select,
+           :include_blank => true,
+           :collection    => developmental_level_options
+    column :cross_context_1,
+           :as            => :select,
+           :include_blank => true,
+           :collection    => developmental_level_options
+    column :cross_context_2,
+           :as            => :select,
+           :include_blank => true,
+           :collection    => developmental_level_options
+    column :cross_context_3,
+           :as            => :select,
+           :include_blank => true,
+           :collection    => developmental_level_options
+    column :cross_context_4,
+           :as            => :select,
+           :include_blank => true,
+           :collection    => developmental_level_options
+
+
   end
 
   form do |f|
@@ -166,6 +202,33 @@ show :title => "Developmental Levels" do |dl|
 
     row ("With object") do |dl|
       developmental_level_options[ dl.with_object ][0]
+    end
+
+#   Page 2
+
+    row ("Sensory motor play") do |dl|
+      developmental_level_options[ dl.sensory_motor_play ][0]
+    end
+    row ("Representational play") do |dl|
+      developmental_level_options[ dl.representational_play ][0]
+    end
+    row ("With adult support") do |dl|
+      developmental_level_options[ dl.with_adult_support ][0]
+    end
+    row ("Independently") do |dl|
+      developmental_level_options[ dl.independently ][0]
+    end
+    row ("Across Contexts A1") do |dl|
+      developmental_level_options[ dl.cross_context_1 ][0]
+    end
+    row ("Across Contexts 2") do |dl|
+      developmental_level_options[ dl.cross_context_2 ][0]
+    end
+    row ("Across Contexts 3") do |dl|
+      developmental_level_options[ dl.cross_context_3 ][0]
+    end
+    row ("Across Contexts 4") do |dl|
+      developmental_level_options[ dl.cross_context_4 ][0]
     end
 
   end

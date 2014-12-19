@@ -9,20 +9,16 @@ require 'uri'
 
 namespace :load do
 
-  desc "imhforms -- Database load from .csv files, loading . . . ."
-  task :main => :environment do
+  desc "imhforms -- :all.  Database load from .csv files."
+  task :all => :environment do
     Rake::Task['load:observations'].invoke
     Rake::Task['load:development_levels'].invoke
-    puts 'imhforms load completed.'
+    puts 'imhforms -- load completed.'
   end
 
 #
 # helper methods
 #
-
-  def getProgress progress_category
-    1
-  end
 
   def sanitize_utf8(string)
     return nil if string.nil?

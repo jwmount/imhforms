@@ -35,6 +35,16 @@
     <td><h3> <%= "#{@student.getProgress('with_object').chomp('-')}" %></h3> </td>
   </tr>
 
+  <tr>
+    <td><h3> <%= "Sensory motor play" %> </td>
+    <td><h3> <%= "#{@student.getProgress('sensory_motor_play').chomp('-')}" %></h3> </td>
+  </tr>
+
+  <tr>
+    <td><h3> <%= "Representational play" %> </td>
+    <td><h3> <%= "#{@student.getProgress('representational_play').chomp('-')}" %></h3> </td>
+  </tr>
+
 </table>
 
 

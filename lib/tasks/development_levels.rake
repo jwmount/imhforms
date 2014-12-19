@@ -1,11 +1,11 @@
 require 'csv'
 require 'uri'
 #
-# LOAD Stage 1, Developmental Levels
+# LOAD Stage 1, Developmental Levels and Students
 # $ rake load:developmental_levels
 # source data: public/data/sz/schools/developmental_levels.csv
 
-# Columns are:
+# PAGE 1 Columns are:
 # ,Student,Date:,Recorder,
 # Fac by A not,Fac by A Fleet,Fac by A Const,Fac by A Stable,
 # Initiated by Child not,Initiated by Child fleet,Initiated by Child const,Initiated by Child stable,
@@ -14,8 +14,7 @@ require 'uri'
 # Displeasure not,Displeasure fleet,Displeasure Const,Displeasure Stable,
 # With Object not,With Object Fleet,With Object Const,With Object Stable,
 # time 1:1,Text14,Notes 1.1, ...
-
-# REMOVE THIS STANZA, NOT THIS MODEL!
+# PAGE 2
 # Sensory Motor Play Not,Sensory Motor Play fleet,Sensory Motor Play Const,Sensory Motor Play Stacle,
 # Representational Play not,Representational Play fleet,Representational Play Const,Representational Play stable,
 # With Support Adult not,With Support Adult fleet,With Support Adult const,With Support Adult stable,
@@ -92,6 +91,11 @@ namespace :load do
         puts "With Object Const:  #{p_hash['With Object Const']}"        
         puts "With Object Stable: #{p_hash['With Object Stable']}"        
 
+        puts "Sensory Motor Play Not:    #{p_hash['Sensory Motor Play Not']}"
+        puts "Sensory Motor Play fleet:  #{p_hash['Sensory Motor Play fleet']}"
+        puts "Sensory Motor Play Const:  #{p_hash['Sensory Motor Play Const']}"
+        puts "Sensory Motor Play Stacle: #{p_hash['Sensory Motor Play Stacle']}"
+
         puts "--end #{@count}\n\n"
 
         # Update the Student and if none exists create it.  No duplicates, so use .first_or_create.
@@ -144,51 +148,55 @@ namespace :load do
         dl.with_object = 3 if p_hash['With Object Const'] == 'Yes'
         dl.with_object = 4 if p_hash['With Object Stable'] == 'Yes'
 
-    # Page 2 of Stage 1
-        dl.sensory_motor_play = 1 if p_hash['Sensory Motor Play Not']
-        dl.sensory_motor_play = 2 if p_hash['Sensory Motor Play fleet']
-        dl.sensory_motor_play = 3 if p_hash['Sensory Motor Play Const']
+# Page 2 of Stage 1
 # FIXME 'Stable' not 'Stacle'        
-        dl.sensory_motor_play = 4 if p_hash['Sensory Motor Play Stacle']
+        dl.sensory_motor_play = 1 if p_hash['Sensory Motor Play Not'] == 'Yes'
+        dl.sensory_motor_play = 2 if p_hash['Sensory Motor Play fleet'] == 'Yes'
+        dl.sensory_motor_play = 3 if p_hash['Sensory Motor Play Const'] == 'Yes'
+        dl.sensory_motor_play = 4 if p_hash['Sensory Motor Play Stacle'] == 'Yes'
 
-        dl.representational_play = 1 if p_hash['Representational Play not']
-        dl.representational_play = 2 if p_hash['Representational Play fleet']
-        dl.representational_play = 3 if p_hash['Representational Play Const']
-        dl.representational_play = 4 if p_hash['Representational Play Stable']
+        dl.representational_play = 1 if p_hash['Representational Play not'] == 'Yes'
+        dl.representational_play = 2 if p_hash['Representational Play fleet'] == 'Yes'
+        dl.representational_play = 3 if p_hash['Representational Play Const'] == 'Yes'
+        dl.representational_play = 4 if p_hash['Representational Play Stable'] == 'Yes'
 
-        dl.with_adult_support = 1 if p_hash['With Support Adult not']
-        dl.with_adult_support = 2 if p_hash['With Support Adult fleet']
-        dl.with_adult_support = 3 if p_hash['With Support Adult const']
-        dl.with_adult_support = 4 if p_hash['With Support Adult stable']
+        dl.with_adult_support = 1 if p_hash['With Support Adult not'] == 'Yes'
+        dl.with_adult_support = 2 if p_hash['With Support Adult fleet'] == 'Yes'
+        dl.with_adult_support = 3 if p_hash['With Support Adult const'] == 'Yes'
+        dl.with_adult_support = 4 if p_hash['With Support Adult stable'] == 'Yes'
 
-        dl.independently = 1 if p_hash['Independently not']
-        dl.independently = 2 if p_hash['Independently fleet']
-        dl.independently = 3 if p_hash['Independently const']
-        dl.independently = 4 if p_hash['Independently stable']
+        dl.independently = 1 if p_hash['Independently not'] == 'Yes'
+        dl.independently = 2 if p_hash['Independently fleet'] == 'Yes'
+        dl.independently = 3 if p_hash['Independently const'] == 'Yes'
+        dl.independently = 4 if p_hash['Independently stable'] == 'Yes'
 
-        dl.cross_context_1 = 0 if p_hash['Across Contexts A1']
-        dl.cross_context_1 = 1 if p_hash['Across Contexts not']
-        dl.cross_context_1 = 2 if p_hash['Across Contexts fleet']
-        dl.cross_context_1 = 3 if p_hash['Across Contexts const']
-        dl.cross_context_1 = 4 if p_hash['Across Contexts stable']
+        dl.cross_context_1 = 0 if p_hash['Across Contexts A1'] == 'Yes'
+        dl.cross_context_1 = 1 if p_hash['Across Contexts not'] == 'Yes'
+        dl.cross_context_1 = 2 if p_hash['Across Contexts fleet'] == 'Yes'
+        dl.cross_context_1 = 3 if p_hash['Across Contexts const'] == 'Yes'
+        dl.cross_context_1 = 4 if p_hash['Across Contexts stable'] == 'Yes'
 
-        dl.cross_context_2 = 0 if p_hash['Across Contexts 2']
-        dl.cross_context_2 = 1 if p_hash['Across Contexts 2 not']
-        dl.cross_context_2 = 2 if p_hash['Across Contexts 2 fleet']
-        dl.cross_context_2 = 3 if p_hash['Across Contexts 2 const']
-        dl.cross_context_2 = 4 if p_hash['Across Contexts 2 stable']
+        dl.cross_context_2 = 0 if p_hash['Across Contexts 2'] == 'Yes'
+        dl.cross_context_2 = 1 if p_hash['Across Contexts 2 not'] == 'Yes'
+        dl.cross_context_2 = 2 if p_hash['Across Contexts 2 fleet'] == 'Yes'
+        dl.cross_context_2 = 3 if p_hash['Across Contexts 2 const'] == 'Yes'
+        dl.cross_context_2 = 4 if p_hash['Across Contexts 2 stable'] == 'Yes'
 
-        dl.cross_context_3 = 0 if p_hash['Across Contexts 3']
-        dl.cross_context_3 = 1 if p_hash['Across Contexts 3 not']
-        dl.cross_context_3 = 2 if p_hash['Across Contexts 3 fleet']
-        dl.cross_context_3 = 3 if p_hash['Across Contexts 3 const']
-        dl.cross_context_3 = 4 if p_hash['Across Contexts 3 stable']
+        dl.cross_context_3 = 0 if p_hash['Across Contexts 3'] == 'Yes'
+        dl.cross_context_3 = 1 if p_hash['Across Contexts 3 not'] == 'Yes'
+        dl.cross_context_3 = 2 if p_hash['Across Contexts 3 fleet'] == 'Yes'
+        dl.cross_context_3 = 3 if p_hash['Across Contexts 3 const'] == 'Yes'
+        dl.cross_context_3 = 4 if p_hash['Across Contexts 3 stable'] == 'Yes'
 
-        dl.cross_context_4 = 0 if p_hash['Across Contexts 4']
-        dl.cross_context_4 = 1 if p_hash['Across Contexts 4 not']
-        dl.cross_context_4 = 2 if p_hash['Across Contexts 4 fleet']
-        dl.cross_context_4 = 3 if p_hash['Across Contexts 4 const']
-        dl.cross_context_4 = 4 if p_hash['Across Contexts 4 stable']
+        dl.cross_context_4 = 0 if p_hash['Across Contexts 4'] == 'Yes'
+        dl.cross_context_4 = 1 if p_hash['Across Contexts 4 not'] == 'Yes'
+        dl.cross_context_4 = 2 if p_hash['Across Contexts 4 fleet'] == 'Yes'
+        dl.cross_context_4 = 3 if p_hash['Across Contexts 4 const'] == 'Yes'
+        dl.cross_context_4 = 4 if p_hash['Across Contexts 4 stable'] == 'Yes'
+
+# TODO -- Rescue this save operation
+        dl.save!
+        puts "--#{dl.student.name} from #{filename} Saved.\n\n\n"
 
       end #parse row
 
