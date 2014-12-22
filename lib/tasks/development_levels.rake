@@ -1,6 +1,5 @@
 require 'csv'
 require 'uri'
-require 'debugger'
 #
 # LOAD Stage 1, Developmental Levels and Students
 # $ rake load:developmental_levels
