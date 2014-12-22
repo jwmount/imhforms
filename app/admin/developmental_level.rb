@@ -5,10 +5,12 @@ ActiveAdmin.register DevelopmentalLevel do
   # if an action is defined but not implemented you get 'Action Not Found'
   #actions :except => [:show]
 
-  index title: "Development Levels for students" do
+  index title: "#Development Level Assesements" do
+    h2 "#{student.name}"
 
     selectable_column
 
+=begin
     column "Student (click)" do |dl|
       link_to dl.student.name, admin_student_path(dl.student)
     end
@@ -16,7 +18,8 @@ ActiveAdmin.register DevelopmentalLevel do
     column "Details (click)" do |developmental_level|
       #link_to "#{developmental_level.observed_on.strftime("%A, %d %B, %Y")}", admin_student_developmental_level_path( developmental_level.student, developmental_level )
       link_to "Details", edit_admin_student_developmental_level_path( student, developmental_level)
-    end    
+    end
+=end    
     column :recorder
     column :observed_on
     column :duration
@@ -88,6 +91,8 @@ ActiveAdmin.register DevelopmentalLevel do
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
+
+    h2 f.student.name
     
     f.inputs "Shared Attention & Self Regulation with Adult" do
 
