@@ -14,9 +14,42 @@ ActiveAdmin.register_page "Dashboard" do
     # Here is an example of a simple dashboard with columns and panels.
     #
      columns do
+
        column do
          panel "Info" do
            para "Welcome to Progress Watch."
+           para "No announcements are available."
+         end
+       end
+
+       column do
+         panel "School Progress" do
+          @str = Date.today()
+           table do
+             tr
+               th 'Behavior'
+               th Date.today()
+               th Date.today() + 14
+               th Date.today() + 28
+               th Date.today() + 42
+               th Date.today() + 56
+             tr
+               td 'Facilitated by Adult'
+               td '2.4'
+               td '2.4'
+               td '2.4'
+               td '2.4'
+               td '2.4'
+             tr
+               td 'Initiated by Child'
+               td '2.8'
+               td '2.8'
+               td '2.8'
+               td '2.8'
+               td '2.8'
+           table
+
+           end
          end
        end
 
@@ -30,16 +63,6 @@ ActiveAdmin.register_page "Dashboard" do
          end
        end
 
-
-       column do
-         panel "Teachers" do
-           ul do
-             Student.all.each do |student|
-               li link_to(student.name, admin_student_path(student))
-             end
-           end
-         end
-       end
 
      end
 
