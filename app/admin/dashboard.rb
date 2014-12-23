@@ -35,18 +35,18 @@ ActiveAdmin.register_page "Dashboard" do
                th Date.today() + 56
              tr
                td 'Facilitated by Adult'
-               td '2.4'
-               td '2.4'
-               td '2.4'
-               td '2.4'
-               td '2.4'
+               td '1.4'
+               td '1.6'
+               td '2.2'
+               td '2.3'
+               td '3.4'
              tr
                td 'Initiated by Child'
-               td '2.8'
-               td '2.8'
-               td '2.8'
-               td '2.8'
-               td '2.8'
+               td '1.8'
+               td '2.0'
+               td '2.3'
+               td '2.3'
+               td '2.4'
            table
 
            end
