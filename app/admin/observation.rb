@@ -1,8 +1,9 @@
 ActiveAdmin.register Observation do
 
   # actions :all, :except => [:new, :edit, :show]
-
-  index do
+  menu parent: "Students"
+  
+  index title: "Individual Profiles" do
     selectable_column
 
     column "Student (click)" do |obs|
@@ -65,7 +66,7 @@ ActiveAdmin.register Observation do
     f.actions
   end
 
-  show :title => "Observations" do |dl|
+  show :title => "Individual Profile" do |dl|
     attributes_table_for(dl) do
       row :student
       row :grade

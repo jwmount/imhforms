@@ -5,7 +5,7 @@ ActiveAdmin.register DevelopmentalLevel do
   # if an action is defined but not implemented you get 'Action Not Found'
   #actions :except => [:show]
 
-  index title: "#Development Level Assesements" do
+  index title: "Development Level Assesements" do
     h2 "#{student.name}"
 
     selectable_column
@@ -93,7 +93,7 @@ ActiveAdmin.register DevelopmentalLevel do
     f.semantic_errors *f.object.errors.keys
 
     h2 f.student.name
-    
+
     f.inputs "Shared Attention & Self Regulation with Adult" do
 
       f.input :observed_on, 

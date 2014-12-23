@@ -6,24 +6,22 @@ ActiveAdmin.register Student do
 
     selectable_column
 
-    column "Student (click)" do |student|
+    column "Profile(click)" do |student|
+      link_to student.name, admin_observation_path(student)
+    end
+
+    column "Progress Summary(click)" do |student|
       link_to student.name, admin_student_path(student)
     end
 
-    column "Birth date" do |student|
-      student.born_on.strftime("%A, %d %B, %Y")
-    end
-
     column "Developmental Levels (click)" do |student|
-      link_to "Observations", admin_student_developmental_levels_path(student) 
+      link_to "Assements", admin_student_developmental_levels_path(student) 
     end
 
   end #index
 
   show do
     h2 "Stage 1 Progress Summary"
-    #@dls = student.developmental_levels
-    #render @dls #will pass in each instance
     render partial: 'progress', object: @student
   end #show
 

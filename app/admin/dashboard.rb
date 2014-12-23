@@ -16,12 +16,23 @@ ActiveAdmin.register_page "Dashboard" do
      columns do
        column do
          panel "Info" do
-           para "Welcome to ActiveAdmin."
+           para "Welcome to Progress Watch."
          end
        end
 
        column do
-         panel "Students" do
+         panel "Student Progress Summaries" do
+           ul do
+             Student.all.each do |student|
+               li link_to(student.name, admin_student_path(student))
+             end
+           end
+         end
+       end
+
+
+       column do
+         panel "Teachers" do
            ul do
              Student.all.each do |student|
                li link_to(student.name, admin_student_path(student))
