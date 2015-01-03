@@ -1,4 +1,3 @@
-require 'debugger'
 ActiveAdmin.register DevelopmentalLevel do
   belongs_to :student
   navigation_menu "Stage 1"
