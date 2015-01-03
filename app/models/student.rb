@@ -2,7 +2,9 @@ class Student < ActiveRecord::Base
 
   # :observations are really student profiles and are not usually updated once recorded.
   has_many :observations, 
+           :autosave => true, 
            :dependent => :destroy
+           
   has_many :developmental_levels,
            :dependent => :destroy
 
@@ -20,7 +22,7 @@ class Student < ActiveRecord::Base
   # retrieves observations on these from DevelopmentalLevels and creates a rudimentary sparkline as
   # aid to visual display of student's progress to date.  Progress_category(s) are :attributes in DevelopmentalLevels.
   # FIXME -- Add protection for invalid values of x; PG::UndefinedColumn ERROR: column "#{x}" does not exist
-  #
+  # FIXME -- Create as singleton method that loads dls once?
   def getProgress progress_category
     student = Student.find(id)
     dls = student.developmental_levels.select(progress_category).order(observed_on: :asc)
@@ -29,6 +31,17 @@ class Student < ActiveRecord::Base
       history += dl.send(progress_category.to_sym).to_s + '-'
     end
     history
+  end
+
+
+  # Return detailed evaluation for student instance
+  def evaluation_detail
+    name
+  end
+
+  
+  def evaluations
+    '1 2'
   end
 
 end #class

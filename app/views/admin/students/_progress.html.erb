@@ -4,17 +4,31 @@
 <table>
   <tr>
 	<th width=200px>Category</th>
-	<th>Observations</th>
+	<th>Overall</th>
   </tr>
   <tr>
   	<td><h3> <%= "Facilitated by adult"%> </td>
   	<td><h3> <%= "#{@student.getProgress('facilitated_by_adult').chomp('-')}" %></h3></td>
+    <td>
+      <table>
+        <tr>
+          <td>col1</td>
+          <td>col2</td>
+        </tr>
+        <tr>
+          <td>col1</td>
+          <td>col2</td>
+        </tr>
+      </table>
+    </td>
   </tr>
 
   <tr>
     <td><h3> <%= "Initiated by child" %> </td>
     <td><h3> <%= "#{@student.getProgress('initiated_by_child').chomp('-')}" %></h3>  </td>
-  
+    <td><h4>
+      <%= render partial: 'progressDetails', object: @student %>
+  </tr>
   <tr>
     <td><h3> <%= "Sensory motor" %> </td>
     <td><h3> <%= "#{@student.getProgress('sensory_motor').chomp('-')}" %></h3>  </td>

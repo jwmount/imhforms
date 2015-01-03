@@ -1,4 +1,3 @@
-
 #
 # Root load rake command
 # Add argument values eventually to select which school is to be loaded, default is all

@@ -1,9 +1,9 @@
 class CreateObservations < ActiveRecord::Migration
   def change
     create_table :observations do |t|
-      t.string :student_id
+      t.integer  :student_id
       t.datetime :observed_on
-      t.string :name
+      t.string   :name
       t.datetime :birthdate
       t.string :grade
       t.string :teacher

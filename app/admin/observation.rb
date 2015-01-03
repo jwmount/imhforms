@@ -1,13 +1,13 @@
 ActiveAdmin.register Observation do
 
   # actions :all, :except => [:new, :edit, :show]
-  menu parent: "Students"
+  menu label: "Profiles", parent: "Students"
   
   index title: "Individual Profiles" do
     selectable_column
 
     column "Student (click)" do |obs|
-      link_to obs.student.name, admin_student_path(obs.student)
+      link_to obs.student.name, admin_student_path(obs.student) unless obs.student_id.nil?
     end
 
     column "Obs date (click)" do |obs|
@@ -26,13 +26,14 @@ ActiveAdmin.register Observation do
   
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    
+    h2 f.student.name    
+
     f.inputs "Student Evaluation" do
 
-      f.input :student, 
-              :required       => true, 
-              :hint           => AdminConstants::ADMIN_OBSERVATION_STUDENT_HINT,
-              :placeholder    => AdminConstants::ADMIN_OBSERVATION_STUDENT_PLACEHOLDER
+      f.input :observed_on,
+              :required       => true,
+              :hint           => AdminConstants::ADMIN_OBSERVATION_DATE_ON_HINT,
+              :placeholder    => AdminConstants::ADMIN_OBSERVATION_DATE_ON_PLACEHOLDER
 
       f.input :grade,
               :hint           => AdminConstants::ADMIN_OBSERVATION_GRADE_HINT,

@@ -1,3 +1,4 @@
+require 'debugger'
 ActiveAdmin.register DevelopmentalLevel do
   belongs_to :student
   navigation_menu "Stage 1"
@@ -91,7 +92,7 @@ ActiveAdmin.register DevelopmentalLevel do
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
-
+    
     h2 f.student.name
 
     f.inputs "Shared Attention & Self Regulation with Adult" do

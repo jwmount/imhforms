@@ -1,6 +1,6 @@
 ActiveAdmin.register_page "Dashboard" do
 
-  menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
+#  menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
 
   content title: proc{ I18n.t("active_admin.dashboard") } do
 =begin
@@ -28,11 +28,11 @@ ActiveAdmin.register_page "Dashboard" do
            table do
              tr
                th 'Behavior'
+               th Date.today() - 56
+               th Date.today() - 42
+               th Date.today() - 28
+               th Date.today() - 14
                th Date.today()
-               th Date.today() + 14
-               th Date.today() + 28
-               th Date.today() + 42
-               th Date.today() + 56
              tr
                td 'Facilitated by Adult'
                td '1.4'

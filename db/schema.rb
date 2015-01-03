@@ -72,9 +72,10 @@ ActiveRecord::Schema.define(version: 20141115002355) do
     t.datetime "updated_at"
   end
 
+
   create_table "observations", force: true do |t|
     t.string   "student_id"
-    t.datetime "observed_on"
+    t.datetime "observed_on",           default: '2014-09-01', null: false
     t.string   "grade"
     t.string   "teacher"
     t.string   "allergies"
