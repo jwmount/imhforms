@@ -1,9 +1,11 @@
+require 'debugger'
 ActiveAdmin.register Student do
 
   #actions :all, :except => [:new, :edit, :show]
 
   filter :name
   filter :born_on
+
 
   index title: "Student list" do
 
@@ -32,6 +34,18 @@ ActiveAdmin.register Student do
 # 
 # P U S H  B U T T O N S
 #
+  # ACTIVATE
+  # Activate sets the company status to Active (true).  Does not toggle.
+  # 
+  action_item :only => [:edit, :show] do
+    link_to 'Evaluation Detail', admin_student_evaluation_detail_path(student)
+  end
+
+  member_action :evaluation_detail, :method => :get do
+    student = Student.find(params[:id])
+    redirect_to admin_evaluation_detail_path(student)
+    #link_to 'Evaluation Detail', admin_evaluation_detail_path  
+  end
 
 
   # --------------------------------------------------------------------------------------------------------------------

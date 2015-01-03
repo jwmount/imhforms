@@ -21,6 +21,10 @@ Rails.application.routes.draw do
       resources :developmental_levels
     end
 
+    resources :students do
+      resource :evaluation_detail
+    end
+    
   end #end namespace
 
   # default root to go to the admin namespace, dashboard controller, index action: 

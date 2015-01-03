@@ -1,3 +1,4 @@
+DEPRECATION WARNING: Active Admin: using `action_item` without a name is deprecated! Use `action_item(:edit)`. (called from action_item at /Users/john/.rvm/gems/ruby-2.1.3/bundler/gems/active_admin-e4f8dbbbb804/lib/active_admin/dsl.rb:92)
                                          Prefix Verb       URI Pattern                                                             Controller#Action
                          new_admin_user_session GET        /admin/login(.:format)                                                  active_admin/devise/sessions#new
                              admin_user_session POST       /admin/login(.:format)                                                  active_admin/devise/sessions#create
@@ -27,6 +28,7 @@ batch_action_admin_student_developmental_levels POST       /admin/students/:stud
                                                 PATCH      /admin/students/:student_id/developmental_levels/:id(.:format)          admin/developmental_levels#update
                                                 PUT        /admin/students/:student_id/developmental_levels/:id(.:format)          admin/developmental_levels#update
                                                 DELETE     /admin/students/:student_id/developmental_levels/:id(.:format)          admin/developmental_levels#destroy
+                        admin_evaluation_detail GET        /admin/evaluation_detail(.:format)                                      admin/evaluation_detail#index
                 batch_action_admin_observations POST       /admin/observations/batch_action(.:format)                              admin/observations#batch_action
                              admin_observations GET        /admin/observations(.:format)                                           admin/observations#index
                                                 POST       /admin/observations(.:format)                                           admin/observations#create
@@ -36,7 +38,7 @@ batch_action_admin_student_developmental_levels POST       /admin/students/:stud
                                                 PATCH      /admin/observations/:id(.:format)                                       admin/observations#update
                                                 PUT        /admin/observations/:id(.:format)                                       admin/observations#update
                                                 DELETE     /admin/observations/:id(.:format)                                       admin/observations#destroy
-            developmental_levels_admin_students POST       /admin/students/developmental_levels(.:format)                          admin/students#developmental_levels
+                evaluation_detail_admin_student GET        /admin/students/:id/evaluation_detail(.:format)                         admin/students#evaluation_detail
                     batch_action_admin_students POST       /admin/students/batch_action(.:format)                                  admin/students#batch_action
                                  admin_students GET        /admin/students(.:format)                                               admin/students#index
                                                 POST       /admin/students(.:format)                                               admin/students#create
@@ -81,6 +83,21 @@ batch_action_admin_student_developmental_levels POST       /admin/students/:stud
                                                 PATCH      /admin/students/:student_id/developmental_levels/:id(.:format)          admin/developmental_levels#update
                                                 PUT        /admin/students/:student_id/developmental_levels/:id(.:format)          admin/developmental_levels#update
                                                 DELETE     /admin/students/:student_id/developmental_levels/:id(.:format)          admin/developmental_levels#destroy
+                                                GET        /admin/students(.:format)                                               admin/students#index
+                                                POST       /admin/students(.:format)                                               admin/students#create
+                                                GET        /admin/students/new(.:format)                                           admin/students#new
+                                                GET        /admin/students/:id/edit(.:format)                                      admin/students#edit
+                                                GET        /admin/students/:id(.:format)                                           admin/students#show
+                                                PATCH      /admin/students/:id(.:format)                                           admin/students#update
+                                                PUT        /admin/students/:id(.:format)                                           admin/students#update
+                                                DELETE     /admin/students/:id(.:format)                                           admin/students#destroy
+                admin_student_evaluation_detail POST       /admin/students/:student_id/evaluation_detail(.:format)                 admin/evaluation_details#create
+            new_admin_student_evaluation_detail GET        /admin/students/:student_id/evaluation_detail/new(.:format)             admin/evaluation_details#new
+           edit_admin_student_evaluation_detail GET        /admin/students/:student_id/evaluation_detail/edit(.:format)            admin/evaluation_details#edit
+                                                GET        /admin/students/:student_id/evaluation_detail(.:format)                 admin/evaluation_details#show
+                                                PATCH      /admin/students/:student_id/evaluation_detail(.:format)                 admin/evaluation_details#update
+                                                PUT        /admin/students/:student_id/evaluation_detail(.:format)                 admin/evaluation_details#update
+                                                DELETE     /admin/students/:student_id/evaluation_detail(.:format)                 admin/evaluation_details#destroy
                                                 GET        /admin/students(.:format)                                               admin/students#index
                                                 POST       /admin/students(.:format)                                               admin/students#create
                                                 GET        /admin/students/new(.:format)                                           admin/students#new

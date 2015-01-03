@@ -1,28 +1,43 @@
+require 'debugger'
  ActiveAdmin.register_page "Evaluation Detail" do
 
-    content do
+
+  controller do
+
+    # FIXME -- Flag user what params were passed and find out why :format instead of :id?
+    def index
+      flash[:warning] = "#{params.inspect}"
+    end
+
+  end
+
+  content do
 
     def behaviors
     	%w[fba idc sm pleasure displeasure stable]
     end
 
- 	def getStudent
- 		Student.first.name
+   	def getStudent
+        @student = Student.find params[:format]
+        @student.name
     end
 
+    # here we want an [] of unique recorder names
     def teachers
-    	%w[Smith Jones Maceo Zixus]
+      @r = [""]
+      dls = @student.developmental_levels.select("recorder")
+      dls.each { |d| @r << d.recorder }
+      @r.uniq!
     end
 
     def date_buckets
       min = DevelopmentalLevel.minimum("observed_on")
-      max = DevelopmentalLevel.maximum("observed_on")
-      #%w[2014-12-01 2014-12-16 2015-01-01 2015-01-16 2015-02-01 2015-02-16]
-      [min, min+15, min+30, min+45, min+60, min+75, min+90]
+      @buckets = [min, min+15, min+30, min+45, min+60, min+75, min+90]
     end
 
+    # for each recorder (teacher), return array of evaluations to match date_buckets
     def evaluations teacher
-    	11
+      return "" if teacher.empty?
     end
 
 #
@@ -38,18 +53,37 @@
             date_buckets.each do |date|
               th h3 b date
             end
-          teachers.each do |name|
+          teachers.each do |name, count|
             tr
-            	td h3 b name
-            	td evaluations name
-            	td 2
-            	td 3
-          	  td 4
-          end
+              td h4 b name
+              date_buckets.each do |date|
+                td h4 evaluations name
+              end
+            	#td evaluations name
+            	#td count
+            	#td 3
+          	  #td 4
+          end #teachers
         end
       end
 
       panel "Initiated By Child" do
+        table  do
+        
+          tr 
+            th h3 'Recorders'
+            date_buckets.each do |date|
+              th h3 b date
+            end
+          teachers.each do |name|
+            tr
+              td h3 b name
+              td evaluations name
+              td 2
+              td 3
+              td 4
+          end #teachers
+        end
       end
 
       panel "Sensory Motor"
