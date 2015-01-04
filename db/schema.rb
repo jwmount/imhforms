@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20141115002355) do
 
   create_table "developmental_levels", force: true do |t|
     t.string   "student_id"
-    t.date     "observed_on",           default: '2003-01-01', null: false
+    t.date     "observed_on",           default: '2014-01-01', null: false
     t.string   "recorder"
     t.integer  "duration"
     t.integer  "facilitated_by_adult",  default: 0

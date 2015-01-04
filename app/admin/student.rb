@@ -37,7 +37,8 @@ ActiveAdmin.register Student do
   # ACTIVATE
   # Activate sets the company status to Active (true).  Does not toggle.
   # 
-  action_item :only => [:edit, :show] do
+  
+  action_item :only => [:edit, :show] do 
     link_to 'Evaluation Detail', admin_student_evaluation_detail_path(student)
   end
 

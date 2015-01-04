@@ -1,10 +1,10 @@
 class CreateDevelopmentalLevels < ActiveRecord::Migration
   def change
     create_table :developmental_levels do |t|
-      t.integer :student_id
-      t.date   :observed_on, default: '2003-01-01', null: false
-      t.string :recorder
-      t.integer :duration
+      t.integer  :student_id
+      t.date     :observed_on,           default: '2014-01-01', null: false
+      t.string   :recorder
+      t.integer  :duration
 
       # Facilitated By Adult, in developmental_levels/developmental_level_options
       #   no selcection   = 0

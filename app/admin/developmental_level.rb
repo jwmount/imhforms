@@ -14,12 +14,12 @@ ActiveAdmin.register DevelopmentalLevel do
     column "Student (click)" do |dl|
       link_to dl.student.name, admin_student_path(dl.student)
     end
-
+=end
     column "Details (click)" do |developmental_level|
       #link_to "#{developmental_level.observed_on.strftime("%A, %d %B, %Y")}", admin_student_developmental_level_path( developmental_level.student, developmental_level )
       link_to "Details", edit_admin_student_developmental_level_path( student, developmental_level)
     end
-=end    
+    
     column :recorder
     column :observed_on
     column :duration

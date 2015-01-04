@@ -1,9 +1,9 @@
 class CreateStudents < ActiveRecord::Migration
   def change
     create_table :students do |t|
-      t.datetime :observation
+      t.date   :observation
       t.string :name
-      t.datetime :birthdate, default: '2003-01-01 00:00:00', null: false
+      t.date   :birthdate, default: '2003-01-01 00:00:00', null: false
       t.string :grade
       t.string :teacher
       t.string :allergies
