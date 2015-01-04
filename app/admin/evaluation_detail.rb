@@ -36,8 +36,10 @@ require 'debugger'
     end
 
     # for each recorder (teacher), return array of evaluations to match date_buckets
-    def evaluations teacher
+    def evaluations behavior, teacher
       return "" if teacher.empty?
+      vs = DevelopmentalLevel.where("recorder = ?", teacher)
+      td vs[0].facilitated_by_adult        
     end
 
 #
@@ -56,13 +58,7 @@ require 'debugger'
           teachers.each do |name, count|
             tr
               td h4 b name
-              date_buckets.each do |date|
-                td h4 evaluations name
-              end
-            	#td evaluations name
-            	#td count
-            	#td 3
-          	  #td 4
+              evaluations 'facilitated_by_adult', name
           end #teachers
         end
       end
@@ -78,7 +74,7 @@ require 'debugger'
           teachers.each do |name|
             tr
               td h3 b name
-              td evaluations name
+              td evaluations "Initiated By Child", name
               td 2
               td 3
               td 4
