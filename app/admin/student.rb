@@ -1,4 +1,4 @@
-require 'debugger'
+#require 'debugger'
 ActiveAdmin.register Student do
 
   #actions :all, :except => [:new, :edit, :show]
@@ -44,7 +44,6 @@ ActiveAdmin.register Student do
   member_action :evaluation_detail, :method => :get do
     student = Student.find(params[:id])
     redirect_to admin_evaluation_detail_path(student)
-    #link_to 'Evaluation Detail', admin_evaluation_detail_path  
   end
 
 

@@ -1,4 +1,4 @@
-require 'debugger'
+#require 'debugger'
  ActiveAdmin.register_page "Evaluation Detail" do
 
 
