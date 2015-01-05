@@ -52,9 +52,12 @@
       @r.uniq!
     end
 
+    # Date intervals (buckets), every 15 days beginning 1 Nov 2014
     def date_buckets
       min = DevelopmentalLevel.minimum("observed_on")
-      @buckets = [min, min+15, min+30, min+45, min+60, min+75, min+90]
+      @buckets = [min, min+15, min+30, min+45, min+60, min+75, min+90, 
+                       min+105, min+120, min+135, min+150, min+165 ]
+      
     end
 
     # for each recorder, return array of evaluations to match date_buckets.
@@ -76,7 +79,7 @@
             tr 
               th h3 'Recorders'
               date_buckets.each do |date|
-                th h3 b date
+                th h4 b date
               end
 
             recorders.each do |name, count|
