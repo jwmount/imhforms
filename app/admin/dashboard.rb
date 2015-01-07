@@ -16,14 +16,13 @@ ActiveAdmin.register_page "Dashboard" do
      columns do
 
        column do
-         panel "Info" do
-           para "Welcome to Progress Watch."
-           para "No announcements are available."
+         panel "Welcome to Infant Mental Health Forms" do
+           para "Jan 4, 2015 -- Individual student evaluation details by recorder are available."
          end
        end
 
        column do
-         panel "School Progress" do
+         panel "School Progress (MOCKUP)" do
           @str = Date.today()
            table do
              tr

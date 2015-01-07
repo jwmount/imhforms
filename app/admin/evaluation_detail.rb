@@ -1,4 +1,3 @@
-#require 'debugger'
  ActiveAdmin.register_page "Evaluation Detail" do
 
   # It is not meaningful to render the page with no student selected, so no menu.
@@ -19,15 +18,6 @@
   end
 
   content do
-
-    # A panel will be rendered for each of these behaviors.  These MUST match :attribute method
-    # names in DevelopmentalLevels.
-    def behaviors
-      ['facilitated_by_adult', 'initiated_by_child', 'sensory_motor', 'pleasure',
-        'displeasure', 'with_object', 'sensory_motor_play', 'representational_play',
-        'with_adult_support', 'independently', 'cross_context_1', 'cross_context_2',
-        'cross_context_3', 'cross_context_4']
-    end
 
    	def getStudent
       begin
@@ -53,11 +43,12 @@
     end
 
     # Date intervals (buckets), every 15 days beginning 1 Nov 2014
+    # Work out how to inject the dates or something and don't issue any beyond max observe_on
     def date_buckets
-      min = DevelopmentalLevel.minimum("observed_on")
-      @buckets = [min, min+15, min+30, min+45, min+60, min+75, min+90, 
-                       min+105, min+120, min+135, min+150, min+165 ]
-      
+      min = @student.developmental_levels.minimum("observed_on")
+      max = @student.developmental_levels.maximum("observed_on")
+      @buckets = [min, min+15.days, min+30.days, min+45.days, min+60.days, min+75.days, min+90.days, 
+                       min+105.days, min+120.days, min+135.days, min+150.days, min+165.days, min+180.days ]
     end
 
     # for each recorder, return array of evaluations to match date_buckets.
@@ -95,29 +86,7 @@
             end #recorders
           end
         end
-      end #behaviors iterator
-
-=begin
-      panel "Initiated By Child" do
-        table  do
-        
-          tr 
-            th h3 'Recorders'
-            date_buckets.each do |date|
-              th h3 b date
-            end
-          recorders.each do |name|
-            tr
-              td h3 b name
-              td evaluations "Initiated By Child", name
-              td 2
-              td 3
-              td 4
-          end #teachers
-        end
-      end
-=end
-      
+      end #behaviors iterator      
 
     end
   end

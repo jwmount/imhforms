@@ -1,3 +1,0 @@
-module ObservationsHelper
-
-end
