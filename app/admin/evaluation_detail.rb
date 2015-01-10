@@ -44,7 +44,9 @@
 
     # Date intervals (buckets), every 15 days beginning 1 Nov 2014
     # Work out how to inject the dates or something and don't issue any beyond max observe_on
+    # If @buckets exists just return it as will be same for given student.
     def date_buckets
+      return @buckets unless @buckets.nil?
       min, max = Date.new()
       min = @student.developmental_levels.minimum("observed_on")
       max = @student.developmental_levels.maximum("observed_on")
@@ -54,12 +56,17 @@
       end
       @buckets
     end
+    
     # for each recorder, return array of evaluations to match date_buckets.
     # if no value is recorded for a bucket, it's blank.
     def evaluations behavior, recorder, bucket
-      return "0" if recorder.empty?
-      vs = @student.developmental_levels.where("recorder = ? and observed_on >= ? and observed_on < ?", recorder, bucket[0], bucket[1] ).select("#{behavior}").first
-      td vs.send( behavior.to_sym ) unless vs.nil?
+      #return "0" if recorder.empty?
+      vs = @student.developmental_levels.where("recorder = ? and observed_on >= ? and observed_on < ?", recorder, bucket[0], bucket[1] ).select("#{behavior}")
+      values = ""
+      vs.each do |v|
+        values += (v.send( behavior.to_sym ).to_s + ', ') unless v.nil?
+      end
+      return values.chomp(', ')
     end
 
 #
@@ -79,13 +86,9 @@
             recorders.each do |name, count|
               tr
                 td h4 b name
-                evaluations behavior, name, [@buckets[0], @buckets[1]]
-                evaluations behavior, name, [@buckets[1], @buckets[2]]
-                evaluations behavior, name, [@buckets[2], @buckets[3]]
-                evaluations behavior, name, [@buckets[3], @buckets[4]]
-                evaluations behavior, name, [@buckets[4], @buckets[5]]
-                evaluations behavior, name, [@buckets[5], @buckets[6]]
-                evaluations behavior, name, [@buckets[6], @buckets[7]]
+                @buckets.each do |b|
+                  td evaluations( behavior, name, [b, b+15] )
+                end
             end #recorders
           end
         end
