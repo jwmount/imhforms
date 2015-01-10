@@ -45,12 +45,15 @@
     # Date intervals (buckets), every 15 days beginning 1 Nov 2014
     # Work out how to inject the dates or something and don't issue any beyond max observe_on
     def date_buckets
+      min, max = Date.new()
       min = @student.developmental_levels.minimum("observed_on")
       max = @student.developmental_levels.maximum("observed_on")
-      @buckets = [min, min+15.days, min+30.days, min+45.days, min+60.days, min+75.days, min+90.days, 
-                       min+105.days, min+120.days, min+135.days, min+150.days, min+165.days, min+180.days ]
+      @buckets = [min]
+      until (@buckets.max > max) do
+        @buckets << (@buckets.max + 15.days)
+      end
+      @buckets
     end
-
     # for each recorder, return array of evaluations to match date_buckets.
     # if no value is recorded for a bucket, it's blank.
     def evaluations behavior, recorder, bucket
