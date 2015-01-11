@@ -116,6 +116,11 @@ ActiveAdmin.register DevelopmentalLevel do
               :placeholder    => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_DURATION_PLACEHOLDER
 
       f.input :facilitated_by_adult, 
+              :as => :radio,
+              :include_blank => true,
+              :collection    => developmental_level_options
+
+      f.input :facilitated_by_adult, 
               :as => :select,
               :include_blank => true,
               :collection    => developmental_level_options
