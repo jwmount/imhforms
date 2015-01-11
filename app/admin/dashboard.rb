@@ -32,20 +32,15 @@ ActiveAdmin.register_page "Dashboard" do
                th Date.today() - 28
                th Date.today() - 14
                th Date.today()
-             tr
-               td 'Facilitated by Adult'
-               td '1.4'
-               td '1.6'
-               td '2.2'
-               td '2.3'
-               td '3.4'
-             tr
-               td 'Initiated by Child'
-               td '1.8'
-               td '2.0'
-               td '2.3'
-               td '2.3'
-               td '2.4'
+             behaviors.each do |behavior|
+               tr
+                 td behavior.gsub('_',' ').capitalize!
+                 td '1.4'
+                 td '1.6'
+                 td '2.2'
+                 td '2.3'
+                 td '3.4'
+             end  
            table
 
            end
