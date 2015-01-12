@@ -14,13 +14,13 @@ ActiveAdmin.register_page "Dashboard" do
     # Here is an example of a simple dashboard with columns and panels.
     #
 
-     columns do
-
-       column do
+     
          panel "Welcome to Infant Mental Health Forms" do
            para "Jan 4, 2015 -- Individual student evaluation details by recorder are available."
          end
-       end
+
+     columns do
+
 
        column do
          panel "School Progress (MOCKUP)" do
@@ -46,16 +46,25 @@ ActiveAdmin.register_page "Dashboard" do
 
        column do
          panel "Student Progress Summaries" do
-           ul do
+           table do
+             tr
+               th 'Student'
+               th 'Obs'
+               th 'From'
+               th 'Until'
+             
              Student.all.each do |student|
-               li link_to(student.name, admin_student_path(student))
+               tr
+                 td link_to(student.name, admin_student_path(student))
+                 td student.developmental_levels.count
+                 td student.developmental_levels.minimum("observed_on")
+                 td student.developmental_levels.maximum("observed_on")
              end
            end
          end
        end
 
-
-     end
+     end #columns
 
   end # content
 end
