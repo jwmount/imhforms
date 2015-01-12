@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 20141115002355) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "developmental_levels", force: true do |t|
-    t.string   "student_id"
-    t.date     "observed_on",           default: '2014-01-01', null: false
+    t.integer  "student_id"
+    t.date     "observed_on"
     t.string   "recorder"
     t.integer  "duration"
     t.integer  "facilitated_by_adult",  default: 0
@@ -72,10 +72,9 @@ ActiveRecord::Schema.define(version: 20141115002355) do
     t.datetime "updated_at"
   end
 
-
   create_table "observations", force: true do |t|
-    t.string   "student_id"
-    t.datetime "observed_on",           default: '2014-09-01', null: false
+    t.integer  "student_id"
+    t.datetime "observed_on"
     t.string   "grade"
     t.string   "teacher"
     t.string   "allergies"
@@ -121,7 +120,7 @@ ActiveRecord::Schema.define(version: 20141115002355) do
 
   create_table "students", force: true do |t|
     t.string   "name"
-    t.datetime "born_on",    default: '2003-01-01 00:00:00', null: false
+    t.date     "born_on",    default: '2003-01-01', null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

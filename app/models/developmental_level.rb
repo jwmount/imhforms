@@ -1,3 +1,4 @@
+require 'Date'
 class DevelopmentalLevel < ActiveRecord::Base
 
   belongs_to :student
@@ -9,10 +10,15 @@ class DevelopmentalLevel < ActiveRecord::Base
   validate :validate_date
   validate :duration, presence: true
   validate :student_id, presence: true
-  validate :recorder
+  validate :recorder, presence: true
 
+  # TODO -- Create a way to warn the admin user a date is missing and defaulted.
   def validate_date
-    if observed_on.nil? or observed_on > Date.today
+    if self.observed_on.nil?
+      #errors.add(:observed_on, "NOTE: No observation date given, used today's date.")
+      self.observed_on = Date.today
+    end
+    if self.observed_on > Date.today
       errors.add(:observed_on, "PROBLEM:  Observation date must be provided and cannot be in the future.")
     end #if
   end #method

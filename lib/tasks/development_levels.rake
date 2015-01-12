@@ -75,7 +75,7 @@ namespace :load do
         end #parse
         puts "--begin #{@count}\n"        
         puts "Student:  #{p_hash['Student']}"
-        puts "Date:     #{p_hash['Date']}"
+        puts "Date:     #{p_hash['Date:']}"            # Note trailing colon, is in CSV header def.
         puts "Recorder: #{p_hash['Recorder']}"
 
         puts "--end #{@count}\n\n"
@@ -108,6 +108,7 @@ namespace :load do
         # FIXME -- Protect this action or at least recover from FAIL
         dl = student.developmental_levels.create(
           recorder: p_hash['Recorder'],
+          observed_on: p_hash['Date:']      # NOTE:  colon is part of column name
           )
 
     # Stage 1 (?)

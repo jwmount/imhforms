@@ -2,7 +2,7 @@ class CreateDevelopmentalLevels < ActiveRecord::Migration
   def change
     create_table :developmental_levels do |t|
       t.integer  :student_id
-      t.date     :observed_on,           default: '2014-01-01', null: false
+      t.date     :observed_on
       t.string   :recorder
       t.integer  :duration
 

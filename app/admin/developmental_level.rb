@@ -186,9 +186,13 @@ ActiveAdmin.register DevelopmentalLevel do
   end
   
 show :title => "Developmental Levels" do |dl|
+
+  h2 dl.student.name
+
   attributes_table_for(dl) do
     row :observed_on
     row :recorder
+    row :duration
 
     row ( "Facilitated by adult") do |dl|
       developmental_level_options[ dl.facilitated_by_adult ][0]
@@ -255,25 +259,19 @@ end
     redirect_to admin_developmental_levels_path(@selections)
   end
 
-# See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # permit_params :list, :of, :attributes, :on, :model
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:permitted, :attributes]
-  #   permitted << :other if resource.something?
-  #   permitted
-  # end
+
+#
+# P E R M I T T E D  P A R A M E T E R S
+#
 
   permit_params do
    permitted = [:permitted, :student_id, :observed_on, :recorder, 
     :facilitated_by_adult, :initiated_by_child, 
     :sensory_motor, :pleasure, :displeasure, :with_object,
-    :duration
+    :duration,
+    :sensory_motor_play, :representational_play, :with_adult_support,
+    :independently, :cross_context_1, :cross_context_2, :cross_context_3, :cross_context_4
     ]
-end
-
+  end #permit_params
+  
 end
