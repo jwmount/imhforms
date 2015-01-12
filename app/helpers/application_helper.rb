@@ -14,8 +14,9 @@ module ApplicationHelper
   end
 
   # Find average values for all behaviors for all students by date.  Should be a progression.
+  # ans = DevelopmentalLevel.where(date_range.include?(:observed_on)).average("#{behavior}") does NOT work.
   def overall behavior, date_range
-    ans = DevelopmentalLevel.where(date_range.include?(:observed_on)).average("#{behavior}")
+    ans = DevelopmentalLevel.where("observed_on >= ? and observed_on <= ?", date_range.min, date_range.max).average("#{behavior}")
     ans.to_f.round(2)
   end #overall
 
