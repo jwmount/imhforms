@@ -45,6 +45,7 @@
     # Date intervals (buckets), every 15 days beginning 1 Nov 2014
     # Work out how to inject the dates or something and don't issue any beyond max observe_on
     # If @buckets exists just return it as will be same for given student.
+    # FIXME -- This should based on ranges as in Dashboard.
     def date_buckets
       return @buckets unless @buckets.nil?
       min, max = Date.new()

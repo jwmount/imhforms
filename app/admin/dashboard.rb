@@ -27,19 +27,15 @@ ActiveAdmin.register_page "Dashboard" do
            table do
              tr
                th 'Behavior'
-               th Date.today() - 56
-               th Date.today() - 42
-               th Date.today() - 28
-               th Date.today() - 14
-               th Date.today()
+               date_buckets.each do |bucket|
+                 th bucket
+               end
              behaviors.each do |behavior|
                tr
                  td behavior.gsub('_',' ').capitalize!
-                 td '1.4'
-                 td '1.6'
-                 td '2.2'
-                 td '2.3'
-                 td '3.4'
+                 date_buckets.each do |bucket|
+                   td overall behavior, bucket
+                 end
              end  
            table
 
