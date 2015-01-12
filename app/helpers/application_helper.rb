@@ -13,8 +13,8 @@ module ApplicationHelper
   	[ ['Not recorded',0], ['Not Present',1], ['Fleeting',2], ['Constricted',3], ['Stable',4] ]
   end
 
+  # Find average values for all behaviors for all students by date.  Should be a progression.
   def overall behavior, date_range
-#    ans = DevelopmentalLevel.where(date_range.include?(:observed_on)).average("#{behavior}")
     ans = DevelopmentalLevel.where(date_range.include?(:observed_on)).average("#{behavior}")
     ans.to_f.round(2)
   end #overall
@@ -23,15 +23,16 @@ module ApplicationHelper
     # Date intervals (buckets), every 15 days beginning 1 Nov 2014
     # Work out how to inject the dates or something and don't issue any beyond max observe_on
     # If @buckets exists just return it as will be same for given student.
-    # YYYY,DD,MM
     def date_buckets
-      dates = Array.new()
-      dates = [Date.today-75.days..Date.today-60.days,
-               Date.today-60.days..Date.today-45.days,
-               Date.today-45.days..Date.today-30.days, 
-               Date.today-30.days..Date.today-15.days, 
-               Date.today-15.days..Date.today
+      return( @dates ||= 
+        @dates = Array.new()
+        @dates = [Range.new(Date.today-75.days, Date.today-60.days),
+               Range.new(Date.today-60.days, Date.today-45.days),
+               Range.new(Date.today-45.days, Date.today-30.days), 
+               Range.new(Date.today-30.days, Date.today-15.days), 
+               Range.new(Date.today-15.days, Date.today)
              ]
+          )
     end
 
 end
