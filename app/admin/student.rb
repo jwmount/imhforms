@@ -26,7 +26,12 @@ ActiveAdmin.register Student do
   end #index
 
   show do
+    enrollment = student.developmental_levels.minimum("observed_on")
+    today = student.developmental_levels.maximum("observed_on")
     h2 "Stage 1 Progress Summary"
+    h4 "Assessement history from #{enrollment.strftime(" %b %d, %Y")}, thru #{today.strftime(" %b %d, %Y")} " +
+       "(0 means none given)"
+    h3 link_to "All assements for #{student.name}", admin_student_developmental_levels_path(student) 
     render partial: 'progress', object: @student
   end #show
 

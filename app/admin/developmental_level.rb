@@ -115,17 +115,12 @@ ActiveAdmin.register DevelopmentalLevel do
               :placeholder    => AdminConstants::ADMIN_DEVELOPMENT_LEVEL_DURATION_PLACEHOLDER
 
       f.input :facilitated_by_adult, 
-              :as => :radio,
-              :include_blank => true,
-              :collection    => developmental_level_options
-
-      f.input :facilitated_by_adult, 
               :as => :select,
-              :include_blank => true,
+              :include_blank => false,
               :collection    => developmental_level_options
       f.input :initiated_by_child, 
               :as => :select,
-              :include_blank => true,
+              :include_blank => false,
               :collection    => developmental_level_options
       f.input :sensory_motor, 
               :as => :select,
@@ -247,16 +242,6 @@ show :title => "Developmental Levels" do |dl|
   end
   active_admin_comments
 end
-
-
-  batch_action :compare do |selection|
-      # Do some deleting...
-      # selection.destroy
-    logger.info("*_*_*_*_*_ Do a compare page #{selection}") 
-    @selections = DevelopmentalLevel.find(selection)
-    flash[:warning] = 'Comparisons...'
-    redirect_to admin_developmental_levels_path(@selections)
-  end
 
 
 #

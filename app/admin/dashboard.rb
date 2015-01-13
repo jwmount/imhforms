@@ -15,15 +15,15 @@ ActiveAdmin.register_page "Dashboard" do
     #
 
      
-         panel "Welcome to Infant Mental Health Forms" do
-           para "Jan 4, 2015 -- Individual student evaluation details by recorder are available."
-         end
+    panel "Welcome to Infant Mental Health Forms" do
+      para "Jan 4, 2015 -- Individual student evaluation details by recorder are available."
+    end
 
      columns do
 
 
        column do
-         panel "School Progress (MOCKUP)" do
+         panel "School Progress" do
           @str = Date.today()
            table do
              tr
@@ -39,6 +39,7 @@ ActiveAdmin.register_page "Dashboard" do
                  end
              end  
            table
+           para "Legend: 0 - Skipped, 1 - Not present, 2 - Fleeting, 3 - Stable"
 
            end
          end
@@ -49,7 +50,7 @@ ActiveAdmin.register_page "Dashboard" do
            table do
              tr
                th 'Student'
-               th 'Obs'
+               th '# Obs'
                th 'From'
                th 'Until'
              
@@ -60,11 +61,15 @@ ActiveAdmin.register_page "Dashboard" do
                  td student.developmental_levels.minimum("observed_on")
                  td student.developmental_levels.maximum("observed_on")
              end
+
            end
+
          end
+
        end
 
      end #columns
+
 
   end # content
 end
