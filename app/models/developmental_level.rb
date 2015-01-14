@@ -14,7 +14,7 @@ class DevelopmentalLevel < ActiveRecord::Base
   # TODO -- Create a way to warn the admin user a date is missing and defaulted.
   def validate_date
     if self.observed_on.nil? 
-      #errors.add(:observed_on, "NOTE: No observation date given, used today's date.")
+      errors.add(:observed_on, "NOTE: No observation date given, used today's date.")
       self.observed_on = Date.today
     end
     if self.observed_on < Date.new(2014, 01, 01)

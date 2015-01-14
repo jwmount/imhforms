@@ -1,3 +1,4 @@
+require 'debugger'
 module ApplicationHelper
 
   # A panel will be rendered for each of these behaviors.  These MUST match :attribute method
@@ -26,22 +27,14 @@ module ApplicationHelper
     # TODO -- last bucket can be/is one period in future, don't need to show this.
     # TODO -- This version is same as the one in evalutation_details.rb except that one scopes to @student.  Not DRY, should be.
     def date_buckets
-      cutoff = Date.new(2014, 11, 1)
 
-      min, max = Date.new()
-      min = DevelopmentalLevel.where("observed_on >= ?", cutoff).minimum("observed_on")
-      puts("\n\n* * * * * * #{min}")
-      max = DevelopmentalLevel.where("observed_on >= ?", cutoff).maximum("observed_on")
-      
-      @buckets = [Range.new( Date.new(min.year, min.month, 1), Date.new(min.year, min.month, 15))]
-
-      # still have to get last day of first month to complete range for second half of first month
-      first_day = min + 1.month
-      last_day =  first_day - 1.day
-      @buckets << Range.new( Date.new(min.year, min.month, 16), Date.new(min.year, min.month, last_day.day ))
+      min = Date.new( 2014, 11,  1 )
+      mid = Date.new( 2014, 11, 15 )
+      max = Date.new( 2014, 11, 30 ) 
+      @buckets = [Range.new( min, mid ), Range.new( mid + 1.day, max)]
 
       # now based on period.min we get the first element of @buckets which is itself a range
-      until @buckets.last.max > max do 
+      until @buckets.last.max > Date.today do 
         first_day = @buckets.last.max + 1.day
         mid = Date.new(first_day.year, first_day.month, 15)
         last_day =  first_day + 1.month - 1
