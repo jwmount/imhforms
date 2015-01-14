@@ -1,3 +1,4 @@
+require 'date'
 ActiveAdmin.register_page "Dashboard" do
 
 #  menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
@@ -53,8 +54,7 @@ ActiveAdmin.register_page "Dashboard" do
                th '# Obs'
                th 'From'
                th 'Until'
-
-=begin             
+             
              Student.all.each do |student|
                tr
                  td link_to(student.name, admin_student_path(student))
@@ -64,7 +64,6 @@ ActiveAdmin.register_page "Dashboard" do
                    td student.developmental_levels.maximum("observed_on").strftime("%b %d, %Y")
                  end #if
              end #student
-=end
            end #table
          end #column
 

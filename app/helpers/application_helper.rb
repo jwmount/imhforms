@@ -25,7 +25,7 @@ module ApplicationHelper
     # Reference:  Date Class Ruby
     # TODO -- last bucket can be/is one period in future, don't need to show this.
     # TODO -- This version is same as the one in evalutation_details.rb except that one scopes to @student.  Not DRY, should be.
-    def date_buckets
+    def XXdate_buckets
       min, max = Date.new()
       @buckets = []
       min = DevelopmentalLevel.minimum("observed_on")
@@ -52,7 +52,7 @@ module ApplicationHelper
     # Date intervals (buckets), every 15 days beginning 1 Nov 2014
     # Work out how to inject the dates or something and don't issue any beyond max observe_on
     # If @buckets exists just return it as will be same for given student.
-    def XXdate_buckets
+    def date_buckets
       return( @dates ||= 
         @dates = Array.new()
         @dates = [Range.new(Date.new(2014, 11, 1), Date.new(2014, 11, 15)),
