@@ -42,20 +42,6 @@
       @r.uniq!
     end
 
-    # Date intervals (buckets), every 15 days beginning 1 Nov 2014
-    # If @buckets exists just return it as will be same for given student.
-    # TODO -- Harden this up, if dates are nil it will crash.
-    def XXdate_buckets
-      return @buckets unless @buckets.nil?
-      min, max = Date.new()
-      min = @student.developmental_levels.minimum("observed_on")
-      max = @student.developmental_levels.maximum("observed_on")
-      @buckets = [min]
-      until (@buckets.max >= max) do
-        @buckets << (@buckets.max + 15.days)
-      end
-      @buckets
-    end
     
     # In this version @buckets is an array of ranges, i.e. @buckets[0] = range(first, last)
     # Each month has two ranges, namely 1 - 15 and 16 - end.

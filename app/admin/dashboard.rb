@@ -29,7 +29,7 @@ ActiveAdmin.register_page "Dashboard" do
              tr
                th 'Behavior'
                date_buckets.each do |bucket|
-                 th bucket
+                 th bucket.min.strftime("%b %d, %Y")
                end
              behaviors.each do |behavior|
                tr
@@ -58,8 +58,10 @@ ActiveAdmin.register_page "Dashboard" do
                tr
                  td link_to(student.name, admin_student_path(student))
                  td student.developmental_levels.count
-                 td student.developmental_levels.minimum("observed_on")
-                 td student.developmental_levels.maximum("observed_on")
+                 if student.developmental_levels.count > 0 
+                   td student.developmental_levels.minimum("observed_on").strftime("%b %d, %Y")
+                   td student.developmental_levels.maximum("observed_on").strftime("%b %d, %Y")
+                 end
              end
 
            end
