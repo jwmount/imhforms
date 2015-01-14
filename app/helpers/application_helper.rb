@@ -22,6 +22,7 @@ module ApplicationHelper
 
     # In this version @buckets is an array of ranges, i.e. @buckets[0] = range(first, last)
     # Each month has two ranges, namely 1 - 15 and 16 - end.
+    # Reference:  Date Class Ruby
     # TODO -- last bucket can be/is one period in future, don't need to show this.
     # TODO -- This version is same as the one in evalutation_details.rb except that one scopes to @student.  Not DRY, should be.
     def date_buckets
