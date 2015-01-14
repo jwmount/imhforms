@@ -30,7 +30,7 @@ module ApplicationHelper
 
       min, max = Date.new()
       min = DevelopmentalLevel.where("observed_on >= ?", cutoff).minimum("observed_on")
-      error_log("\n\n* * * * * * #{min}")
+      puts("\n\n* * * * * * #{min}")
       max = DevelopmentalLevel.where("observed_on >= ?", cutoff).maximum("observed_on")
       
       @buckets = [Range.new( Date.new(min.year, min.month, 1), Date.new(min.year, min.month, 15))]
