@@ -1,4 +1,3 @@
-require 'debugger'
 module ApplicationHelper
 
   # A panel will be rendered for each of these behaviors.  These MUST match :attribute method
