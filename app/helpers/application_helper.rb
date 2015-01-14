@@ -31,7 +31,11 @@ module ApplicationHelper
       min, max = Date.new()
       min = DevelopmentalLevel.where("observed_on >= ?", cutoff).minimum("observed_on")
       max = DevelopmentalLevel.where("observed_on >= ?", cutoff).maximum("observed_on")
-
+      
+      puts cutoff
+      puts min
+      puts max
+      
       @buckets = [Range.new( Date.new(min.year, min.month, 1), Date.new(min.year, min.month, 15))]
 
       # still have to get last day of first month to complete range for second half of first month
