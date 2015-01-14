@@ -53,7 +53,8 @@ ActiveAdmin.register_page "Dashboard" do
                th '# Obs'
                th 'From'
                th 'Until'
-             
+
+=begin             
              Student.all.each do |student|
                tr
                  td link_to(student.name, admin_student_path(student))
@@ -61,12 +62,11 @@ ActiveAdmin.register_page "Dashboard" do
                  if student.developmental_levels.count > 0 
                    td student.developmental_levels.minimum("observed_on").strftime("%b %d, %Y")
                    td student.developmental_levels.maximum("observed_on").strftime("%b %d, %Y")
-                 end
-             end
-
-           end
-
-         end
+                 end #if
+             end #student
+=end
+           end #table
+         end #column
 
        end
 
