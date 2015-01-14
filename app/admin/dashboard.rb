@@ -1,4 +1,4 @@
-require 'date'
+require 'Date'
 ActiveAdmin.register_page "Dashboard" do
 
 #  menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
@@ -25,7 +25,6 @@ ActiveAdmin.register_page "Dashboard" do
 
        column do
          panel "School Progress" do
-          @str = Date.today()
            table do
              tr
                th 'Behavior'
