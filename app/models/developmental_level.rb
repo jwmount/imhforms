@@ -6,7 +6,7 @@ class DevelopmentalLevel < ActiveRecord::Base
   # V A L I D A T I O N S
   #
 
-  #validate :validate_date
+  validate :validate_date
   validate :duration, presence: true
   validate :student_id, presence: true
   validate :recorder, presence: true

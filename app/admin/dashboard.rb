@@ -28,7 +28,7 @@ ActiveAdmin.register_page "Dashboard" do
              tr
                th 'Behavior'
                date_buckets.each do |bucket|
-                 th bucket.min.strftime("%b %d, %Y")
+                 th bucket.min.strftime("%b %d")
                end
              behaviors.each do |behavior|
                tr
