@@ -101,7 +101,8 @@ namespace :load do
         if !student.name.nil? and student.save! 
           puts "--#{student.name} from #{filename} Saved\n\n\n"
         else
-          puts "--Provider could not be saved, Dropped\n"
+          puts "--Student could not be saved, Dropped\n"
+          break
         end #if
 
         # Create this instance of Developmental_levels for this student
@@ -196,9 +197,9 @@ namespace :load do
 
     end #glob
 
-    puts "\n--Finished."
-    puts "Development Levels: #{@count.to_s}"
-    puts "Elapsed time: #{(Time.now() - @started)}"
+    puts "imhforms -- Development Levels: #{@count.to_s}"
+    puts "imhforms -- Elapsed time: #{(Time.now() - @started)}"
+    puts "imhforms -- Load DevelopmentalLevels finished.\n"
 
   end #task
 

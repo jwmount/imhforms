@@ -33,7 +33,7 @@ module ApplicationHelper
       @buckets = [Range.new( min, mid ), Range.new( mid + 1.day, max)]
 
       # now based on period.min we get the first element of @buckets which is itself a range
-      until @buckets.last.max > Date.today do 
+      until @buckets.last.last > Date.today  do 
         first_day = @buckets.last.max + 1.day
         mid = Date.new(first_day.year, first_day.month, 15)
         last_day =  first_day + 1.month - 1

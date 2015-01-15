@@ -45,22 +45,19 @@
     
     # In this version @buckets is an array of ranges, i.e. @buckets[0] = range(first, last)
     # Each month has two ranges, namely 1 - 15 and 16 - end.
+    # Reference:  Date Class Ruby
     # TODO -- last bucket can be/is one period in future, don't need to show this.
+    # TODO -- Not DRY, should be. Version is same as the one in evalutation_details.rb except that one scopes to @student.  
+
     def date_buckets
-      min, max = Date.new()
-      @buckets = []
-      min = @student.developmental_levels.minimum("observed_on")
-      max = @student.developmental_levels.maximum("observed_on")
 
-      @buckets = [Range.new( Date.new(min.year, min.month, 1), Date.new(min.year, min.month, 15))]
-
-      # still have to get last day of first month to complete range for second half of first month
-      first_day = min + 1.month
-      last_day =  first_day - 1.day
-      @buckets << Range.new( Date.new(min.year, min.month, 16), Date.new(min.year, min.month, last_day.day ))
+      min = Date.new( 2014, 11,  1 )
+      mid = Date.new( 2014, 11, 15 )
+      max = Date.new( 2014, 11, 30 ) 
+      @buckets = [Range.new( min, mid ), Range.new( mid + 1.day, max)]
 
       # now based on period.min we get the first element of @buckets which is itself a range
-      until @buckets.last.max > max do 
+      until @buckets.last.last > Date.today  do 
         first_day = @buckets.last.max + 1.day
         mid = Date.new(first_day.year, first_day.month, 15)
         last_day =  first_day + 1.month - 1
@@ -69,7 +66,6 @@
       end
       @buckets
     end
-
 
     # for each recorder, return array of evaluations to match date_buckets.
     # if no value is recorded for a bucket, it's blank.
@@ -94,14 +90,14 @@
             tr 
               th h3 'Recorders'
               date_buckets.each do |bucket|
-                th h4 b bucket.min.strftime("%b #{bucket.min.day}-#{bucket.max.day}, %Y")
+                th h4 b bucket.first.strftime("%b #{bucket.first.day}-#{bucket.last.day}, %Y")
               end
 
             recorders.each do |name, count|
               tr
                 td h4 b name
                 @buckets.each do |b|
-                  td evaluations( behavior, name, [b.min, b.max] )
+                  td evaluations( behavior, name, [b.first, b.last] )
                 end
             end #recorders
           end

@@ -13,7 +13,9 @@ namespace :load do
   task :all => :environment do
     Rake::Task['load:observations'].invoke
     Rake::Task['load:development_levels'].invoke
-    puts 'imhforms -- load completed.'
+    Rake::Task['load:summary'].invoke
+    puts "imhforms -- load completed.\n\n"
+    puts "Done."
   end
 
 #

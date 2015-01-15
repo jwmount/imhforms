@@ -17,7 +17,7 @@ class DevelopmentalLevel < ActiveRecord::Base
       errors.add(:observed_on, "NOTE: No observation date given, used today's date.")
       self.observed_on = Date.today
     end
-    if self.observed_on < Date.new(2014, 01, 01)
+    if self.observed_on < Date.new(2014, 11, 01)
       self.observed_on = Date.today
       errors.add(:observed_on, "PROBLEM: Observation date appears to be wrong, is was set to today's date.")
     end
