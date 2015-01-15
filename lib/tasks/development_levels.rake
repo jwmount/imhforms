@@ -105,11 +105,19 @@ namespace :load do
           break
         end #if
 
+        # Reformat Date, is mm/dd/yy
+        parts = p_hash['Date:'].split('/')
+        yr = parts[2].to_i + 2000
+        mo = parts[0].to_i
+        day = parts[1].to_i
+        observed = Date.new( yr, mo, day )
+
         # Create this instance of Developmental_levels for this student
         # FIXME -- Protect this action or at least recover from FAIL
         dl = student.developmental_levels.create(
           recorder: p_hash['Recorder'],
-          observed_on: p_hash['Date:']      # NOTE:  colon is part of column name
+          #observed_on: p_hash['Date:']      # NOTE:  colon is part of column name
+          observed_on: observed
           )
 
     # Stage 1 (?)
