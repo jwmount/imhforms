@@ -29,12 +29,12 @@ module ApplicationHelper
 
       min = Date.new( 2014, 11,  1 )
       mid = Date.new( 2014, 11, 15 )
-      max = Date.new( 2014, 11, 30 ) 
-      @buckets = [Range.new( min, mid ), Range.new( mid + 1.day, max)]
+      
+      @buckets = [Range.new( min, mid ), Range.new( mid + 1.day, Date.new( 2014, 11, 30 ))]
 
       # now based on period.min we get the first element of @buckets which is itself a range
       until @buckets.last.last > Date.today  do 
-        first_day = @buckets.last.max + 1.day
+        first_day = @buckets.last.end + 1.day
         mid = Date.new(first_day.year, first_day.month, 15)
         last_day =  first_day + 1.month - 1
         @buckets << Range.new( first_day, mid )
@@ -43,19 +43,5 @@ module ApplicationHelper
       @buckets
     end
 
-    # Date intervals (buckets), every 15 days beginning 1 Nov 2014
-    # Work out how to inject the dates or something and don't issue any beyond max observe_on
-    # If @buckets exists just return it as will be same for given student.
-    def XXXdate_buckets
-      return( @dates ||= 
-        @dates = Array.new()
-        @dates = [Range.new(Date.new(2014, 11, 1), Date.new(2014, 11, 15)),
-               Range.new(Date.today-60.days, Date.today-45.days),
-               Range.new(Date.today-45.days, Date.today-30.days), 
-               Range.new(Date.today-30.days, Date.today-15.days), 
-               Range.new(Date.today-15.days, Date.today)
-             ]
-          )
-    end
 
 end

@@ -54,7 +54,7 @@
       min = Date.new( 2014, 11,  1 )
       mid = Date.new( 2014, 11, 15 )
       max = Date.new( 2014, 11, 30 ) 
-      @buckets = [Range.new( min, mid ), Range.new( mid + 1.day, max)]
+      @buckets = [Range.new( min, mid ), Range.new( mid + 1.day, max )]
 
       # now based on period.min we get the first element of @buckets which is itself a range
       until @buckets.last.last > Date.today  do 
@@ -62,7 +62,7 @@
         mid = Date.new(first_day.year, first_day.month, 15)
         last_day =  first_day + 1.month - 1
         @buckets << Range.new( first_day, mid )
-        @buckets << Range.new( mid + 1.day, last_day)
+        @buckets << Range.new( mid + 1.day, last_day )
       end
       @buckets
     end
@@ -71,7 +71,7 @@
     # if no value is recorded for a bucket, it's blank.
     def evaluations behavior, recorder, bucket
       #return "0" if recorder.empty?
-      vs = @student.developmental_levels.where("recorder = ? and observed_on >= ? and observed_on < ?", recorder, bucket[0], bucket[1] ).select("#{behavior}")
+      vs = @student.developmental_levels.where("recorder = ? and observed_on >= ? and observed_on <= ?", recorder, bucket.begin, bucket.end ).select("#{behavior}")
       values = ""
       vs.each do |v|
         values += (v.send( behavior.to_sym ).to_s + ', ') unless v.nil?
@@ -96,8 +96,8 @@
             recorders.each do |name, count|
               tr
                 td h4 b name
-                @buckets.each do |b|
-                  td evaluations( behavior, name, [b.first, b.last] )
+                @buckets.each do |bucket|
+                  td evaluations( behavior, name, bucket )
                 end
             end #recorders
           end

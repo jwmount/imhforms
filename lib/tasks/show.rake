@@ -4,17 +4,20 @@
 namespace :load do
 
   desc "imhforms -- :summary.  Show summaries for tables."
-  task :summary => :environment do
+  task :show => :environment do
 
-
+    students = Student.all
     students.each do |s|
-      @dls = s.developmental_levels.all
-      @dls.each { |d| puts "         --  #{s.name} on #{d.observed_on}" }
-      puts "         -- DevelopmentalLevel: #{s.name},  #{@dls.count} observations\n"
+      puts s.inspect
+      puts "\n"
+      dls = s.developmental_levels.all
+      dls.each do |d| 
+        puts "         --  #{s.name} --> #{d.inspect}" 
+      end
     end
 
     puts "\n\n"
-    puts "imhforms -- Summary of tables."
+    puts "imhforms -- Show contents tables."
     puts "         -- Students:  \t\t     #{Student.count}"
     puts "         -- DevelopmentalLevels: #{DevelopmentalLevel.count}"
     puts "         -- Observations: \t    #{Observation.count}\n"
