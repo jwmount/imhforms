@@ -40,6 +40,7 @@
       dls = @student.developmental_levels.select("recorder")
       dls.each { |d| @r << d.recorder }
       @r.uniq!
+      @r
     end
 
     
@@ -47,16 +48,18 @@
     # Each month has two ranges, namely 1 - 15 and 16 - end.
     # Reference:  Date Class Ruby
     # TODO -- last bucket can be/is one period in future, don't need to show this.
-    # TODO -- Not DRY, should be. Version is same as the one in evalutation_details.rb except that one scopes to @student.  
+    # TODO -- Not DRY. Is same as the one in evalutation_details.rb except that one scopes to @student.  
 
     def date_buckets
 
+      # Setup the begining range, minimum of two ranges covering first month.
       min = Date.new( 2014, 11,  1 )
       mid = Date.new( 2014, 11, 15 )
       max = Date.new( 2014, 11, 30 ) 
       @buckets = [Range.new( min, mid ), Range.new( mid + 1.day, max )]
 
-      # now based on period.min we get the first element of @buckets which is itself a range
+      # Build buckets beginning with the first one
+      # First half is first_day..mid, Second half is mid..last_day 
       until @buckets.last.last > Date.today  do 
         first_day = @buckets.last.max + 1.day
         mid = Date.new(first_day.year, first_day.month, 15)

@@ -21,7 +21,6 @@ ActiveAdmin.register_page "Dashboard" do
 
      columns do
 
-
        column do
          panel "School Progress" do
            table do

@@ -11,12 +11,12 @@ ActiveAdmin.register Student do
 
     selectable_column
 
-#    column "Profile(click)" do |student|
-#      link_to student.name, admin_student_observations_path(student) unless student.observations.empty?
-#    end
-
     column "Progress Summary(click)" do |student|
-      link_to student.name, admin_student_path(student)
+      if student.developmental_levels.empty?
+        flash[:Note] = "No developmental_levels have been recorded yet."
+      else
+        link_to student.name, admin_student_path(student)
+      end
     end
 
     column "Developmental Levels (click)" do |student|

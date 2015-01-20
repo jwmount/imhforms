@@ -9,7 +9,7 @@ namespace :load do
     students = Student.all
     students.each do |s|
       puts s.inspect
-      puts "\n"
+      puts "\n\n"
       dls = s.developmental_levels.all
       dls.each do |d| 
         puts "         --  #{s.name} --> #{d.inspect}" 
