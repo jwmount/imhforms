@@ -11,9 +11,12 @@ namespace :load do
 
   desc "imhforms -- :all.  Database load from .csv files."
   task :all => :environment do
+    puts ""
     Rake::Task['load:observations'].invoke
+    puts ""
     Rake::Task['load:development_levels'].invoke
-    Rake::Task['load:summary'].invoke
+    puts ""
+#    Rake::Task['load:summary'].invoke
     puts "imhforms -- load completed.\n\n"
     puts "Done."
   end

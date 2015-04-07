@@ -88,7 +88,7 @@
       para h2 "#{getStudent}"
       behaviors.each do |behavior|
         panel behavior.gsub('_',' ').capitalize! do
-          table  do
+          table do
         
             tr 
               th h3 'Recorders'
