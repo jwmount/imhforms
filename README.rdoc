@@ -1,5 +1,5 @@
 == README
 
-ActiveAdmin app to capture and display data collected from .pdf files.  Not exactly self-explanatory but successfully met some unusual requirements.
+ActiveAdmin app to capture and display data collected from .pdf files.  Not exactly self-explanatory, but successfully met some unusual requirements.
 
 ActiveAdmin rules when the use case fits!!
